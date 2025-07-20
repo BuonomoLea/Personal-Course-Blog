@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>Mémento CSS - Exemples de patterns CSS utile</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <link rel="stylesheet" href="/CSS/layoutArticle.css" />
+  <script src="/JS/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header aria-label="En-tête principal">
+    <nav class="nav" aria-label="Navigation principale">
+      <ul class="ul-nav">
+        <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+        <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+        <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+        <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Exemples de patterns CSS utile</h1>
+
+        <!-- card -->
+        <section class="sous-chapitre">
+        <h2>Card</h2>
+        <pre><code>.card {
+        box-sizing: border-box;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+        transition: box-shadow 0.2s ease;
+        }
+
+        .card__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        }
+
+        .card__body {
+        padding: 1rem;
+        }
+
+        .card__title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        }
+
+        .card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }</code></pre>
+        </section>
+        <!-- Menu -->
+        <section class="sous-chapitre">
+        <h2>Menu</h2>
+        <pre><code>.nav {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        }
+
+        .nav__item {
+        margin-right: 1rem;
+        }
+
+        .nav__link {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: #333;
+        text-decoration: none;
+        transition: background 0.2s ease;
+        }
+
+        .nav__link:hover,
+        .nav__link:focus {
+        background: #f0f0f0;
+        }
+
+        .nav__item--active .nav__link {
+        font-weight: bold;
+        border-bottom: 2px solid #007acc;
+        }</code></pre>
+        </section>
+        <!-- Accordeon -->
+        <section class="sous-chapitre">
+        <h2>Accordeon</h2>
+        <pre><code>.accordion__item {
+        border-bottom: 1px solid #e0e0e0;
+        }
+
+        .accordion__header {
+        cursor: pointer;
+        padding: 1rem;
+        background: #f9f9f9;
+        }
+
+        .accordion__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        }
+
+        /* État ouvert via JS ou checkbox hack */
+        .accordion__item.is-open .accordion__content {
+        max-height: 500px;
+        }</code></pre>
+        </section>
+        <!-- Tableaux -->
+        <section class="sous-chapitre">
+        <h2>Tableaux</h2>
+        <pre><code>.tabs__list {
+        display: flex;
+        border-bottom: 1px solid #ddd;
+        margin: 0;
+        padding: 0;
+        }
+
+        .tabs__item {
+        margin-right: 1rem;
+        list-style: none;
+        }
+
+        .tabs__link {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: #555;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        }
+
+        .tabs__item--active .tabs__link {
+        color: #000;
+        border-bottom: 2px solid #007acc;
+        }
+
+        .tabs__panel {
+        display: none;
+        padding: 1rem;
+        }
+
+        .tabs__panel.is-active {
+        display: block;
+        }</code></pre>
+        </section>
+        <!-- Tooltip -->
+        <section class="sous-chapitre">
+        <h2>Tooltip</h2>
+        <pre><code>data-tooltip {
+        position: relative;
+        }
+
+        data-tooltip::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.25rem 0.5rem;
+        background: rgba(0,0,0,0.75);
+        color: #fff;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        }
+
+        data-tooltip:focus::after {
+        opacity: 1;
+        }</code></pre>
+        </section>
+        <!-- Boutton -->
+        <section class="sous-chapitre">
+        <h2>Boutton</h2>
+        <pre><code>.btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        line-height: 1.2;
+        text-align: center;
+        text-decoration: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn--primary {
+        background: #007acc;
+        color: #fff;
+        border-color: #007acc;
+        }
+
+        .btn--primary:hover {
+        background: #005fa3;
+        border-color: #005fa3;
+        }
+
+        .btn--secondary {
+        background: #f0f0f0;
+        color: #333;
+        border-color: #ccc;
+        }
+
+        .btn--secondary:hover {
+        background: #e0e0e0;
+        }</code></pre>
+        </section>
+        <!-- Formulaire -->
+        <section class="sous-chapitre">
+        <h2>Formulaire</h2>
+        <pre><code>.form__group {
+        margin-bottom: 1rem;
+        }
+
+        .form__label {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+        }
+
+        .form__input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        }
+
+        .form__input:focus {
+        border-color: #007acc;
+        outline: none;
+        }
+
+        .form__error {
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        color: #d9534f;
+        }</code></pre>
+        </section>
+        <!-- Modal -->
+        <section class="sous-chapitre">
+        <h2>Modal</h2>
+        <pre><code>.modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        }
+
+        .modal.is-open {
+        display: block;
+        }
+
+        .modal__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal__content {
+        position: relative;
+        max-width: 32rem;
+        margin: 5vh auto;
+        background: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+        }
+
+        .modal__header,
+        .modal__footer {
+        padding: 1rem;
+        background: #f7f7f7;
+        }
+
+        .modal__body {
+        padding: 1rem;
+        }
+
+        .modal__close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: transparent;
+        border: none;
+        font-size: 1.25rem;
+        cursor: pointer;
+        }</code></pre>
+        </section>
+        <!-- Dropdown -->
+        <section class="sous-chapitre">
+        <h2>Dropdown</h2>
+        <pre><code>.dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown__toggle {
+        cursor: pointer;
+        }
+
+        .dropdown__menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 10rem;
+        margin-top: 0.5rem;
+        padding: 0.5rem 0;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        display: none;
+        z-index: 10;
+        }
+
+        .dropdown.is-open .dropdown__menu {
+        display: block;
+        }
+
+        .dropdown__item {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: #333;
+        text-decoration: none;
+        }
+
+        .dropdown__item:hover {
+        background: #f0f0f0;
+        }</code></pre>
+        </section>
+        <!-- Pagination -->
+        <section class="sous-chapitre">
+        <h2>Pagination</h2>
+        <pre><code>.pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+        }
+
+        .pagination__item {
+        margin-right: 0.5rem;
+        }
+
+        .pagination__link {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        color: #007acc;
+        text-decoration: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        }
+
+        .pagination__item--active .pagination__link {
+        background: #007acc;
+        color: #fff;
+        border-color: #007acc;
+        }</code></pre>
+        </section>
+        <!-- Breadcrumb -->
+        <section class="sous-chapitre">
+        <h2>Breadcrumb</h2>
+        <pre><code>.breadcrumb {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+        }
+
+        .breadcrumb__item + .breadcrumb__item::before {
+        content: '/';
+        margin: 0 0.5rem;
+        color: #666;
+        }
+
+        .breadcrumb__link {
+        color: #007acc;
+        text-decoration: none;
+        }
+
+        .breadcrumb__link:hover {
+        text-decoration: underline;
+        }</code></pre>
+        </section>
+        <!-- Alert / Notification -->
+        <section class="sous-chapitre">
+        <h2>Alert / Notification</h2>
+        <pre><code>.alert {
+        padding: 1rem;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        }
+
+        .alert--success {
+        background: #dff0d8;
+        color: #3c763d;
+        border-color: #d0e9c6;
+        }
+
+        .alert--info {
+        background: #d9edf7;
+        color: #31708f;
+        border-color: #bce8f1;
+        }
+
+        .alert--warning {
+        background: #fcf8e3;
+        color: #8a6d3b;
+        border-color: #faebcc;
+        }
+
+        .alert--danger {
+        background: #f2dede;
+        color: #a94442;
+        border-color: #ebccd1;
+        }</code></pre>
+        </section>
+        <!-- Spinner -->
+        <section class="sous-chapitre">
+        <h2>Spinner</h2>
+        <pre><code>.spinner {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        border: 0.25rem solid #ccc;
+        border-top-color: #007acc;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+        }</code></pre>
+        </section>
+        <!-- Progress Bar -->
+        <section class="sous-chapitre">
+        <h2>Progress Bar</h2>
+        <pre><code>.progress {
+        background: #e9ecef;
+        border-radius: 4px;
+        overflow: hidden;
+        height: 1rem;
+        }
+
+        .progress__bar {
+        background: #007acc;
+        height: 100%;
+        width: 0%;
+        transition: width 0.3s ease;
+        }
+
+        /* Usage JavaScript : .progress__bar { width: 60%; } */</code></pre>
+        </section>
+        <!-- Slider -->
+        <section class="sous-chapitre">
+        <h2>Slider</h2>
+        <pre><code>&lt;!-- Structure HTML minimale --&gt;
+        &lt;div class="slider"&gt;
+        &lt;div class="slider__track"&gt;
+            &lt;div class="slider__slide"&gt;Slide 1&lt;/div&gt;
+            &lt;div class="slider__slide"&gt;Slide 2&lt;/div&gt;
+            &lt;div class="slider__slide"&gt;Slide 3&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button class="slider__button slider__button--prev" aria-label="Précédent"&gt;‹&lt;/button&gt;
+        &lt;button class="slider__button slider__button--next" aria-label="Suivant"&gt;›&lt;/button&gt;
+        &lt;div class="slider__dots"&gt;
+            &lt;button class="slider__dot" aria-label="Aller à la slide 1"&gt;&lt;/button&gt;
+            &lt;button class="slider__dot" aria-label="Aller à la slide 2"&gt;&lt;/button&gt;
+            &lt;button class="slider__dot" aria-label="Aller à la slide 3"&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        </code></pre>
+
+        <pre><code>/* Slider Component */
+        .slider {
+        position: relative;
+        overflow: hidden;
+        }
+
+        .slider__track {
+        display: flex;
+        transition: transform 0.4s cubic-bezier(.25,.8,.25,1);
+        will-change: transform;
+        }
+
+        .slider__slide {
+        flex: 0 0 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .slider__button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2rem;
+        height: 2rem;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.25rem;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+        }
+
+        .slider__button:hover {
+        background: #f0f0f0;
+        }
+
+        .slider__button--prev {
+        left: 1rem;
+        }
+
+        .slider__button--next {
+        right: 1rem;
+        }
+
+        .slider__dots {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.5rem;
+        }
+
+        .slider__dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        background: #ccc;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+        cursor: pointer;
+        transition: background 0.2s;
+        }
+
+        .slider__dot.is-active {
+        background: #007acc;
+        }</code></pre>
+
+        <h3>Script</h3>
+        <p>Calculer <code>transform: translateX(-n*100%)</code> sur <code>.slider__track</code></p>
+        <p>Ajouter/retirer la classe <code>.is-active</code> sur les <code>.slider__dot</code></p>
+        <p>Gérer les clics sur Prev/Next et les dots.</p>
+        </section>
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/MementoPage/MementoChapitre7.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/MementoPage/MementoChapitre9.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>

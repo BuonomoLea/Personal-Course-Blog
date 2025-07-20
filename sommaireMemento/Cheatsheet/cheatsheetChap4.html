@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>CheatSheet - CSS  Les sélecteurs</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Les sélecteurs</h1>
+
+        <!-- Sélecteurs de base -->
+        <section class="sous-chapitre">
+          <h2>Sélecteurs de base</h2>
+          <pre><code>
+* : tous les éléments
+
+Element : tous les éléments &lt;element&gt;
+
+.class : éléments avec class="class"
+
+#id : élément unique avec id="id"
+          </code></pre>
+        </section>
+
+        <!-- Combinateurs -->
+        <section class="sous-chapitre">
+          <h2>Combinateurs</h2>
+          <pre><code>
+parent descendant : tout &lt;descendant&gt; dans &lt;parent&gt;
+
+parent &gt; enfant : chaque enfant direct de &lt;parent&gt;
+
+élément1 + élément2 : &lt;élément2&gt; de même niveau, le premier après &lt;élément1&gt;
+
+élément1 ~ élément2 : tous les &lt;élément2&gt; qui suivent &lt;élément1&gt; au même niveau dans le DOM
+          </code></pre>
+        </section>
+
+        <!-- Sélecteurs d’attributs -->
+        <section class="sous-chapitre">
+          <h2>Sélecteurs d’attributs</h2>
+          <pre><code>
+[att] : présence de l’attribut
+
+[att=value] : valeur exacte
+
+[att~=value] : mot dans un espace-séparé
+
+[att|=value] : valeur ou préfixe + tiret
+
+[att^=value] : commence par
+
+[att$=value] : finit par
+
+[att*=value] : contient
+
+Exemple : [href$=".pdf"]  
+
+&lt;li&gt;&lt;a href="guide.pdf"&gt;Télécharger le guide (PDF)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="rapport.docx"&gt;Télécharger le rapport (DOCX)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="brochure.pdf"&gt;Télécharger la brochure (PDF)&lt;/a&gt;&lt;/li&gt;
+          </code></pre>
+        </section>
+
+        <!-- Pseudo-classes -->
+        <section class="sous-chapitre">
+          <h2>Pseudo-classes</h2>
+          <pre><code>
+États interactifs
+
+:hover
+:active
+:focus
+
+Structure
+
+:first-child, :last-child
+:nth-child(n), :nth-of-type(n)
+:not(selector)
+
+Formulaires
+
+:enabled, :disabled, :checked
+          </code></pre>
+        </section>
+
+        <!-- Pseudo-éléments -->
+        <section class="sous-chapitre">
+          <h2>Pseudo-éléments</h2>
+          <pre><code>
+::before
+::after
+::first-line
+::first-letter
+::selection
+          </code></pre>
+        </section>
+
+        <!-- Spécificité & ordre -->
+        <section class="sous-chapitre">
+          <h2>Spécificité & ordre</h2>
+          <pre><code>
+ID &gt; (100)
+Classe/attribut/pseudo-classe &gt; (10)
+Élément/pseudo-élément &gt; (1)
+Dernière règle en cas d’égalité &gt; (cascade)  
+!important &gt; (à éviter)
+          </code></pre>
+        </section>
+
+        <!-- Sélecteurs CSS4 -->
+        <section class="sous-chapitre">
+          <h2>Sélecteurs CSS4</h2>
+          <pre><code>
+:is(s1,s2,…) &gt; sélectionne si l’élément correspond à l’un des s1, s2…  
+:where(s1,s2,…) &gt; même fonctionnement que :is() 
+:has(s) &gt; sélectionne l’élément qui contient en descendant un élément correspondant à s 
+:not(s1,s2,…) &gt; exclut les éléments correspondant à l’un des s1, s2
+          </code></pre>
+        </section>
+
+        <!-- Sélecteurs de Container Queries -->
+        <section class="sous-chapitre">
+          <h2>Sélecteurs de Container Queries</h2>
+          <pre><code>
+1. container-type: size | inline-size | block-size → active la surveillance de taille sur un élément 
+
+2. container-name: nom → donne un identifiant pour le cibler dans @container 
+
+@container &lt;nom&gt;? (&lt;condition&gt;) { … } ;  
+
+Conditions : width, min-width, max-width, height, min-height, max-height
+
+Syntaxe nominative :  
+@container nom (min-width: 600px) { … } 
+
+Syntaxe globale :  
+@container (max-width: 400px) { … }  
+          </code></pre>
+        </section>
+
+        <!-- Sélecteurs de Media Querie -->
+        <section class="sous-chapitre">
+          <h2>Sélecteurs de Media Queries</h2>
+          <pre><code>
+Mobile-first : @media (min-width: valeurPx)
+Desktop-first : @media (max-width: valeurPx)
+
+Conditions : width / height / orientation / resolution
+
+Breakpoints usuels : 
+xs : 0 – 575px 
+sm : ≥ 576px 
+md : ≥ 768px 
+lg : ≥ 992px 
+xl : ≥ 1200px 
+xxl : ≥ 1400px 
+
+Exemples :
+@media (max-width: 575px) { … }
+@media (min-width: 768px) { … }
+          </code></pre>
+        </section>
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/sommaireMemento/Cheatsheet/cheatsheetChap3.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/sommaireMemento/Cheatsheet/cheatsheetChap5.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

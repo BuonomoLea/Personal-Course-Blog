@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>CheatSheet - CSS  Unités relatives et valeurs fluides </title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Unités relatives et valeurs fluides </h1>
+
+        <!-- Unités relatives : % – em – rem – vw / vh – vmin / vmax -->
+        <section class="sous-chapitre">
+            <h2>Unités relatives : % – em – rem – vw / vh – vmin / vmax</h2>
+            <h3>Pourcentage (%)</h3>
+            <p>Référence à la taille de l’élément parent Exemple : </p>
+            <pre><code>
+            .container { 
+            width: 90%;         /* 90% de la largeur du parent */ 
+            margin: 0 auto;     /* centré horizontalement */ 
+            } 
+            </code></pre>
+            <h3>em</h3>
+            <p>Référence à la taille de police de l’élément parent Exemple :</p>
+            <pre><code>
+            body { 
+            font-size: 16px; 
+            } 
+            h1 { 
+            font-size: 2em;     /* équivalent à 32px */ 
+            } 
+            button { 
+            padding: 0.75em 1.5em; /* 12px 24px */ 
+            } 
+            </code></pre>
+            <h3>rem</h3>
+            <p>Référence à la taille de police de la racine (html) Exemple :</p>
+            <pre><code>
+            html { 
+            font-size: 16px; 
+            } 
+            p { 
+            margin-bottom: 1.5rem; /* 24px */ 
+            } 
+            </code></pre>
+            <h3>vw / vh</h3>
+            <p>1 vw = 1 % de la largeur du viewport 1 vh = 1 % de la hauteur du viewport Exemple :</p>
+            <pre><code>
+            .hero { 
+            height: 100vh;      /* 100% de la hauteur du viewport */ 
+            } 
+            .title { 
+            font-size: 5vw;     /* 5% de la largeur du viewport */ 
+            } 
+            </code></pre>
+            <h3>vmin / vmax
+            <p>1 vmin = plus petite valeur entre vw et vh 1 vmax = plus grande valeur entre vw et vh Exemple :</p>
+            <pre><code>
+            .box { 
+            width: 40vmin;      /* 40% de la plus petite des dimensions viewport */ 
+            height: 40vmin; 
+            } 
+            </code></pre>
+        </section>
+
+        <!-- Valeurs fluides : clamp() – min() / max() – calc() -->
+        <section class="sous-chapitre">
+            <h2>Valeurs fluides : clamp() – min() / max() – calc()</h2>
+
+            <h3>clamp()</h3>
+            <p>Fixe une valeur fluide entre un minimum et un maximum Syntaxe : clamp(min, valeur fluide, max) Exemple :</p>
+            <pre><code>
+        h2 { 
+        font-size: clamp(1.25rem, 4vw, 2rem); 
+        /* min 1.25rem – fluide 4vw – max 2rem */ 
+        } 
+            </code></pre>
+
+            <h3>min() / max()</h3>
+            <p>Choisit respectivement la plus petite ou la plus grande valeur parmi les arguments Exemple :</p>
+            <pre><code>
+        .card { 
+        width: min(30rem, 90vw); 
+        /* au plus 30rem sinon 90% du viewport */ 
+        } 
+        .sidebar { 
+        width: max(20rem, 25%); 
+        /* au moins 20rem sinon 25% du parent */ 
+        } 
+            </code></pre>
+
+            <h3>calc()</h3>
+            <p>Effectue des calculs CSS combinant unités différentes Exemple :</p>
+            <pre><code>
+        .page { 
+        width: calc(100% - 2rem); 
+        /* 100% du parent moins 32px */ 
+        } 
+            </code></pre>
+
+            <h3>env()</h3>
+            <p>Accède aux variables d’environnement (safe-area-inset pour les “notch”) Exemple :</p>
+            <pre><code>
+        body { 
+        padding: env(safe-area-inset-top) 
+                env(safe-area-inset-right) 
+                env(safe-area-inset-bottom) 
+                env(safe-area-inset-left); 
+        } 
+            </code></pre>
+        </section>
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/sommaireMemento/Cheatsheet/cheatsheetChap4.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/sommaireMemento/Cheatsheet/cheatsheetChap6.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

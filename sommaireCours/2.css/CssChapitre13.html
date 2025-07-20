@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 13 CSS : Compatibilité navigateurs et préfixes</title>
+  <meta name="description" content="Apprenez à gérer la compatibilité CSS entre navigateurs grâce aux préfixes et autres bonnes pratiques." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre13">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 13 : Compatibilité navigateurs et préfixes</h1>
+
+            <section class="sous-chapitre" aria-labelledby="importance-compatibilite">
+            <h2 id="importance-compatibilite">Pourquoi gérer la compatibilité ?</h2>
+            <p>Les différents navigateurs ne supportent pas toujours les mêmes propriétés CSS de la même façon. Pour assurer un rendu homogène, il est important de gérer la compatibilité.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="prefixes-css">
+            <h2 id="prefixes-css">Les préfixes CSS</h2>
+            <p>Les préfixes sont des extensions spécifiques à un navigateur qui permettent d’utiliser des fonctionnalités CSS encore expérimentales :</p>
+            <ul>
+                <li><code>-webkit-</code> : Chrome, Safari, Opera</li>
+                <li><code>-moz-</code> : Firefox</li>
+                <li><code>-ms-</code> : Internet Explorer et Edge (ancien)</li>
+                <li><code>-o-</code> : Opera ancien</li>
+            </ul>
+            <p>Exemple :</p>
+            <pre><code>button {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="autres-bonnes-pratiques">
+            <h2 id="autres-bonnes-pratiques">Autres bonnes pratiques</h2>
+            <ul>
+                <li>Utiliser des outils comme <a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">Autoprefixer</a> pour automatiser la gestion des préfixes.</li>
+                <li>Tester les sites sur plusieurs navigateurs et appareils.</li>
+                <li>Consulter les sites comme <a href="https://caniuse.com/" target="_blank" rel="noopener">Can I Use</a> pour vérifier la compatibilité des propriétés CSS.</li>
+            </ul>
+            </section>
+
+            <!-- Nouvelle section ajoutée -->
+            <section class="sous-chapitre" aria-labelledby="strategies-rendu-homogene">
+              <h2 id="strategies-rendu-homogene">Stratégies pour un rendu homogène</h2>
+
+              <h3>Reset CSS</h3>
+              <p>Remise à zéro des marges, paddings et gestion du modèle de boîte :</p>
+              <pre><code>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}</code></pre>
+
+              <p>Ou utiliser une librairie comme <code>normalize.css</code> pour harmoniser les styles par défaut entre navigateurs.</p>
+
+              <h3>Bonnes pratiques CSS</h3>
+              <ul>
+                <li>Utiliser des unités fluides (<code>rem</code>, <code>%</code>, <code>vw</code>) plutôt que des pixels fixes.</li>
+                <li>Préférer <code>flexbox</code> ou <code>grid</code> pour gérer les tailles et dispositions adaptatives.</li>
+                <li>Éviter les hacks ou un usage excessif de <code>position: absolute</code>.</li>
+                <li>Tester sur plusieurs navigateurs : Chrome, Firefox, Safari, Edge, ainsi que différents systèmes (Windows, macOS).</li>
+                <li>Utiliser des outils comme BrowserStack, Responsively, ou les devtools mobiles pour faciliter les tests.</li>
+              </ul>
+
+              <h3>Design System</h3>
+              <ul>
+                <li>Centraliser les variables CSS pour une maintenance facilitée.</li>
+                <li>Créer des classes CSS réutilisables et nommées proprement (conventions comme BEM).</li>
+                <li>Tester la responsivité et la compatibilité dès le début du projet, avec une approche mobile-first et l’usage des media queries.</li>
+                <li>Utiliser les outils de développement (F12) pour déboguer et inspecter le rendu.</li>
+              </ul>
+            </section>
+
+            <p class="date-publication">Publié le 20 mars 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre12.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre14.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

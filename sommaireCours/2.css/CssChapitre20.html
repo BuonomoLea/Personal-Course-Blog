@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 20 CSS : Tooltips & pseudo-éléments avancés</title>
+  <meta name="description" content="Découvrez comment créer des tooltips élégants et utiliser les pseudo-éléments CSS avancés pour enrichir vos interfaces." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre20">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 20 : Tooltips & pseudo-éléments avancés</h1>
+
+                <section class="sous-chapitre" aria-labelledby="definition-tooltips">
+                <h2 id="definition-tooltips">1. Tooltips CSS only via ::after</h2>
+                <p>Faire apparaître un texte explicatif au survol ou au focus d’un élément sans JavaScript, en utilisant les pseudo-éléments <code>::after</code> (bulle) et <code>::before</code> (flèche).</p>
+                <p>utiliser un attribut data-tooltip pour stocker le texte</p>
+                <p>positionner l’élément parent en relative</p>
+                <p>créer ::after pour la bulle et ::before pour la flèche</p>
+                <p>masquer par défaut (opacity: 0, pointer-events: none)</p>
+                <p>afficher au :hover et au :focus (opacity: 1)</p>
+
+                <p>Structure HTML :</p>
+                <pre><code>&lt;button class="tooltip" data-tooltip="Texte explicatif"&gt; 
+            ❔ 
+            &lt;/button&gt;</code></pre>
+
+                <p>Mise en forme CSS</p>
+                <pre><code>.tooltip { 
+            position: relative; 
+            background: none; 
+            border: none; 
+            cursor: help; 
+            font-size: 1.2rem; 
+            } 
+
+            .tooltip::after, 
+            .tooltip::before { 
+            position: absolute; 
+            opacity: 0; 
+            pointer-events: none; 
+            transition: opacity .2s ease; 
+            } 
+
+            .tooltip::after { 
+            content: attr(data-tooltip); 
+            bottom: 125%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: #333; 
+            color: #fff; 
+            padding: .4em .6em; 
+            border-radius: 4px; 
+            white-space: nowrap; 
+            z-index: 10; 
+            } 
+
+            .tooltip::before { 
+            content: ''; 
+            bottom: 115%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            border: 5px solid transparent; 
+            border-top-color: #333; 
+            z-index: 11; 
+            } 
+
+            .tooltip:hover::after, 
+            .tooltip:focus::after, 
+            .tooltip:hover::before, 
+            .tooltip:focus::before { 
+            opacity: 1; 
+            }</code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="creer-tooltips">
+                <h2 id="creer-tooltips">2. Décors dynamiques (::before flèche, badges animés)</h2>
+                <p>Ajouter des éléments décoratifs sans balise HTML supplémentaire, via <code>::before</code> et <code>::after</code>.</p>
+                <p>Ajouter une barre décorative au titre de section :</p>
+                <ul>
+                    <li>positionner la section en relative</li>
+                    <li>créer <code>::before</code> pour la barre</li>
+                    <li>définir dimensions, couleur et position</li>
+                </ul>
+
+                <p>Structure HTML</p>
+                <pre><code>&lt;section class="section-decor"&gt; 
+            &lt;h2&gt;Titre de section&lt;/h2&gt; 
+            &lt;p&gt;Contenu de la section…&lt;/p&gt; 
+            &lt;/section&gt;</code></pre>
+
+                <p>Mise en forme CSS</p>
+                <pre><code>.section-decor { 
+            position: relative; 
+            padding-top: 1.5rem; 
+            } 
+
+            .section-decor::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 4px; 
+            background: var(--accent-color); 
+            border-radius: 2px; 
+            }</code></pre>
+
+                <p>Animer un badge au survol :</p>
+                <ul>
+                    <li>positionner le badge en relative et overflow hidden</li>
+                    <li>créer <code>::after</code> pour l’effet de surbrillance</li>
+                    <li>définir animation de scale</li>
+                </ul>
+
+                <p>Structure HTML</p>
+                <pre><code>&lt;span class="badge badge-animate"&gt;OFFRE&lt;/span&gt;</code></pre>
+
+                <p>Mise en forme CSS</p>
+                <pre><code>.badge-animate { 
+            position: relative; 
+            display: inline-block; 
+            background: #007bff; 
+            color: #fff; 
+            padding: .2em .6em; 
+            border-radius: 4px; 
+            overflow: hidden; 
+            } 
+
+            .badge-animate::after { 
+            content: ''; 
+            position: absolute; 
+            top: -50%; 
+            left: -50%; 
+            width: 200%; 
+            height: 200%; 
+            background: rgba(255,255,255,0.3); 
+            transform: rotate(45deg) scale(0); 
+            transition: transform .5s; 
+            } 
+
+            .badge-animate:hover::after { 
+            transform: rotate(45deg) scale(1); 
+            }</code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="pseudo-elements">
+                <h2 id="pseudo-elements">3. Astuces créatives pour micro-interactions</h2>
+                <p>Retours visuels subtils pour renforcer l’engagement.</p>
+
+                <p>Effet ripple sur bouton :</p>
+
+                <p>Structure HTML</p>
+                <pre><code>&lt;button class="btn-ripple"&gt;Cliquer&lt;/button&gt;</code></pre>
+
+                <p>Mise en forme CSS</p>
+                <pre><code>.btn-ripple { 
+            position: relative; 
+            overflow: hidden; 
+            padding: .6em 1.2em; 
+            background: #28a745; 
+            color: #fff; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            } 
+
+            .btn-ripple::after { 
+            content: ''; 
+            position: absolute; 
+            width: 100px; 
+            height: 100px; 
+            background: rgba(255,255,255,0.3); 
+            border-radius: 50%; 
+            transform: scale(0); 
+            opacity: .6; 
+            transition: transform .5s, opacity .5s; 
+            pointer-events: none; 
+            top: 50%; 
+            left: 50%; 
+            transform-origin: center; 
+            } 
+
+            .btn-ripple:active::after { 
+            transform: scale(3); 
+            opacity: 0; 
+            }</code></pre>
+
+                <p>Inclinaison de carte au survol :</p>
+
+                <p>Structure HTML</p>
+                <pre><code>&lt;div class="card-tilt"&gt; 
+            &lt;h3&gt;Titre de carte&lt;/h3&gt; 
+            &lt;p&gt;Contenu…&lt;/p&gt; 
+            &lt;/div&gt;</code></pre>
+
+                <p>Mise en forme CSS</p>
+                <pre><code>.card-tilt { 
+            background: #fff; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            padding: 1rem; 
+            transition: transform .3s, box-shadow .3s; 
+            } 
+
+            .card-tilt:hover, 
+            .card-tilt:focus { 
+            transform: perspective(600px) rotateX(4deg) rotateY(-4deg); 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1); 
+            outline: none; 
+            }</code></pre>
+                </section>
+
+                <p class="date-publication">Publié le 5 avril 2025 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre19.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre21.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

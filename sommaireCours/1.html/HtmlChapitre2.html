@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chapitre 2 - Les balises sémantiques en HTML">
+  <title>Blog technologies web - HTML Chapitre 2</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- HTML : Sémantique -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+                <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+                <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+                <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+                <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="blog">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+            <h1 id="titre-chapitre">Chapitre 2 : Les balises sémantiques</h1>
+
+            <section class="sous-chapitre" aria-labelledby="pourquoi-semantique">
+                <h2 id="pourquoi-semantique">Les balises sémantiques</h2>
+                
+                <h3>Header :</h3>
+                <p>La balise <code>&lt;header&gt;</code> signifie l'en-tête.</p>
+                <p>Il peut y avoir plusieurs en-têtes dans la page. Si celle-ci est découpée en plusieurs sections, chaque section peut avoir son propre <code>&lt;header&gt;</code>.</p>
+                <p>Exemples : une image pour un logo, liens/nav, texte pour le slogan de marque, CTA.</p>
+
+                <h3>Footer :</h3>
+                <p><code>&lt;footer&gt;</code> est le pied de page.</p>
+                <p>Exemple : des informations comme des liens de contact, les mentions légales, la politique de confidentialité etc...</p>
+
+                <h3>Nav :</h3>
+                <p>La balise <code>&lt;nav&gt;</code> regroupe les principaux liens de navigation du site.</p>
+                <p>Exemple : le menu principal du site en général sous forme de liste dans la balise.</p>
+
+                <h3>Main :</h3>
+                <p><code>&lt;main&gt;</code> permet de déclarer le contenu principal de la page et englobe la majeure partie du <code>&lt;body&gt;</code> d'une page.</p>
+                <p>Elle n’inclut pas le <code>&lt;header&gt;</code>, le <code>&lt;footer&gt;</code> et les <code>&lt;aside&gt;</code>.</p>
+                <p>Il n'y a qu'une balise <code>&lt;main&gt;</code> par page.</p>
+
+                <h3>Section :</h3>
+                <p>On l’utilise pour structurer <code>&lt;main&gt;</code>, elle sert à regrouper des contenus en fonction de leur thématique, elle englobe généralement une portion du contenu au centre de la page.</p>
+                <p>On peut l’utiliser plusieurs fois.</p>
+
+                <h3>Article :</h3>
+                <p><code>&lt;article&gt;</code> sert à englober une portion généralement autonome de la page. C’est une partie de la page qui pourrait ainsi être reprise sur un autre site. C’est le cas par exemple des actualités (articles de journaux ou de blogs).</p>
+
+                <h3>Aside :</h3>
+                <p><code>&lt;aside&gt;</code> permet de contenir des informations complémentaires au document qu’on visualise, en général ces informations sont placées sur le côté.</p>
+                <p>Il peut y en avoir plusieurs sur la page.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="balises-courantes">
+                <h2 id="balises-courantes">Résumé</h2>
+                <ul>
+                <li><code>&lt;header&gt;</code> : en-tête</li>
+                <li><code>&lt;footer&gt;</code> : pied de page</li>
+                <li><code>&lt;nav&gt;</code> : liens principaux de navigation</li>
+                <li><code>&lt;section&gt;</code> : section de page</li>
+                <li><code>&lt;article&gt;</code> : article indépendant</li>
+                <li><code>&lt;aside&gt;</code> : informations complémentaires</li>
+                </ul>
+                <p>Ces balises peuvent être imbriquées les unes dans les autres, donc une section peut avoir son propre en-tête.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="comparaison">
+                <h2 id="comparaison">Balises non sémantiques</h2>
+                <p><code>&lt;div&gt;</code> et <code>&lt;span&gt;</code>, qui ne portent aucune signification.</p>
+            </section>
+
+            <p class="date-publication">Publié le 2 novembre 2024 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+            <li><a href="/sommaireCours/1.html/HtmlChapitre1.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/1.html/HtmlChapitre3.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

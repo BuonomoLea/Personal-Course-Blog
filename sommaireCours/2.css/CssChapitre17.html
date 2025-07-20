@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 17 CSS : Style des formulaires</title>
+  <meta name="description" content="Apprenez à styliser vos formulaires CSS pour une meilleure expérience utilisateur et un design harmonieux." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre17">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 17 : Style des formulaires</h1>
+
+            <section class="sous-chapitre" aria-labelledby="importance-style-formulaires">
+            <h2 id="importance-style-formulaires">Pourquoi styliser les formulaires ?</h2>
+            <p>Les formulaires sont essentiels pour l’interaction utilisateur. Un bon style améliore l’accessibilité, la clarté et l’expérience globale.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="elements-formulaires">
+            <h2 id="elements-formulaires">Éléments de formulaire courants</h2>
+            <ul>
+                <li>Champs texte, zones de texte, boutons radio, cases à cocher</li>
+                <li>Listes déroulantes et boutons de soumission</li>
+                <li>Labels associés pour améliorer l’accessibilité</li>
+            </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="techniques-style">
+            <h2 id="techniques-style">Techniques de style</h2>
+
+            <h3>Champs texte</h3>
+            <pre><code>input, textarea {
+  padding: 0.8em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+input:focus, textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+input::placeholder {
+  color: #999;
+  font-style: italic;
+}</code></pre>
+
+            <h3>Radios &amp; cases à cocher</h3>
+            <p>On peut masquer l’élément natif pour recréer une apparence personnalisée, ou utiliser la propriété simple <code>accent-color</code> :</p>
+            <pre><code>input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--accent-color); /* simple */
+}
+
+/* Apparence personnalisée (exemple case à cocher) */
+input[type="checkbox"] {
+  appearance: none;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #888;
+  border-radius: 4px;
+}
+input[type="checkbox"]:checked {
+  background-color: var(--accent-color);
+}</code></pre>
+
+            <h3>Listes déroulantes</h3>
+            <p>On utilise <code>appearance: none;</code> pour supprimer le style natif, puis on ajoute une flèche personnalisée avec une image de fond :</p>
+            <pre><code>select {
+  appearance: none;
+  background: white url('chevron.svg') no-repeat right 1em center;
+  padding: 0.8em 2.5em 0.8em 1em;
+  border-radius: 6px;
+}</code></pre>
+
+            <h3>Curseur input[type=range]</h3>
+            <pre><code>input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-color); /* simple */
+}
+/* Pour personnalisation avancée, utiliser ::-webkit-slider-thumb, ::-moz-range-thumb, etc.</code></pre>
+
+            <h3>Gestion des erreurs</h3>
+            <pre><code>input:invalid {
+  border-color: crimson;
+  background-color: #ffe5e5;
+}
+input:invalid::placeholder {
+  color: crimson;
+}</code></pre>
+            <p>Afficher les messages d'erreur accessibles avec <code>aria-live="polite"</code> pour informer l'utilisateur en temps réel.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="accessibilite">
+            <h2 id="accessibilite">Accessibilité</h2>
+            <p>Veillez à associer correctement les labels aux champs, utiliser des éléments natifs, et tester la navigation au clavier pour garantir une bonne expérience à tous les utilisateurs.</p>
+            </section>
+
+            <p class="date-publication">Publié le 28 mars 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre16.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre18.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

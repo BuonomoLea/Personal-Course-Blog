@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 12 CSS : Éléments natifs particuliers</title>
+  <meta name="description" content="Découvrez comment styliser les éléments HTML natifs comme les listes, tableaux, boutons et formulaires avec CSS." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- CSS : Éléments natifs particuliers -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre12">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 12 : Éléments natifs particuliers</h1>
+
+            <section class="sous-chapitre" aria-labelledby="styliser-listes">
+            <h2 id="styliser-listes">Styliser les listes</h2>
+            <p>Les listes HTML peuvent être totalement personnalisées avec des propriétés CSS :</p>
+            <pre><code>ul {
+    list-style-type: square;
+    padding-left: 1.5rem;
+    }
+    li {
+    color: #333;
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="styliser-tableaux">
+            <h2 id="styliser-tableaux">Styliser les tableaux</h2>
+            <p>Les tableaux peuvent être mis en forme pour plus de lisibilité et de style :</p>
+            <pre><code>table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+    th, td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: left;
+    }
+    thead {
+    background-color: #f0f0f0;
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="styliser-formulaires">
+            <h2 id="styliser-formulaires">Styliser les formulaires</h2>
+            <p>Les champs de formulaire peuvent varier selon les navigateurs. Il est souvent nécessaire de les uniformiser :</p>
+            <pre><code>input[type="text"],
+    select,
+    textarea {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    }
+    button {
+    background-color: #007BFF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="accessibilite">
+            <h2 id="accessibilite">Accessibilité et cohérence</h2>
+            <p>Pensez toujours à la lisibilité et à la compatibilité entre navigateurs. Utilisez les sélecteurs adaptés, évitez les styles cachant des éléments natifs comme les <code>select</code> ou les <code>input[type="checkbox"]</code> sans remplacement accessible.</p>
+            </section>
+
+            <!-- Nouvelle section ajoutée -->
+            <section class="sous-chapitre" aria-labelledby="fonctions-css-utiles">
+              <h2 id="fonctions-css-utiles">Fonctions CSS utiles et variables</h2>
+              
+              <h3>Fonctions CSS</h3>
+              <p><code>clamp(min, val, max)</code> adapte automatiquement une valeur entre un minimum et un maximum, utile par exemple pour la taille de police :</p>
+              <pre><code>font-size: clamp(1rem, 2vw, 2rem);</code></pre>
+
+              <p><code>calc()</code> permet d’effectuer des calculs dynamiques dans les propriétés CSS :</p>
+              <pre><code>width: calc(100% - 2rem);</code></pre>
+
+              <p><code>aspect-ratio</code> contrôle le ratio largeur/hauteur d’un élément :</p>
+              <pre><code>video { aspect-ratio: 16 / 9; }</code></pre>
+
+              <h3>Variables CSS / Custom properties</h3>
+              <p>Déclaration de variables globales dans <code>:root</code> :</p>
+              <pre><code>:root {
+  --couleur-primaire: #1a73e8;
+  --rayon: 8px;
+}</code></pre>
+
+              <p>Utilisation dans des sélecteurs :</p>
+              <pre><code>button {
+  background: var(--couleur-primaire);
+  border-radius: var(--rayon);
+}</code></pre>
+
+              <p>Organisation recommandée : placer ces variables dans un fichier <code>variables.css</code> à importer dans tous tes composants.</p>
+
+              <p>On peut combiner les variables CSS avec des thèmes ou des animations, notamment grâce à la règle <code>@property</code>.</p>
+            </section>
+
+            <p class="date-publication">Publié le 12 mars 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre11.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre13.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

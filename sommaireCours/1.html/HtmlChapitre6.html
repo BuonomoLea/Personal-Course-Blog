@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapitre 6 : Attributs globaux essentiels</title>
+    <meta name="description" content="Découvrez les attributs HTML globaux essentiels comme id, class, style, et data-* pour structurer et personnaliser vos pages web." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- HTML : Attributs globaux essentiels -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+                <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+                <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+                <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+                <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="html-chapitre6">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 6 : Attributs globaux essentiels</h1>
+
+                <section class="sous-chapitre" aria-labelledby="definition-attributs-globaux">
+                    <h2 id="definition-attributs-globaux">Qu'est-ce qu'un attribut global ?</h2>
+                    <p>Un attribut global est un attribut qui peut être appliqué à n’importe quel élément HTML. Ils permettent d’enrichir le comportement ou l’apparence d’un élément sans dépendre de sa nature spécifique.</p>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="principaux-attributs">
+                    <h2 id="principaux-attributs">Les attributs les plus utilisés</h2>
+                    <ul>
+                        <li><code>id</code> : identifiant unique pour un élément</li>
+                        <li><code>class</code> : pour grouper des éléments et leur appliquer des styles</li>
+                        <li><code>style</code> : permet d’appliquer du CSS en ligne</li>
+                        <li><code>title</code> : affiche une info-bulle au survol</li>
+                        <li><code>hidden</code> : masque un élément sans le supprimer du DOM</li>
+                        <li><code>tabindex</code> : contrôle l’ordre de navigation au clavier</li>
+                        <li><code>lang</code> : indique la langue d’un élément particulier</li>
+                        <li><code>data-*</code> : permet de stocker des données personnalisées (utiles en JS)</li>
+                    </ul>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="tableau-attributs-globaux">
+                    <h2 id="tableau-attributs-globaux">Tableau récapitulatif des attributs globaux essentiels</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Attribut</th>
+                                <th>Rôle principal</th>
+                                <th>Exemple</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>class</code></td>
+                                <td>Associer un élément à un ou plusieurs styles CSS</td>
+                                <td><code>&lt;div class="carte"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>id</code></td>
+                                <td>Identifier de façon unique un élément</td>
+                                <td><code>&lt;section id="contact"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>style</code></td>
+                                <td>Ajouter un style CSS directement (à éviter)</td>
+                                <td><code>&lt;p style="color: red;"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>title</code></td>
+                                <td>Info-bulle au survol de l’élément</td>
+                                <td><code>&lt;img title="Logo principal"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>lang</code></td>
+                                <td>Indique la langue de l’élément</td>
+                                <td><code>&lt;html lang="fr"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>tabindex</code></td>
+                                <td>Ordre de tabulation pour la navigation clavier</td>
+                                <td><code>&lt;button tabindex="0"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>hidden</code></td>
+                                <td>Masquer un élément (même s’il reste dans le DOM)</td>
+                                <td><code>&lt;div hidden&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>aria-*</code></td>
+                                <td>Attributs pour l’accessibilité (ARIA)</td>
+                                <td><code>&lt;button aria-label="Fermer"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>data-*</code></td>
+                                <td>Attributs personnalisés pour stocker des données</td>
+                                <td><code>&lt;div data-prix="19.99"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>role</code></td>
+                                <td>Donne un rôle ARIA sémantique (accessibilité)</td>
+                                <td><code>&lt;nav role="navigation"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>contenteditable</code></td>
+                                <td>Rendre un élément modifiable par l’utilisateur</td>
+                                <td><code>&lt;div contenteditable="true"&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>draggable</code></td>
+                                <td>Rendre un élément déplaçable</td>
+                                <td><code>&lt;img draggable="true"&gt;</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="exemple-utilisation">
+                    <h2 id="exemple-utilisation">Exemple pratique</h2>
+                    <pre><code>
+&lt;p id="intro" class="highlight" title="Texte introductif"&gt;
+    Bienvenue sur notre site !
+&lt;/p&gt;
+
+&lt;div data-role="carte" hidden&gt;...&lt;/div&gt;
+                    </code></pre>
+                    <p>Ici, plusieurs attributs globaux sont utilisés pour gérer l’apparence, l’accessibilité et les interactions JavaScript.</p>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="bonnes-pratiques-globaux">
+                    <h2 id="bonnes-pratiques-globaux">Bonnes pratiques</h2>
+                    <ul>
+                        <li>Éviter les styles en ligne sauf cas exceptionnel</li>
+                        <li>Préférer les classes pour le style et les IDs pour les interactions ciblées</li>
+                        <li>Utiliser les attributs <code>data-*</code> pour transmettre des infos dynamiques à JavaScript</li>
+                        <li>Bien documenter l’usage des attributs personnalisés</li>
+                    </ul>
+                </section>
+
+                <p class="date-publication">Publié le 19 novembre 2024 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre5.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre7.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

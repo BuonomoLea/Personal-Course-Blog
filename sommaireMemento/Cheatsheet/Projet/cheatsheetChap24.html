@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>Mémento Terminal - Recherche</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Terminal :</h1>
+
+        <!-- Recherche -->
+        <section class="sous-chapitre">
+        <h2>Recherche</h2>
+        <p>Ces commandes aident à localiser des fichiers ou à chercher du texte spécifique.</p>
+
+        <p><code>find . -name "NomDuFichier"</code> : Recherche le fichier <em>NomDuFichier</em> à partir du répertoire courant (et ses sous-dossiers).</p>
+        <p><strong>Exemple</strong> : <code>find . -name "rapport.txt"</code>.</p>
+        <p><strong>Utilité</strong> : Trouver des fichiers dans un grand projet ou une arborescence complexe.</p>
+
+        <p><code>grep "Texte" NomDuFichier</code> : Recherche des lignes contenant <em>Texte</em> dans un fichier.</p>
+        <p><strong>Exemple</strong> : <code>grep "Erreur" journal.log</code>.</p>
+        <p><strong>Utilité</strong> : Localiser des informations spécifiques dans des fichiers (comme des journaux ou des scripts).</p>
+
+        <p><code>grep -r "Texte" .</code> : Recherche récursivement <em>Texte</em> dans tous les fichiers sous le répertoire courant.</p>
+        <p><strong>Exemple</strong> : <code>grep -r "TODO" ..</code></p>
+        <p><strong>Utilité</strong> : Identifier des mentions ou notes dans un projet entier.</p>
+        </section>
+
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/MementoPage/Terminal/ManipFiles.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/MementoPage/Terminal/GestionArchive.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

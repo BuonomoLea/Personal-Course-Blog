@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapitre 10 : Éléments interactifs natifs</title>
+    <meta name="description" content="Découvrez les éléments HTML natifs qui permettent d'ajouter des interactions utilisateur sans JavaScript." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- HTML : Éléments interactifs natifs -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+                <li><a href="/index.html" class="a-nav">Accueil</a></li>
+                <li><a href="/indexPage/blog.html" class="a-nav">Blog</a></li>
+                <li><a href="/indexPage/memento.html" class="a-nav">Memento</a></li>
+                <li><a href="/indexPage/apropos.html" class="a-nav">À propos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- MAIN -->
+    <main class="article-page" id="html-chapitre10">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+            <h1 id="titre-chapitre">Chapitre 10 : Éléments interactifs natifs</h1>
+
+            <section class="sous-chapitre" aria-labelledby="intro-elements-interactifs">
+                <h2 id="intro-elements-interactifs">Introduction aux éléments interactifs</h2>
+                <p>Certains éléments HTML intègrent nativement des comportements interactifs sans besoin de JavaScript.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="details-summary">
+                <h2 id="details-summary">Les éléments &lt;details&gt; et &lt;summary&gt;</h2>
+                <p>Ces éléments créent un petit bloc repliable, parfait pour des FAQ, infos secondaires, etc.</p>
+                <p><strong>Exemple :</strong></p>
+                <pre><code>
+        &lt;details&gt;
+        &lt;summary&gt;Afficher la réponse&lt;/summary&gt;
+        &lt;p&gt;Voici la réponse à la question posée…&lt;/p&gt;
+        &lt;/details&gt;
+                </code></pre>
+                <p><strong>Comportement :</strong></p>
+                <ul>
+                <li>Cliquer sur <code>&lt;summary&gt;</code> affiche ou cache le reste du contenu.</li>
+                <li>Ouvert par défaut avec l’attribut <code>open</code> : <code>&lt;details open&gt;</code></li>
+                </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="dialog">
+                <h2 id="dialog">&lt;dialog&gt;</h2>
+                <p>Crée un popup sans dépendance JavaScript lourde.</p>
+                <p><strong>Exemple de base :</strong></p>
+                <pre><code>
+        &lt;dialog id="modal"&gt;
+        &lt;p&gt;Bonjour&lt;/p&gt;
+        &lt;button onclick="document.getElementById('modal').close()"&gt;Fermer&lt;/button&gt;
+        &lt;/dialog&gt;
+
+        &lt;button onclick="document.getElementById('modal').showModal()"&gt;Ouvrir le dialogue&lt;/button&gt;
+                </code></pre>
+                <p><strong>À savoir :</strong></p>
+                <ul>
+                <li>Méthodes JavaScript : <code>.showModal()</code> (modal) ou <code>.show()</code></li>
+                <li>Utilisation de l’attribut <code>open</code> pour cibler les styles</li>
+                </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="progress-meter">
+                <h2 id="progress-meter">&lt;progress&gt; et &lt;meter&gt;</h2>
+                <p>Pour représenter graphiquement une valeur ou un état.</p>
+                <p><strong>&lt;progress&gt; : Barre de progression</strong></p>
+                <p>Montre une progression vers un objectif (ex : upload, téléchargement)</p>
+                <pre><code>
+        &lt;progress value="60" max="100"&gt;60%&lt;/progress&gt;
+                </code></pre>
+
+                <p><strong>&lt;meter&gt; : Jauge de valeur</strong></p>
+                <p>Affiche une valeur dans une plage (ex : note, niveau, température…)</p>
+                <pre><code>
+        &lt;meter value="0.7" min="0" max="1"&gt;70%&lt;/meter&gt;
+                </code></pre>
+                <p>Attributs utiles : <code>low</code>, <code>high</code>, <code>optimum</code> pour styliser dynamiquement la jauge.</p>
+            </section>
+
+            <p class="date-publication">Publié le 13 décembre 2024 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+            <li><a href="/sommaireCours/1.html/HtmlChapitre9.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/1.html/HtmlChapitre11.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

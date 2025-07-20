@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 16 CSS : Style des SVG et icons</title>
+  <meta name="description" content="Découvrez comment styliser efficacement les SVG et icônes dans vos projets CSS pour un rendu moderne et performant." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+  <!-- Ajout CDN Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre16">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 16 : Style des SVG et icons</h1>
+
+            <section class="sous-chapitre" aria-labelledby="introduction-svg">
+            <h2 id="introduction-svg">Introduction aux SVG et icônes</h2>
+            <p>Le SVG (Scalable Vector Graphics) est un format vectoriel permettant des images qui conservent leur qualité quel que soit le zoom.</p>
+            <p>Les icônes SVG sont largement utilisées pour leur flexibilité et légèreté.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="styling-svg">
+            <h2 id="styling-svg">Techniques de style des SVG</h2>
+            <ul>
+                <li>Utiliser les propriétés CSS comme <code>fill</code>, <code>stroke</code>, <code>stroke-width</code> pour personnaliser les formes.</li>
+                <li>Appliquer des transitions et animations CSS aux éléments SVG.</li>
+                <li>Intégrer les SVG inline dans le HTML pour un contrôle direct du style.</li>
+                <li>Utiliser des classes et ID pour cibler précisément des parties du SVG.</li>
+            </ul>
+            <pre><code>svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}</code></pre>
+            <p><code>currentColor</code> permet d’hériter de la couleur du texte ou du parent, facilitant ainsi la gestion des couleurs.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="icons-fonts">
+            <h2 id="icons-fonts">Icônes SVG vs Fonts d'icônes</h2>
+            <p>Les fonts d’icônes sont pratiques mais moins flexibles que les SVG.</p>
+            <p>Les SVG offrent un rendu plus net et une meilleure personnalisation.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="integration-icones">
+              <h2 id="integration-icones">Intégration et librairies d’icônes populaires</h2>
+              <ul>
+                <li><strong>En &lt;img&gt; :</strong> facile à intégrer mais impossible de styliser avec CSS (la propriété <code>fill</code> est ignorée).</li>
+                <li><strong>En inline &lt;svg&gt; :</strong> recommandé pour styliser facilement les couleurs et animations.</li>
+                <li><strong>En background :</strong> utile pour les icônes purement décoratives.</li>
+              </ul>
+
+              <h3>Librairies populaires</h3>
+              <ul>
+                <li>Font Awesome — classique, disponible via CDN ou npm.</li>
+                <li>Remix Icons — légères, modernes, facile à utiliser.</li>
+                <li>Heroicons — SVG pur, très utilisés avec Tailwind.</li>
+                <li>Feather, Phosphor, Tabler — icônes très épurées.</li>
+                <li>Iconify — énorme catalogue et système d’unification.</li>
+              </ul>
+
+              <h3>Exemple avec Remix Icons :</h3>
+              <pre><code>&lt;link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet"&gt;
+&lt;i class="ri-home-line"&gt;&lt;/i&gt;</code></pre>
+              <p>Exemple d’icône affichée :</p>
+              <i class="ri-home-line"></i>
+            </section>
+
+            <p class="date-publication">Publié le 23 mars 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre15.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre17.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

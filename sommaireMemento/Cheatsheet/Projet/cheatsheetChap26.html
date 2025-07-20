@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>Mémento Terminal - Curl</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Curl :</h1>
+
+        <!-- Modèle de boîte -->
+        <section class="sous-chapitre">
+        <h2>Curl</h2>
+        <p>Pour vérifier les connexions ou télécharger des fichiers.</p>
+
+        <p><code>ping AdresseIP</code> : Vérifie si une machine ou un serveur est joignable.</p>
+        <p><strong>Exemple</strong> : <code>ping 8.8.8.8</code> (teste la connexion au serveur DNS de Google).</p>
+        <p><strong>Utilité</strong> : Diagnostiquer des problèmes réseau.</p>
+
+        <p><code>curl -O URL</code> : Télécharge un fichier depuis une URL.</p>
+        <p><strong>Exemple</strong> : <code>curl -O http://example.com/fichier.txt</code>.</p>
+        <p><strong>Utilité</strong> : Obtenir des fichiers depuis Internet directement dans le terminal.</p>
+
+        <p><code>curl -O https://www.example.com/images/photo.jpg</code></p>
+        <p><strong>Ce que ça fait</strong> : Télécharge une image nommée photo.jpg depuis le site web dans le répertoire courant.</p>
+
+        <p>Pour extraire des informations spécifiques d'une page web (comme des liens ou des images), vous pouvez combiner curl avec des outils comme <code>grep</code> ou <code>awk</code> pour analyser le contenu HTML téléchargé.</p>
+        <p><code>curl http://example.com | grep "&lt;img&gt;"</code></p>
+
+        <p>Curl accède directement à une ressource en ligne via une URL pour télécharger les éléments spécifiés. Il est puissant et peut aller bien au-delà du simple téléchargement de fichiers : il permet d'interagir directement avec des serveurs web, de simuler des navigateurs, et même d’extraire des données à des fins spécifiques.</p>
+        </section>
+
+        <section class="sous-chapitre">
+        <h2>Télécharger une page web en HTML</h2>
+
+        <pre><code>curl -O https://example.com/index.html</code></pre>
+        <p><strong>Ce que ça fait</strong> : Télécharge le fichier index.html de la page web.</p>
+        <p><strong>Utilité</strong> : Si vous travaillez sur un projet où vous devez analyser ou comprendre le code source d’un site web.</p>
+
+        <p><code>curl https://example.com | grep "href"</code></p>
+        <p><strong>Ce que ça fait</strong> : Télécharge temporairement la page HTML, affiche uniquement les lignes contenant des liens <code>&lt;a href="..."&gt;</code>.</p>
+        <p><strong>Utilité</strong> : Extraire facilement tous les liens d’une page web.</p>
+        </section>
+
+        <section class="sous-chapitre">
+        <h2>Envoyer des requêtes spécifiques</h2>
+        <p>curl peut simuler différents types de requêtes HTTP, telles que GET (par défaut), POST, ou PUT.</p>
+
+        <h3>Exemple : Effectuer une requête POST</h3>
+        <pre><code>curl -X POST -d "username=test&amp;password=1234" https://example.com/login</code></pre>
+        <p><strong>Ce que ça fait</strong> : Envoie des données username et password en tant que formulaire à une URL.</p>
+        <p><strong>Utilité</strong> : Tester des formulaires web ou interagir avec des APIs.</p>
+        </section>
+
+        <section class="sous-chapitre">
+        <h2>Simuler un navigateur</h2>
+        <p>Certains serveurs attendent qu’un navigateur particulier effectue la requête. Avec curl, vous pouvez définir un "User-Agent" pour simuler cela.</p>
+
+        <h3>Exemple : Simuler Google Chrome</h3>
+        <pre><code>curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" https://example.com</code></pre>
+        <p><strong>Ce que ça fait</strong> : Simule une requête effectuée depuis Google Chrome.</p>
+        <p><strong>Utilité</strong> : Accéder à des sites restreints aux navigateurs spécifiques ou contourner des limitations légères.</p>
+        </section>
+
+        <section class="sous-chapitre">
+        <h2>Suivre les redirections</h2>
+
+        <h3>Exemple : Suivre une URL redirigée</h3>
+        <pre><code>curl -L -O https://bit.ly/fichier</code></pre>
+        <p><strong>Ce que ça fait</strong> : Suit automatiquement les redirections (exemple : des liens raccourcis comme bit.ly).</p>
+        </section>
+
+        <section class="sous-chapitre">
+        <h2>Interagir avec une API</h2>
+        <p>De nombreuses APIs utilisent curl pour envoyer et récupérer des données. Par exemple, une API REST peut répondre avec du JSON.</p>
+
+        <h3>Exemple : Récupérer des données JSON d’une API</h3>
+        <pre><code>curl https://api.example.com/data.json</code></pre>
+        <p><strong>Ce que ça fait</strong> : Télécharge un fichier JSON contenant des données depuis l’API.</p>
+        <p><strong>Utilité</strong> : Extraire des données pour un traitement automatisé.</p>
+
+        <h3>Exemple : Utiliser une clé d'authentification avec une API</h3>
+        <pre><code>curl -H "Authorization: Bearer VOTRE_CLE" https://api.example.com/secure-data</code></pre>
+        <p><strong>Ce que ça fait</strong> : Ajoute un en-tête d’autorisation pour accéder à des données sécurisées.</p>
+        <p><strong>Utilité</strong> : Interagir avec des services web nécessitant des permissions spéciales.</p>
+        </section>
+
+        <section class="sous-chapitre">
+        <h2>Télécharger un fichier avec une limite de vitesse</h2>
+        <pre><code>curl --limit-rate 100k -O https://example.com/largefile.iso</code></pre>
+        <p><strong>Ce que ça fait</strong> : Limite la vitesse de téléchargement à 100 kB/s.</p>
+        <p><strong>Utilité</strong> : Tester la gestion de bande passante ou réduire l’utilisation réseau.</p>
+        </section>
+
+        <section class="sous-chapitre">
+        <h2>Sauvegarder les en-têtes de réponse</h2>
+        <pre><code>curl -I https://example.com</code></pre>
+        <p><strong>Ce que ça fait</strong> : Affiche uniquement les en-têtes de la réponse HTTP (exemple : type de contenu, statut, cookies, etc.).</p>
+        <p><strong>Utilité</strong> : Obtenir des informations sur le serveur ou la ressource sans télécharger le contenu complet.</p>
+        </section>
+
+        <section class="sous-chapitre">
+        <h2>Télécharger des fichiers sécurisés</h2>
+        <p>Si un site utilise une connexion HTTPS sécurisée avec des certificats, curl gère cela automatiquement. Cependant, vous pouvez spécifier vos propres certificats si nécessaire.</p>
+
+        <h3>Exemple : Télécharger avec un certificat spécifique</h3>
+        <pre><code>curl --cert certificat.pem https://secure.example.com</code></pre>
+        </section>
+
+        <section class="sous-chapitre">
+        <p><em>Note :</em> curl seul ne permet pas de télécharger des vidéos depuis YouTube, car YouTube utilise des mécanismes complexes pour diffuser et protéger ses contenus (même lorsqu'ils sont libres de droits). Les URLs de YouTube ne pointent pas directement vers des fichiers téléchargeables, mais vers des flux vidéo qui nécessitent une interprétation spécifique.</p>
+
+        <p>Cependant, pour ce type de tâche, des outils spécialisés comme <code>youtube-dl</code> ou son successeur <code>yt-dlp</code> sont recommandés. Ils permettent de télécharger des vidéos ou des audios de YouTube (ou d'autres plateformes similaires), tout en respectant les droits d'utilisation selon les conditions de service.</p>
+        </section>
+
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/MementoPage/Terminal/GestionArchive.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/indexPage/memento.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Sommaire →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

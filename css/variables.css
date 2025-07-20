@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+    /* colors */
+    --color-one: #ffede4;
+    --color-two: #23a6b7;
+    --color-three: #007A7C;
+    --color-four: #023839;
+    --color-blur: rgba(255, 237, 228, .1);
+    /* text */
+    --font-one: "DM Sans", sans-serif;
+    --font-two: ;
+    --font-three: ;
+    --title-size: clamp(1.4rem, 4vw, 3rem);;
+    --subtitle-size-s: clamp(.8rem, 2.5vw, 1.3rem);
+    --subtitle-size-m: clamp(1rem, 3vw, 1.8rem);
+    --paraph-size: clamp(.6rem, 2vw, 1.1rem);
+    /* others */
+    --b-shadow: 0px 8px 24px 0px rgba(140, 149, 159, .2);
+    --t-shadow: 1px 2px 6px 2px rgba(255, 240, 230), 0px 0px 10px 0px rgba(255, 240, 230);
+    --filter: blur(.7px);
+    --border: 2px solid #023839;
+    --radius-l: 400px;
+    --padding-btn: ;
+    /* scrollbar */
+    --sb-track-color: #ffede4;
+    --sb-thumb-color: #023839;
+    --sb-size: 14px;
+}   

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>Mémento Terminal - Navigation dans le système de fichiers</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Terminal :</h1>
+
+        <!-- Navigation dans le système de fichiers -->
+        <section class="sous-chapitre">
+        <h2>Navigation dans le système de fichiers</h2>
+        <p>Ces commandes permettent de se déplacer et d’interagir avec la structure des fichiers et dossiers.</p>
+
+        <p><strong>ls</strong> : Liste les fichiers et dossiers dans le répertoire courant.</p>
+        <p><em>Exemple :</em> <code>ls</code> ou <code>ls -l</code> (affiche des détails supplémentaires comme les droits d’accès).</p>
+        <p><em>Utilité :</em> Voir le contenu d’un dossier.</p>
+
+        <p><strong>cd NomDuDossier</strong> : Change le répertoire de travail courant pour <code>NomDuDossier</code>.</p>
+        <p><em>Exemple :</em> <code>cd Projet</code>.</p>
+        <p><em>Utilité :</em> Naviguer dans vos dossiers.</p>
+
+        <p><strong>cd ..</strong> : Revient au répertoire parent.</p>
+        <p><em>Exemple :</em> Si vous êtes dans <code>Documents</code>, <code>cd ..</code> vous ramène dans le répertoire qui contient <code>Documents</code>.</p>
+
+        <p><strong>pwd</strong> : Affiche le chemin complet du répertoire courant.</p>
+        <p><em>Exemple :</em> <code>/home/utilisateur/Projet</code>.</p>
+        <p><em>Utilité :</em> Savoir exactement où vous vous trouvez dans l’arborescence des dossiers.</p>
+
+        <p><strong>mkdir NomDuDossier</strong> : Crée un nouveau dossier nommé <code>NomDuDossier</code>.</p>
+        <p><em>Exemple :</em> <code>mkdir Test</code>.</p>
+        <p><em>Utilité :</em> Organiser vos fichiers en créant des répertoires.</p>
+
+        <p><strong>rm NomDuFichier</strong> : Supprime un fichier.</p>
+        <p><em>Exemple :</em> <code>rm ancien_fichier.txt</code>.</p>
+        <p><strong>Attention :</strong> La suppression est irréversible.</p>
+
+        <p><strong>rm -r NomDuDossier</strong> : Supprime un dossier et tout son contenu (récursif).</p>
+        <p><em>Exemple :</em> <code>rm -r DossierInutile</code></p>
+        </section>
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/MementoPage/Terminal/Git.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/MementoPage/Terminal/ManipFiles.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

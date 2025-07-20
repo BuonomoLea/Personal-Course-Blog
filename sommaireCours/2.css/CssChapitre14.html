@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 14 CSS : Organisation et bonnes pratiques</title>
+  <meta name="description" content="Découvrez comment organiser vos fichiers CSS et adopter de bonnes pratiques pour un code maintenable et efficace." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre14">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 14 : Organisation et bonnes pratiques</h1>
+
+            <section class="sous-chapitre" aria-labelledby="organisation-fichiers">
+            <h2 id="organisation-fichiers">Organisation des fichiers CSS</h2>
+            <p>Il est essentiel de structurer vos fichiers CSS pour faciliter la maintenance et la collaboration :</p>
+            <ul>
+                <li>Séparez les styles globaux, les composants, et les pages spécifiques dans des fichiers distincts.</li>
+                <li>Utilisez une convention de nommage claire pour les fichiers (ex : <code>base.css</code>, <code>header.css</code>, <code>footer.css</code>).</li>
+                <li>Regroupez vos fichiers dans des dossiers logiques (ex : <code>/CSS/components/</code>, <code>/CSS/layout/</code>).</li>
+            </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="bonnes-pratiques-css">
+            <h2 id="bonnes-pratiques-css">Bonnes pratiques CSS</h2>
+            <ul>
+                <li>Utilisez des préprocesseurs comme Sass ou Less pour modulariser votre CSS.</li>
+                <li>Favorisez l’écriture de règles spécifiques et évitez les sélecteurs trop génériques.</li>
+                <li>Commentez votre code pour expliquer les choix complexes.</li>
+                <li>Optimisez la performance en minimisant et en regroupant les fichiers CSS en production.</li>
+                <li>Testez régulièrement vos styles sur différents navigateurs et appareils.</li>
+            </ul>
+            </section>
+
+            <!-- Nouvelle section ajoutée -->
+            <section class="sous-chapitre" aria-labelledby="structure-hiérarchie">
+              <h2 id="structure-hiérarchie">Structuration logique du fichier CSS</h2>
+              <p>Une organisation logique facilite la lecture et la maintenance :</p>
+              <ol>
+                <li><strong>Variables</strong> (définies dans <code>:root</code> pour couleurs, espacements, etc.)</li>
+                <li><strong>Reset / normalisation</strong> des styles de base</li>
+                <li><strong>Styles généraux</strong> (typographie, styles globaux sur <code>body</code>, <code>html</code>)</li>
+                <li><strong>Layout</strong> (grilles, containers, sections)</li>
+                <li><strong>Composants</strong> (boutons, cartes, menus...)</li>
+                <li><strong>Utilitaires</strong> (classes helpers, helpers rapides)</li>
+                <li><strong>Media queries</strong> (organisées par breakpoint ou en blocs regroupés)</li>
+              </ol>
+
+              <h3>Convention BEM & commentaires</h3>
+              <p>Utilisez la méthodologie BEM pour nommer vos classes :</p>
+              <pre><code>/* === COMPOSANT : Carte === */
+.card {}
+.card__image {}
+.card__title {}
+.card--highlight {}</code></pre>
+
+              <h3>Approche modulaire avec SCSS</h3>
+              <p>Divisez votre CSS en fichiers séparés, puis importez-les :</p>
+              <pre><code>@import "variables";
+@import "reset";
+@import "layout";
+@import "buttons";
+@import "forms";</code></pre>
+              <p>SCSS permet aussi l’imbrication, les boucles, mixins, etc., pour un code plus maintenable.</p>
+            </section>
+
+            <p class="date-publication">Publié le 21 mars 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre13.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre15.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

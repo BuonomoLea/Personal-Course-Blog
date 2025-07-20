@@ -1,0 +1,206 @@
+@import 'variables.css';
+@import 'reset.css';
+@import 'utilities.css';
+
+.article-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: var(--font-one);
+  background-color: var(--color-one);
+  color: var(--color-four);
+  line-height: 1.6;
+}
+
+/* TITRE PRINCIPAL */
+.article-page #titre-chapitre {
+  font-size: var(--title-size);
+  margin-bottom: 1rem;
+  color: var(--color-two);
+  text-shadow: var(--t-shadow);
+}
+
+/* CHAPITRE / ARTICLE */
+.article-page .chapitre {
+  padding-top: 10vh;
+}
+
+/* SOUS-TITRES */
+.article-page .sous-chapitre > h2 {
+  font-size: var(--subtitle-size-m);
+  color: var(--color-three);
+  border-bottom: 2px solid var(--color-three);
+  padding-bottom: 0.3rem;
+  margin: 2rem 0 1rem 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.article-page .sous-chapitre > h2:hover,
+.article-page .sous-chapitre > h2:focus {
+  color: var(--color-two);
+  outline: none;
+}
+
+/* Flèche pour accordéon */
+.article-page .sous-chapitre > h2::after {
+  content: "▼";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+/* Flèche tournée vers le haut quand actif */
+.article-page .sous-chapitre.active > h2::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Cache tout sauf le h2 dans sous-chapitre par défaut */
+.article-page .sous-chapitre > *:not(h2) {
+  display: none;
+}
+
+/* Affiche le contenu quand actif */
+.article-page .sous-chapitre.active > *:not(h2) {
+  display: block;
+}
+
+/* SOUS-TITRES niveau 3 */
+.article-page .sous-chapitre > h3 {
+  font-size: var(--subtitle-size-s);
+  color: var(--color-three);
+  margin: 1.5rem 0 0.5rem 0;
+  font-weight: bold;
+}
+
+/* PARAGRAPHES */
+.article-page p {
+  font-size: var(--paraph-size);
+  margin: 0.8rem 0;
+}
+
+/* LISTES */
+.article-page ul,
+.article-page ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.article-page li {
+  margin-bottom: 0.5rem;
+}
+
+/* BLOC DE CODE */
+.article-page pre {
+  background-color: var(--color-blur);
+  padding: 1rem;
+  border-left: 4px solid var(--color-three);
+  overflow-x: auto;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--b-shadow);
+  margin: 1rem 0;
+}
+
+.article-page code {
+  font-family: monospace;
+  background-color: rgba(0, 122, 124, 0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  color: var(--color-four);
+}
+
+/* BLOCS D'EXEMPLE AVEC IMAGES */
+.article-page .example,
+.article-page .example2 {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.article-page .example img,
+.article-page .example2 img {
+  max-width: 100%;
+  border: 1px solid var(--color-three);
+  border-radius: 0.5rem;
+  box-shadow: var(--b-shadow);
+}
+
+/* DATE DE PUBLICATION */
+.article-page .date-publication {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #555;
+  font-style: italic;
+}
+
+.article-page .auteur {
+  color: var(--color-two);
+  font-weight: bold;
+}
+/* NAVIGATION */
+.navigation-chapitres {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0 3rem 0;
+  font-size: var(--paraph-size);
+}
+
+.navigation-chapitres ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.navigation-chapitres a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-two);
+  color: var(--color-one);
+  text-decoration: none;
+  border-radius: 0.3rem;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-chapitres a:hover,
+.navigation-chapitres a:focus {
+  background-color: var(--color-three);
+  outline: none;
+}
+
+.navigation-chapitres .precedent {
+  text-align: left;
+}
+
+.navigation-chapitres .suivant {
+  text-align: right;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .article-page {
+    padding: 1rem;
+  }
+
+  .article-page #titre-chapitre {
+    font-size: 1.8rem;
+  }
+
+  .article-page .sous-chapitre > h2 {
+    font-size: 1.3rem;
+  }
+
+  .article-page .sous-chapitre > h3 {
+    font-size: 1rem;
+  }
+}

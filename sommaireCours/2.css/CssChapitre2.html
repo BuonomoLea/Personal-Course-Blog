@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapitre 2 CSS : Les sélecteurs</title>
+    <meta name="description" content="Apprenez les différents types de sélecteurs CSS pour cibler précisément vos éléments HTML." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- CSS : Les sélecteurs -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="article-page" id="css-chapitre2">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 2 : Les sélecteurs</h1>
+
+                <section class="sous-chapitre" aria-labelledby="intro-selecteurs">
+                    <h2 id="intro-selecteurs">Introduction aux sélecteurs CSS</h2>
+                    <p>Les sélecteurs permettent de cibler les éléments HTML auxquels appliquer des règles CSS.</p>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="selecteurs-simples">
+                    <h2 id="selecteurs-simples">Sélecteurs simples</h2>
+                    <ul>
+                        <li><code>p</code> : sélectionne tous les éléments &lt;p&gt;.</li>
+                        <li><code>.btn</code> : sélectionne tous les éléments avec la classe <code>btn</code>.</li>
+                        <li><code>#header</code> : sélectionne l’élément avec l’ID <code>header</code>.</li>
+                    </ul>
+                    <pre><code>p {
+    color: blue;
+}
+.btn {
+    font-weight: bold;
+}
+#header {
+    background-color: #eee;
+}</code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="selecteurs-combines-descendants">
+                    <h2 id="selecteurs-combines-descendants">Combinaisons &amp; descendants</h2>
+                    <ul>
+                        <li><code>ul > li</code> : sélectionne les <code>li</code> enfants directs de <code>ul</code>.</li>
+                        <li><code>nav a</code> : sélectionne tous les liens <code>a</code> descendants d’un <code>nav</code>.</li>
+                        <li><code>h2 + p</code> : sélectionne le <code>p</code> immédiatement après un <code>h2</code>.</li>
+                    </ul>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="selecteurs-attributs">
+                    <h2 id="selecteurs-attributs">Sélecteurs d’attribut</h2>
+                    <ul>
+                        <li><code>input[required]</code> : éléments <code>input</code> avec l’attribut <code>required</code>.</li>
+                        <li><code>a[href="page.html"]</code> : liens dont l’attribut <code>href</code> vaut exactement <code>page.html</code>.</li>
+                        <li><code>img[src^="https"]</code> : images dont l’attribut <code>src</code> commence par <code>https</code>.</li>
+                        <li><code>img[src$=".png"]</code> : images dont le <code>src</code> se termine par <code>.png</code>.</li>
+                    </ul>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="pseudo-classes">
+                    <h2 id="pseudo-classes">Pseudo-classes</h2>
+                    <p>Les pseudo-classes ciblent des états particuliers des éléments :</p>
+                    <ul>
+                        <li><code>a:hover</code> : lien au survol</li>
+                        <li><code>input:focus</code> : champ de formulaire actif</li>
+                        <li><code>li:first-child</code> : premier enfant</li>
+                        <li><code>:nth-child(n)</code>, <code>:first-of-type</code>, etc.</li>
+                    </ul>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="pseudo-elements">
+                    <h2 id="pseudo-elements">Pseudo-éléments</h2>
+                    <ul>
+                        <li><code>::before</code></li>
+                        <li><code>::after</code></li>
+                        <li><code>::first-letter</code></li>
+                        <li><code>::selection</code></li>
+                    </ul>
+                </section>
+
+                <p class="date-publication">Publié le 15 janvier 2025 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+                <li><a href="/sommaireCours/2.css/CssChapitre1.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+                <li><a href="/sommaireCours/2.css/CssChapitre3.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

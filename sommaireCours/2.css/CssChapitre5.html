@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 5 CSS : Textes et typographies</title>
+  <meta name="description" content="Maîtrisez le style du texte avec CSS : polices, tailles, alignement, hauteur de ligne, décoration, transformation du texte, et plus encore." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main class="article-page" id="css-chapitre5">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 5 : Textes et typographies</h1>
+
+            <section class="sous-chapitre" aria-labelledby="polices-base">
+            <h2 id="polices-base">Choisir une police</h2>
+            <p>On utilise la propriété <code>font-family</code> pour définir la police :</p>
+            <pre><code>body {
+    font-family: Arial, sans-serif;
+    }</code></pre>
+            <p>On peut aussi utiliser Google Fonts pour intégrer des polices externes.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="taille-style">
+            <h2 id="taille-style">Taille, graisse, style</h2>
+            <ul>
+                <li><code>font-size</code> : taille du texte (px, em, rem...)</li>
+                <li><code>font-weight</code> : graisse (normal, bold, 400, 700...)</li>
+                <li><code>font-style</code> : italique ou normal</li>
+            </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="alignement-ligne">
+            <h2 id="alignement-ligne">Alignement et hauteur de ligne</h2>
+            <ul>
+                <li><code>text-align</code> : left, right, center, justify</li>
+                <li><code>line-height</code> : espacement vertical entre lignes</li>
+            </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="autres-proprietes">
+            <h2 id="autres-proprietes">Autres propriétés utiles</h2>
+                <ul>
+                    <li><code>text-transform</code> : uppercase, lowercase, capitalize</li>
+                    <li><code>text-decoration</code> : underline, line-through, none</li>
+                    <li><code>letter-spacing</code> : espacement entre les lettres</li>
+                    <li><code>word-spacing</code> : espacement entre les mots</li>
+                    <li><code>font-style</code> : normal, italic, oblique, inherit, initial, unset</li>
+                </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="fonts-externes">
+            <h2 id="autres-proprietes">Google Fonts & fonts externes </h2>
+                <p>On importe la police en haut du css avant son utilisation :</p>
+                <pre><code>@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');</code></pre>
+                <pre><code>body { 
+                font-family: 'Roboto', sans-serif; 
+                }</code></pre>
+            </section>
+
+            <p class="date-publication">Publié le 19 janvier 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre4.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre6.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>CheatSheet - CSS  Modèle de boîte & margin / paddings</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Modèle de boîte & margin / paddings</h1>
+
+        <!-- Modèle de boîte -->
+        <section class="sous-chapitre">
+          <h2>Modèle de boîte</h2>
+          <p>Le modèle de boîte est composé de : <strong>content</strong>, <strong>padding</strong>, <strong>border</strong>, et <strong>margin</strong>.</p>
+        </section>
+
+        <!-- Propriétés clés -->
+        <section class="sous-chapitre">
+          <h2>Propriétés clés</h2>
+          <pre><code>
+        width / height  
+
+        box-sizing : content-box | border-box
+          </code></pre>
+        </section>
+
+        <!-- box-sizing global -->
+        <section class="sous-chapitre">
+          <h2>box-sizing global</h2>
+          <p>Bonne pratique pour uniformiser le modèle de boîte sur tous les éléments :</p>
+          <pre><code>
+        *, *::before, *::after { 
+          box-sizing: border-box; 
+        }
+          </code></pre>
+        </section>
+
+        <!-- Paddings (espace intérieur) -->
+        <section class="sous-chapitre">
+          <h2>Paddings (espace intérieur)</h2>
+
+          <h3>Marges (espace extérieur)</h3>
+          <p>Définit l’espace extérieur autour d’un élément :</p>
+          <pre><code>margin-top
+        margin-right
+        margin-bottom
+        margin-left</code></pre>
+
+          <h3>Shorthand margin</h3>
+          <p>Déclaration raccourcie pour les marges dans l’ordre : haut, droite, bas, gauche.</p>
+          <pre><code>
+        margin: 1rem 0.5rem 1.5rem 0;
+          </code></pre>
+
+          <h3>Paddings</h3>
+          <p>Définit l’espace intérieur entre le contenu et la bordure de l’élément :</p>
+          <pre><code>
+        padding-top
+        padding-right
+        padding-bottom
+        padding-left
+          </code></pre>
+
+          <h3>Shorthand padding</h3>
+          <p>Déclaration raccourcie pour les paddings dans l’ordre : haut, droite, bas, gauche.</p>
+          <pre><code>
+        padding: 0.5rem 1rem; 
+        /* haut/bas 0.5 rem, droite/gauche 1 rem */
+          </code></pre>
+        </section>
+
+        <!-- Tailles de spacing courantes -->
+        <section class="sous-chapitre">
+          <h2>Tailles de spacing courantes</h2>
+
+          <h3>Unités recommandées</h3>
+          <p>Unités fréquemment utilisées pour margin et padding :</p>
+          <pre><code>
+        0
+        0.5 rem
+        1 rem
+        1.5 rem
+        2 rem
+        3 rem
+          </code></pre>
+
+          <h3>Exemples d’usage</h3>
+          <p>Cas pratiques d’utilisation des espacements :</p>
+          <pre><code>
+        .container { 
+          padding: 2rem; 
+          margin-bottom: 2rem; 
+        }
+
+        .card + .card { 
+          margin-top: 1.5rem; 
+        }
+          </code></pre>
+        </section>
+
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/sommaireMemento/Cheatsheet/cheatsheetChap6.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/sommaireMemento/Cheatsheet/cheatsheetChap8.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

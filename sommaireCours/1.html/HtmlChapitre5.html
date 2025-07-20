@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapitre 5 : Les classes et ID</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- HTML : Les classes et ID -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+                <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+                <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+                <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+                <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="html-chapitre5">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 5 : Les classes et ID</h1>
+
+                <!-- Section : Classes -->
+                <section class="sous-chapitre" aria-labelledby="classes-section">
+                    <h2 id="classes-section">Class</h2>
+                    <p>Sert à cibler plusieurs éléments à la fois.</p>
+                    <p>Peut être utilisée autant de fois que nécessaire dans la page.</p>
+                    <p>Se note avec un point en CSS : <code>.menu</code>, <code>.btn</code></p>
+                    <p>Exemple :</p>
+                    <pre><code>&lt;div class="container"&gt;Contenu&lt;/div&gt;
+
+.container {
+  propriété: valeur;
+}
+                    </code></pre>
+                </section>
+
+                <!-- Section : ID -->
+                <section class="sous-chapitre" aria-labelledby="id-section">
+                    <h2 id="id-section">ID</h2>
+                    <p>Sert à identifier un élément unique dans la page.</p>
+                    <p>Ne doit être utilisé qu'une seule fois par page.</p>
+                    <p>Se note avec un dièse (#) en CSS : <code>#header</code>, <code>#formulaire-contact</code></p>
+                    <p>Exemple :</p>
+                    <pre><code>&lt;h1 id="title"&gt;Bienvenue&lt;/h1&gt;
+
+#title {
+  color: yellow;
+}
+                    </code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="utilisation-classes-ids">
+                    <h2 id="utilisation-classes-ids">Utilisation recommandée</h2>
+                    <p><strong>Utiliser des classes pour tout ce qui est répétable ou générique</strong></p>
+                    <p><strong>Réserver les id pour des éléments uniques (ancres, ciblage JS…)</strong></p>
+                </section>
+
+                <!-- Section : BEM -->
+                <section class="sous-chapitre" aria-labelledby="bem-section">
+                    <h2 id="bem-section">BEM : Block — Element — Modifier</h2>
+                    <p>BEM est une méthode de nommage des classes CSS qui suit une logique simple et prévisible. Voici les 3 composants :</p>
+                    <ul>
+                        <li><strong>Block</strong> : Représente un composant autonome de l’interface.</li>
+                        <li><strong>Element</strong> : Partie d’un bloc, dépendante de celui-ci. On le note avec deux underscores <code>__</code>.</li>
+                        <li><strong>Modifier</strong> : Variation d’apparence ou d’état du bloc ou de l’élément. On le note avec deux tirets <code>--</code>.</li>
+                    </ul>
+                    <p>Exemple :</p>
+                    <pre><code>&lt;article class="article"&gt; &lt;!-- Block --&gt;
+  &lt;h2 class="article__titre"&gt;Titre de l’article&lt;/h2&gt; &lt;!-- Element --&gt;
+  &lt;p class="article__contenu"&gt;Texte descriptif...&lt;/p&gt; &lt;!-- Element --&gt;
+  &lt;a class="article__bouton article__bouton--important" href="#"&gt;Lire plus&lt;/a&gt;
+&lt;/article&gt;  &lt;!-- Modifier --&gt;
+                    </code></pre>
+                </section>
+
+                <!-- Section : Classes génériques -->
+                <section class="sous-chapitre" aria-labelledby="classes-generiques">
+                    <h2 id="classes-generiques">Classes génériques et bien nommées</h2>
+                    <ul>
+                        <li><code>.container</code> — Conteneur centralisé avec largeur max</li>
+                        <li><code>.row</code> — Ligne de grille (souvent utilisée avec Flex/Grid)</li>
+                        <li><code>.col</code>, <code>.col-6</code>, <code>.col-12</code> — Colonnes responsives</li>
+                        <li><code>.flex</code>, <code>.flex-row</code>, <code>.flex-column</code> — Disposition en flexbox</li>
+                        <li><code>.grid</code>, <code>.grid-2</code>, <code>.grid-3</code> — Mise en grille</li>
+                        <li><code>.align-center</code>, <code>.justify-center</code> — Alignement horizontal/vertical</li>
+                    </ul>
+                </section>
+
+                <!-- Section : Blocs de contenu -->
+                <section class="sous-chapitre" aria-labelledby="blocs-contenu">
+                    <h2 id="blocs-contenu">Blocs de contenu</h2>
+                    <ul>
+                        <li><code>.section</code> — Section visuelle du site</li>
+                        <li><code>.card</code> — Bloc de type “fiche produit” ou “article”</li>
+                        <li><code>.card__header</code>, <code>.card__body</code>, <code>.card__footer</code> — Sous-éléments BEM</li>
+                        <li><code>.hero</code> — Grande bannière d’intro</li>
+                        <li><code>.wrapper</code> — Conteneur générique</li>
+                    </ul>
+                </section>
+
+                <!-- Section : Texte et typographie -->
+                <section class="sous-chapitre" aria-labelledby="texte-typographie">
+                    <h2 id="texte-typographie">Texte et typographie</h2>
+                    <ul>
+                        <li><code>.title</code>, <code>.subtitle</code> — Titres secondaires</li>
+                        <li><code>.text-center</code>, <code>.text-right</code>, <code>.text-left</code> — Alignement du texte</li>
+                        <li><code>.text-muted</code> — Texte moins visible</li>
+                        <li><code>.uppercase</code>, <code>.lowercase</code>, <code>.capitalize</code> — Transformations du texte</li>
+                        <li><code>.lead</code> — Paragraphe important/mis en avant</li>
+                    </ul>
+                </section>
+
+                <!-- Section : Formulaires -->
+                <section class="sous-chapitre" aria-labelledby="formulaires">
+                    <h2 id="formulaires">Formulaires</h2>
+                    <ul>
+                        <li><code>.form-group</code> — Groupe de champ/label/input</li>
+                        <li><code>.form-control</code> — Champ de texte</li>
+                        <li><code>.form-label</code> — Étiquette du champ</li>
+                        <li><code>.input-error</code> — Champ avec erreur visuelle</li>
+                        <li><code>.input-valid</code> — Champ validé</li>
+                    </ul>
+                </section>
+
+                <!-- Section : Boutons et interactions -->
+                <section class="sous-chapitre" aria-labelledby="boutons-interactions">
+                    <h2 id="boutons-interactions">Boutons &amp; interactions</h2>
+                    <ul>
+                        <li><code>.btn</code> — Bouton de base</li>
+                        <li><code>.btn-primary</code>, <code>.btn-secondary</code>, <code>.btn-danger</code> — Variantes colorées</li>
+                        <li><code>.btn-block</code> — Bouton pleine largeur</li>
+                        <li><code>.btn-sm</code>, <code>.btn-lg</code> — Tailles</li>
+                    </ul>
+                </section>
+
+                <!-- Section : Espacements -->
+                <section class="sous-chapitre" aria-labelledby="espacements">
+                    <h2 id="espacements">Espacements</h2>
+                    <ul>
+                        <li><code>.m-0</code>, <code>.mt-2</code>, <code>.mb-4</code> — Marges (top, bottom, etc.)</li>
+                        <li><code>.p-0</code>, <code>.pt-2</code>, <code>.px-3</code> — Paddings</li>
+                        <li><code>.gap-1</code>, <code>.gap-2</code> — Espacement entre éléments en grille ou flex</li>
+                    </ul>
+                </section>
+
+                <!-- Section : Couleurs et arrière-plan -->
+                <section class="sous-chapitre" aria-labelledby="couleurs-arriere-plan">
+                    <h2 id="couleurs-arriere-plan">Couleurs et arrière-plan</h2>
+                    <ul>
+                        <li><code>.bg-light</code>, <code>.bg-dark</code>, <code>.bg-primary</code> — Arrière-plans</li>
+                        <li><code>.text-primary</code>, <code>.text-danger</code>, <code>.text-success</code> — Couleurs de texte</li>
+                    </ul>
+                </section>
+
+                <!-- Section : Résumé -->
+                <section class="sous-chapitre" aria-labelledby="resume">
+                    <h2 id="resume">Résumé</h2>
+                    <ul>
+                        <li>Utiliser des classes génériques et bien nommées (<code>.btn</code>, <code>.container</code>, <code>.card</code>, <code>.form-group</code>)</li>
+                        <li>Composants modulaires : chaque bloc HTML représente une "brique" réutilisable (ex. carte produit, bloc d’alerte)</li>
+                        <li>Approche BEM : structure ton CSS de manière prévisible pour pouvoir dupliquer facilement un composant</li>
+                        <li>Variables CSS (<code>--couleur-primaire</code>, <code>--font-base</code>) : pour uniformiser les couleurs, tailles, etc.</li>
+                        <li>Éviter les styles en ligne (<code>style="color:red"</code>) → privilégie les feuilles de style</li>
+                        <li>Responsivité : classes utilitaires pour le responsive (<code>.col-12</code>, <code>.flex-md-column</code>)</li>
+                    </ul>
+                </section>
+
+                <p class="date-publication">Publié le 17 novembre 2024 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre4.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre6.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

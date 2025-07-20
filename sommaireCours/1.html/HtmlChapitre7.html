@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 7 : Les formulaires</title>
+    <meta name="description" content="Apprenez à créer des formulaires HTML efficaces avec les balises input, label, textarea, select, et les bonnes pratiques d'accessibilité.">
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- HTML : Les formulaires -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+                <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+                <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+                <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+                <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="html-chapitre7">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 7 : Les formulaires</h1>
+
+                <section class="sous-chapitre" aria-labelledby="creation-html">
+                    <h2 id="creation-html">Création de l’HTML</h2>
+                    <pre><code>
+    &lt;!--Formulaire classic--&gt;
+
+    &lt;form action="/submit" method="post"&gt;
+
+        &lt;label for="name"&gt;Nom:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="text" id="name" name="name" required minlength="5"&gt;&lt;br&gt;
+
+        &lt;label for="email"&gt;Email:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="email" id="email" name="email" required minlength="5"&gt;&lt;br&gt;
+
+        &lt;label for="password"&gt;Mot de passe:&lt;/label&gt;&lt;br&gt;
+        &lt;input type="password" id="password" name="password" required minlength="5"&gt;&lt;br&gt;
+
+        &lt;!--Ici la div permet d’englober et disposer en ligne avec display: flex;--&gt;
+
+        &lt;!--Radio--&gt;
+        &lt;div id="containerRadio"&gt;
+            &lt;label&gt;Genre:&lt;/label&gt;&lt;br&gt;
+            &lt;input type="radio" id="male" name="gender" value="male"&gt;
+            &lt;label for="male"&gt;Homme&lt;/label&gt;
+            &lt;input type="radio" id="female" name="gender" value="female"&gt;
+            &lt;label for="female"&gt;Femme&lt;/label&gt;&lt;br&gt;
+        &lt;/div&gt;
+
+        &lt;!--Case à cocher--&gt;
+        &lt;div id="containerAge"&gt;
+            &lt;label for="age"&gt;Age:&lt;/label&gt;&lt;br&gt;
+            &lt;input type="checkbox" id="age" name="age" value="mineur"&gt;
+            &lt;label id="labelAge" for="age"&gt;Je suis mineur&lt;/label&gt;&lt;br&gt;
+        &lt;/div&gt;
+
+        &lt;!--Liste déroulante--&gt;
+        &lt;label for="majeur"&gt;Majeur:&lt;/label&gt;
+        &lt;select id="majeur" name="majeur"&gt;
+        &lt;option value="18-30"&gt;18-30ans&lt;/option&gt;
+        &lt;option value="30-45"&gt;30-45ans&lt;/option&gt;
+        &lt;option value="45-60"&gt;45-60ans&lt;/option&gt;
+        &lt;option value="60+"&gt;60+&lt;/option&gt;
+        &lt;/select&gt;&lt;br&gt;
+
+        &lt;!--Envois du formulaire--&gt;
+        &lt;input type="submit" value="Soumettre"&gt;
+
+    &lt;/form&gt;
+                    </code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="validation-html">
+                    <h2 id="validation-html">Condition de validation pour l’envoi en HTML</h2>
+                    <p>Required : Le champs doit obligatoirement être rempli pour l’envoie.</p>
+                    <pre><code>&lt;input type="text" id="name" name="name" required&gt;</code></pre>
+                    <p>Minlength : Le nombre minimum de caractère à entrer dans le champ.</p>
+                    <p>Maxlength : Le nombre maximum de caractère à entrer dans le champ.</p>
+                    <pre><code>&lt;input type="text" id="name" name="name" minlength="2" maxlength="10"&gt;</code></pre>
+                    <p>Pattern : défini une expression régulière (regex) à laquelle la valeur du champ de saisie doit correspondre</p>
+                    <pre><code>
+    &lt;!--Ex pour un code postal français, on définit “uniquement 5 chiffres” = "\d{5}"--&gt;
+    &lt;input type="text" id="postcode" name="postcode" pattern="\d{5}"&gt;
+                    </code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="css-invalid">
+                    <h2 id="css-invalid">Ajouter du Css aux éléments invalides</h2>
+                    <pre><code>
+    input:invalid {
+    border: 2px solid red;
+    background-color: #ffdddd;
+    box-shadow: inset 0 0 5px red;
+    color: red;
+    }
+    input:invalid::after {
+    content: " ❌"; /* ajoute une croix rouge après l'élément invalide */
+    }
+    input:invalid {
+    border: 2px solid;
+    border-image: linear-gradient(to right, red, orange) 1;
+    }
+                    </code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="explication-form">
+                    <h2 id="explication-form">Explication du fonctionnement du form</h2>
+                    <p>Les attribut sont indispensables au fonctionnement :</p>
+                    <p>method : indique par quel moyen les données vont être envoyées, les méthodes les plus utiliser sont get et post</p>
+                    <p>get : obtenir</p>
+                    <p>post : envoyer</p>
+                    <p>action : indique l'adresse de la page ou du programme qui va traiter les informations</p>
+                    <pre><code>&lt;form method="get" action=""&gt;&lt;/form&gt;</code></pre>
+                    <p>Input :</p>
+                    <p>Champs de texte avec input :</p>
+                    <pre><code>&lt;input type="text"&gt;</code></pre>
+                    <p>Pour un nom ou prénom par exemple</p>
+                    <p>Attribut name :</p>
+                    <p>Ce nom n'apparaît pas sur la page, il permettra plus tard d'identifier le champ d'où viennent les informations.</p>
+                    <pre><code>&lt;input type="text" name="prenom"&gt;</code></pre>
+                    <p>Libellé avec label :</p>
+                    <p>Pour indiquer ce qu'il faut écrire dans la zone de texte par l'utilisateur on ajoute un libellé</p>
+                    <p>C'est un champ de texte prérempli avec une indication pour guider le visiteur du site sur ce qu'il doit écrire</p>
+                    <p>Il faut ensuite lier le label à a zone de texte pour cela on doit donner un nom à la zone de texte avec l'attribut id</p>
+                    <p>Pour lier le label au champ, il faut lui donner un attribut for qui a la même valeur que l'id du champ :</p>
+                    <pre><code>&lt;label for="prenom"&gt;Votre prénom&lt;/label&gt; : &lt;input type="text" name="prenom" id="prenom"&gt;</code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="types-input">
+                    <h2 id="types-input">Liste des types pour input :</h2>
+                    <pre><code>
+    Un email : &lt;input type="email"&gt;
+    Une url : &lt;input type="url"&gt;
+    Un numéro de tel : &lt;input type="tel"&gt;
+    Un nombre entier : &lt;input type="number"&gt;
+    Un curseur/slider : &lt;input type="range"&gt;
+    Une date : &lt;input type="date"&gt;
+    Pour l'heure : &lt;input type="time"&gt;
+    La semaine : &lt;input type="week"&gt;
+    Le mois : &lt;input type="month"&gt;
+    Pour la date et l'heure : &lt;input type="datetime"&gt; avec gestion du décalage horaire
+    Pour la date et l'heure : &lt;input type="datetime-local"&gt; sans gestion du décalage horaire
+    Une recherche : &lt;input type="search"&gt;
+                    </code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="attributs-input">
+                    <h2 id="attributs-input">Autres attributs pour input :</h2>
+                    <ul>
+                        <li>Size : agrandir le champ</li>
+                        <li>maxlength : limiter le nombre de caractères que l'on peut saisir</li>
+                        <li>value : préremplir le champ avec une valeur par défaut</li>
+                        <li>placeholder : donner une indication sur le contenu du champ</li>
+                        <li>min / max : valeur minimale/maximale autorisée</li>
+                        <li>step : exemple : 0, 2, 4, 6…</li>
+                    </ul>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="checkbox-radio">
+                    <h2 id="checkbox-radio">Boutons de choix :</h2>
+                    <p>Cases à cocher :</p>
+                    <pre><code>&lt;input type="checkbox" name="choixName" &gt;</code></pre>
+                    <p>Avec attribut checked :</p>
+                    <pre><code>&lt;input type="checkbox" name="choix" checked&gt;</code></pre>
+
+                    <p>Boutons radio :</p>
+                    <p>Un seul choix possible parmi plusieurs options :</p>
+                    <pre><code>
+    &lt;form method="get" action=""&gt;
+        &lt;input type="radio" name="age" value="moins15" id="moins15"&gt;
+        &lt;label for="moins15"&gt;Moins de 15ans&lt;/label&gt;
+        &lt;input type="radio" name="age" value="medium15-25" id="medium15-25"&gt;
+        &lt;label for="medium15-25"&gt;15-25 ans&lt;/label&gt;
+        &lt;input type="radio" name="age" value="medium25-40" id="medium25-40"&gt;
+        &lt;label for="medium25-40"&gt;25-40 ans&lt;/label&gt;
+        &lt;input type="radio" name="age" value="plus40" id="plus40"&gt;
+        &lt;label for="plus40"&gt;Plus de 40 ans&lt;/label&gt;
+    &lt;/form&gt;
+                    </code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="select-textarea">
+                    <h2 id="select-textarea">Listes déroulantes et Textarea</h2>
+                    <pre><code>
+    &lt;form method="get" action=""&gt;
+        &lt;label for="pays"&gt;Dans quel pays habitez-vous ?&lt;/label&gt;&lt;br&gt;
+        &lt;select name="pays" id="pays"&gt;
+            &lt;option value="espagne"&gt;Espagne&lt;/option&gt;
+            &lt;option value="royaume-uni"&gt;Royaume-Uni&lt;/option&gt;
+            &lt;option value="canada"&gt;Canada&lt;/option&gt;
+            &lt;option value="japon"&gt;Japon&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/form&gt;
+
+    &lt;option value="canada" selected&gt;Canada&lt;/option&gt;
+
+    &lt;label for="ameliorer"&gt;Des conseils pour améliorer mon site ?&lt;/label&gt;&lt;br&gt;
+    &lt;textarea name="ameliorer" id="ameliorer"&gt;&lt;/textarea&gt;
+                    </code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="fieldset">
+                    <h2 id="fieldset">Regroupement avec fieldset et legend</h2>
+                    <pre><code>
+    &lt;fieldset&gt;
+    &lt;legend&gt;Informations personnelles&lt;/legend&gt;
+    &lt;label for="nom"&gt;Nom :&lt;/label&gt;
+    &lt;input type="text" id="nom" name="nom"&gt;
+    &lt;label for="email"&gt;Email :&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;
+    &lt;/fieldset&gt;
+                    </code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="attributs-validation">
+                    <h2 id="attributs-validation">Attributs HTML pour la validation de base</h2>
+                    <ul>
+                        <li>required : Rend le champ obligatoire</li>
+                        <li>minlength / maxlength : Limite la taille du texte saisi</li>
+                        <li>pattern : Définition d'une expression régulière à respecter</li>
+                        <li>type : Champ validé selon son type</li>
+                        <li>min / max : Valeurs numériques minimales/maximales</li>
+                        <li>step : Pas d'incrément</li>
+                        <li>placeholder : Texte indicatif</li>
+                        <li>readonly : Visible mais non modifiable</li>
+                        <li>disabled : Grisé et ignoré</li>
+                        <li>autofocus : Place le curseur automatiquement</li>
+                    </ul>
+                    <pre><code>
+    &lt;input type="email" required placeholder="exemple@domaine.fr"&gt;
+    &lt;input type="number" min="1" max="10" step="1"&gt;
+                    </code></pre>
+                </section>
+
+                <p class="date-publication">Publié le 22 novembre 2024 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre6.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre8.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

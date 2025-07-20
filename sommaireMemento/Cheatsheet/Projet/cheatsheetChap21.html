@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>Mémento Terminal - Git</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Terminal :</h1>
+
+        <!-- Commandes git -->
+        <section class="sous-chapitre">
+        <h2>Commandes Git</h2>
+        <p>Indispensables pour gérer les projets versionnés.</p>
+
+        <p><strong>git clone URLDuDépôt</strong> : Clone un dépôt Git distant vers votre machine locale.</p>
+        <p><em>Exemple</em> : <code>git clone https://github.com/mon-depot.git</code>.</p>
+
+        <p><strong>git status</strong> : Affiche l’état des modifications dans le dépôt.</p>
+        <p><em>Exemple</em> : <code>git status</code>.</p>
+        <p><em>Utilité</em> : Savoir quels fichiers sont modifiés, ajoutés ou en attente de commit.</p>
+
+        <p><strong>git add NomDuFichier</strong> : Ajoute un fichier spécifique pour le prochain commit.</p>
+        <p><em>Exemple</em> : <code>git add fichier.txt</code>.</p>
+        <p><em>Utilité</em> : Préparer vos changements pour les enregistrer.</p>
+
+        <p><strong>git commit -m "Message"</strong> : Sauvegarde les modifications ajoutées avec un message descriptif.</p>
+        <p><em>Exemple</em> : <code>git commit -m "Ajout de nouvelles fonctionnalités"</code>.</p>
+
+        <p><strong>git push</strong> : Envoie vos commits locaux vers le dépôt distant.</p>
+        <p><em>Exemple</em> : <code>git push origin main</code>.</p>
+
+        <p><strong>git pull</strong> : Récupère les dernières modifications depuis le dépôt distant.</p>
+        <p><em>Exemple</em> : <code>git pull origin main</code>.</p>
+
+        <p><strong>git log</strong> : Affiche l’historique des commits.</p>
+        <p><em>Exemple</em> : <code>git log</code>.</p>
+
+        <p><strong>git checkout -b NomDeBranche</strong> : Crée une nouvelle branche et bascule dessus.</p>
+        <p><em>Exemple</em> : <code>git checkout -b feature-ajout</code>.</p>
+        <p><em>Utilité</em> : Travailler sur des fonctionnalités séparées.</p>
+
+        <p><strong>git merge NomDeBranche</strong> : Fusionne une branche spécifique dans la branche courante.</p>
+        <p><em>Exemple</em> : <code>git merge feature-ajout</code></p>
+        </section>
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/indexPage/memento.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Sommaire Memento</a></li>
+        <li><a href="/MementoPage/Terminal/NavSystemFiles.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>Mémento Terminal - Modèle</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Terminal :</h1>
+
+        <!-- Modèle de boîte -->
+<section class="sous-chapitre">
+  <h2>Gestion d’archives</h2>
+  <p>Utile pour compresser ou extraire des fichiers.</p>
+
+  <p><code>tar -czvf archive.tar.gz NomDuFichier</code> : Crée une archive compressée contenant NomDuFichier.</p>
+  <p><strong>Exemple</strong> : <code>tar -czvf mon_projet.tar.gz dossier/</code>.</p>
+  <p><strong>Utilité</strong> : Regrouper plusieurs fichiers et réduire leur taille pour les partager.</p>
+
+  <p><code>tar -xzvf archive.tar.gz</code> : Décompresse une archive .tar.gz.</p>
+  <p><strong>Exemple</strong> : <code>tar -xzvf mon_projet.tar.gz</code>.</p>
+
+  <p><code>unzip fichier.zip</code> : Décompresse un fichier ZIP.</p>
+  <p><strong>Exemple</strong> : <code>unzip fichiers.zip</code>.</p>
+</section>
+
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/MementoPage/Terminal/Recherche.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/indexPage/memento.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Sommaire Terminal →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

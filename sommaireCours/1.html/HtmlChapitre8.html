@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapitre 8 : Tableaux</title>
+    <meta name="description" content="Découvrez comment créer et structurer des tableaux HTML pour organiser les données de façon claire et accessible." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- HTML : Les tableaux -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+                <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+                <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+                <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+                <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- MAIN -->
+    <main class="article-page" id="html-chapitre8">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+            <h1 id="titre-chapitre">Chapitre 8 : Les tableaux</h1>
+
+            <section class="sous-chapitre" aria-labelledby="structure-semantique-tableaux">
+                <h2 id="structure-semantique-tableaux">Structure sémantique du tableau</h2>
+                <pre><code>
+        &lt;table&gt; 
+        &lt;caption&gt;Liste des étudiants&lt;/caption&gt; 
+        &lt;thead&gt; 
+            &lt;tr&gt; 
+            &lt;th scope="col"&gt;Nom&lt;/th&gt; 
+            &lt;th scope="col"&gt;Prénom&lt;/th&gt; 
+            &lt;th scope="col"&gt;Âge&lt;/th&gt; 
+            &lt;/tr&gt; 
+        &lt;/thead&gt; 
+        &lt;tbody&gt; 
+            &lt;tr&gt; 
+            &lt;td&gt;Dupont&lt;/td&gt; 
+            &lt;td&gt;Léa&lt;/td&gt; 
+            &lt;td&gt;22&lt;/td&gt; 
+            &lt;/tr&gt; 
+            &lt;tr&gt; 
+            &lt;td&gt;Martin&lt;/td&gt; 
+            &lt;td&gt;Julien&lt;/td&gt; 
+            &lt;td&gt;24&lt;/td&gt; 
+            &lt;/tr&gt; 
+        &lt;/tbody&gt; 
+        &lt;tfoot&gt; 
+            &lt;tr&gt; 
+            &lt;td colspan="3"&gt;Données à jour en juin 2025&lt;/td&gt; 
+            &lt;/tr&gt; 
+        &lt;/tfoot&gt; 
+        &lt;/table&gt;
+                </code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="balises-tableaux">
+                <h2 id="balises-tableaux">Liste des balises pour le tableau</h2>
+                <p>&lt;table&gt;: Conteneur principal du tableau</p>
+                <p>&lt;caption&gt; : Titre descriptif du tableau</p>
+                <p>&lt;thead&gt; : En-tête du tableau</p>
+                <p>&lt;tr&gt; : Ligne d’en-tête</p>
+                <p>&lt;th&gt; : Cellules d’en-tête</p>
+                <p>&lt;tbody&gt; : Corps principal du tableau</p>
+                <p>&lt;tr&gt; : Ligne de données</p>
+                <p>&lt;td&gt; : Cellule de contenu standard</p>
+                <p>&lt;tfoot&gt; : Pied de tableau</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="fusion-cellules">
+                <h2 id="fusion-cellules">Fusion de cellules</h2>
+                <p>colspan : fusionne une cellule horizontalement (sur plusieurs colonnes)</p>
+                <p>rowspan : fusionne une cellule verticalement (sur plusieurs lignes)</p>
+                <pre><code>
+        &lt;table&gt; 
+        &lt;thead&gt; 
+            &lt;tr&gt; 
+            &lt;th rowspan="2"&gt;Nom&lt;/th&gt; 
+            &lt;th colspan="2"&gt;Coordonnées&lt;/th&gt; 
+            &lt;/tr&gt; 
+            &lt;tr&gt; 
+            &lt;th&gt;Email&lt;/th&gt; 
+            &lt;th&gt;Téléphone&lt;/th&gt; 
+            &lt;/tr&gt; 
+        &lt;/thead&gt; 
+        &lt;tbody&gt; 
+            &lt;tr&gt; 
+            &lt;td&gt;Dupont&lt;/td&gt; 
+            &lt;td&gt;lea@example.com&lt;/td&gt; 
+            &lt;td&gt;06 12 34 56 78&lt;/td&gt; 
+            &lt;/tr&gt; 
+        &lt;/tbody&gt; 
+        &lt;/table&gt;
+                </code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="accessibilite-tableaux">
+                <h2 id="accessibilite-tableaux">Lisibilité et accessibilité des tableaux</h2>
+                <p>Structure</p>
+                <p>&lt;thead&gt;, &lt;tbody&gt; et &lt;tfoot&gt; pour séparer logiquement le contenu</p>
+                <p>Placer un &lt;caption&gt; en haut du tableau pour le décrire</p>
+                <p>Aérer visuellement : paddings, alternance de couleurs, alignement lisible.</p>
+                <p>Titres de colonnes et lignes</p>
+                <p>Les &lt;th&gt; doivent avoir un attribut scope :</p>
+                <p>scope="col" pour les en-têtes de colonnes</p>
+                <p>scope="row" pour les étiquettes de lignes</p>
+                <pre><code>
+        &lt;th scope="col"&gt;Nom&lt;/th&gt;
+        &lt;th scope="row"&gt;Total&lt;/th&gt;
+                </code></pre>
+            </section>
+
+            <p class="date-publication">Publié le 29 novembre 2024 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+            <li><a href="/sommaireCours/1.html/HtmlChapitre7.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/1.html/HtmlChapitre9.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

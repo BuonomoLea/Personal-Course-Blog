@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>Mémento Informatique - Informations générales</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <link rel="stylesheet" href="/CSS/layoutArticle.css" />
+  <script src="/JS/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header aria-label="En-tête principal">
+    <nav class="nav" aria-label="Navigation principale">
+      <ul class="ul-nav">
+        <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+        <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+        <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+        <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Informations générales</h1>
+
+        <!-- Qu’est-ce qu’Internet ?  -->
+        <section class="sous-chapitre">
+          <h2>Qu’est-ce qu’Internet ?</h2>
+          <p>Internet est un réseau mondial interconnecté qui permet à des millions d’ordinateurs, de serveurs et d’appareils de communiquer entre eux. Il repose sur des protocoles (comme TCP/IP) qui facilitent l’échange de données. Internet constitue la base des services comme le Web, le courrier électronique, les réseaux sociaux et bien plus. </p>
+        </section>
+            
+        <section class="sous-chapitre">
+            <h2>Que sont les paquets et comment sont-ils utilisés pour transférer des données ?</h2>
+            <p>Les données envoyées sur Internet sont divisées en petits morceaux appelés paquets. Chaque paquet contient une partie des données, une adresse source (l’expéditeur), une adresse de destination (le destinataire) et d'autres informations pour la transmission. Ces paquets voyagent indépendamment à travers des réseaux, et une fois arrivés à destination, ils sont réassemblés pour reformer les données initiales. </p>
+        </section>
+
+        <section class="sous-chapitre">
+            <h2>Différences entre une page Web, un serveur Web, un navigateur Web et un moteur de recherche</h2>
+            <h3>Page Web :</h3>
+            <p>Un document individuel, souvent écrit en HTML, consultable sur Internet via une adresse URL. Par exemple, un article sur Wikipédia. </p>
+            <h3>Serveur Web :</h3>
+            <p>Un ordinateur ou un logiciel qui stocke et délivre des pages Web à un client (le navigateur) lorsqu’il est sollicité. </p>
+            <h3>Navigateur Web :</h3>
+            <p> Une application (comme Chrome, Firefox ou Safari) qui permet aux utilisateurs d’afficher et d’interagir avec les pages Web.</p>
+            <h3>Moteur de recherche :</h3>
+            <p>Un service en ligne (comme Google ou Bing) qui aide à trouver des pages Web en fonction de mots-clés.</p>
+        </section>
+
+        <section class="sous-chapitre">
+            <h2>Qu’est-ce qu’un client ?</h2>
+            <p>Un client est un appareil ou un logiciel qui demande des services ou des ressources à un serveur. Par exemple, lorsque vous utilisez un navigateur Web pour consulter une page, ce navigateur agit comme un client. </p>
+        </section>
+
+        <section class="sous-chapitre">
+            <h2>Qu’est-ce qu’un serveur ? </h2>
+            <p>Un serveur est un appareil ou un logiciel qui fournit des services ou des ressources en réponse aux demandes des clients. Par exemple, un serveur Web héberge des sites et envoie des pages Web à un navigateur lorsqu’elles sont demandées. </p>
+        </section>
+
+        <section class="sous-chapitre">
+            <h2>Que sont les adresses IP ?</h2>
+            <p>Une adresse IP (Internet Protocol) est une série de chiffres ou de caractères qui identifie de manière unique un appareil connecté à un réseau. C’est comme une adresse postale qui permet aux données de savoir où aller. Il existe des adresses IPv4 (par exemple, 192.168.0.1) et IPv6 (par exemple, 2001:0db8:85a3:0000:0000:8a2e:0370:7334). </p>
+        </section>
+
+        <section class="sous-chapitre">
+            <h2>Que sont les serveurs DNS ? </h2>
+            <p>Les serveurs DNS (Domain Name System) traduisent les noms de domaine (comme www.example.com) en adresses IP que les ordinateurs peuvent comprendre. Ils agissent comme des annuaires téléphoniques pour Internet, permettant de trouver facilement la machine qui héberge un site. </p>
+        </section>
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/MementoPage/MementoChapitre9.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/MementoPage/MementoChapitreExemple.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 8 CSS : Positionnement et affichage</title>
+  <meta name="description" content="Comprenez le positionnement et les propriétés d'affichage en CSS. Découvrez comment utiliser les propriétés display, position, float, et z-index." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main class="article-page" id="css-chapitre8">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 8 : Positionnement et affichage</h1>
+
+            <section class="sous-chapitre" aria-labelledby="propriete-display">
+            <h2 id="propriete-display">La propriété <code>display</code></h2>
+            <p>La propriété <code>display</code> détermine le mode d'affichage d’un élément.</p>
+            <ul>
+                <li><code>block</code> : occupe toute la largeur disponible</li>
+                <li><code>inline</code> : s’aligne dans une ligne sans retour à la ligne</li>
+                <li><code>inline-block</code> : comme inline, mais accepte les dimensions</li>
+                <li><code>flex</code> : conteneur flexible pour organiser ses enfants</li>
+                <li><code>grid</code> : conteneur en grille</li>
+                <li><code>none</code> : rend l’élément invisible et non pris en compte dans le flux</li>
+            </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="propriete-position">
+            <h2 id="propriete-position">La propriété <code>position</code></h2>
+            <p>Permet de positionner les éléments avec précision :</p>
+            <ul>
+                <li><code>static</code> (par défaut)</li>
+                <li><code>relative</code> : positionné par rapport à sa position initiale</li>
+                <li><code>absolute</code> : positionné par rapport à son premier ancêtre positionné</li>
+                <li><code>fixed</code> : position fixe par rapport à la fenêtre</li>
+                <li><code>sticky</code> : reste fixe dans une certaine zone lors du scroll</li>
+            </ul>
+            <pre><code>.element {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="z-index">
+            <h2 id="z-index">La propriété <code>z-index</code></h2>
+            <p>Contrôle la superposition des éléments positionnés :</p>
+            <pre><code>.element {
+    position: relative;
+    z-index: 10;
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="float-clear">
+            <h2 id="float-clear">Float et Clear</h2>
+            <p><code>float</code> permet de faire "flotter" un élément à gauche ou à droite :</p>
+            <pre><code>.image {
+    float: right;
+    }</code></pre>
+            <p>Pour éviter que les éléments suivants ne l’enveloppent :</p>
+            <pre><code>.suivant {
+    clear: both;
+    }</code></pre>
+            </section>
+
+            <p class="date-publication">Publié le 5 mars 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre7.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre9.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

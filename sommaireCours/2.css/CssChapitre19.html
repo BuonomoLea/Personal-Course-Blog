@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 19 CSS : Autres composants classiques</title>
+  <meta name="description" content="Apprenez à styliser d'autres composants classiques comme boutons, listes, tableaux, et formulaires pour un design cohérent." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header aria-label="En-tête principal">
+    <nav class="nav" aria-label="Navigation principale">
+      <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="article-page" id="css-chapitre19">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 19 : Autres composants classiques</h1>
+
+            <!-- 1. Sliders & carrousels -->
+            <section class="sous-chapitre" aria-labelledby="sliders">
+                <h2 id="sliders">Sliders & carrousels</h2>
+                
+                <p>
+                    Un slider sert à faire défiler plusieurs contenus (images, articles…) dans un même cadre, en n’en affichant qu’un à la fois et en permettant à l’utilisateur de passer de l’un à l’autre avec des boutons ou au clavier.
+                </p>
+                
+                <p>
+                    On dispose d’une fenêtre d’affichage (le cadre visible) qui masque le surplus de contenu.
+                    Derrière, on a un conteneur fluide qui aligne tous les éléments à l’horizontale.
+                    Chaque diapositive (image, bloc de texte…) occupe 100 % de la largeur de la fenêtre.
+                </p>
+                
+                <p>
+                    En JavaScript, on garde un indice (index) qui représente la diapositive en cours, et on fait glisser le conteneur via transform: translateX(-index * 100%).
+                    Deux boutons permettent d’incrémenter (index++) ou de décrémenter (index--) cet indice, et on désactive le bouton “Précédent” si on est à la première diapo, le bouton “Suivant” si on est à la dernière.
+                </p>
+                
+                <p>Structure HTML :</p>
+                <p>
+                    Un élément racine &lt;div class="slider"&gt; focusable (tabindex="0") et muni d’un aria-label.<br>
+                    Un bouton “Précédent” &lt;button class="prev"&gt; et un bouton “Suivant” &lt;button class="next"&gt;.<br>
+                    Une fenêtre &lt;div class="slider__viewport"&gt; où overflow: hidden.<br>
+                    Une liste &lt;ul class="slider__track"&gt; contenant les &lt;li class="slide"&gt; (les diapositives).
+                </p>
+                
+                <p>Mise en forme CSS :</p>
+                <p>
+                    .slider__viewport { overflow: hidden; } masque les diapositives hors-champ.<br>
+                    .slider__track { display: flex; transition: transform .4s ease; } aligne les diapositives en ligne et permet le glissement animé.<br>
+                    .slide { flex: 0 0 100%; } force chaque diapositive à prendre exactement la largeur de la fenêtre.<br>
+                    Les boutons sont positionnés en absolu sur les côtés, avec disabled visuellement atténué.
+                </p>
+                
+                <p>Contrôle JavaScript :</p>
+                <p>
+                    On sélectionne le conteneur, les boutons et on initialise let index = 0;<br>
+                    Fonction updateSlider() :<br>
+                    track.style.transform = translateX(-${index * 100}%);<br>
+                    prevBtn.disabled = index === 0;<br>
+                    nextBtn.disabled = index === slides.length - 1;
+                </p>
+                
+                <p>
+                    On écoute les clics sur “Précédent”/“Suivant” pour ajuster index, puis on rappelle updateSlider()
+                </p>
+                
+                <p>Accessibilité :</p>
+                <p>
+                    tabindex="0" rend le slider atteignable au clavier.<br>
+                    aria-label="Carrousel d’images" décrit sa fonction.<br>
+                    Les boutons portent chacun un aria-label clair ("Précédent", "Suivant").<br>
+                    L’état disabled informe les aides techniques que l’on ne peut plus avancer ou reculer.<br>
+                    La navigation au clavier garantit l’usage sans souris.<br>
+                    Pour la navigation au clavier, on intercepte keydown sur la zone focusable et on réagit aux touches ArrowLeft/ArrowRight.
+                </p>
+                
+                <p>Création d’un slider très simple :</p>
+                <p>
+                    Créer un conteneur défilable horizontal<br>
+                    Définir scroll-snap-type: x mandatory sur ce conteneur<br>
+                    Disposer les éléments enfants en ligne avec display: flex<br>
+                    Appliquer scroll-snap-align: start à chaque diapositive<br>
+                    Ajouter -webkit-overflow-scrolling: touch pour l’inertie sous iOS<br>
+                    Masquer la barre de défilement si besoin
+                </p>
+                
+                <pre><code>&lt;div class="slider-snap"&gt;
+                &lt;div class="slide"&gt;Slide 1&lt;/div&gt;
+                &lt;div class="slide"&gt;Slide 2&lt;/div&gt;
+                &lt;div class="slide"&gt;Slide 3&lt;/div&gt;
+                &lt;div class="slide"&gt;Slide 4&lt;/div&gt;
+                &lt;/div&gt;
+
+                .slider-snap {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                gap: 1rem;
+                }
+                .slider-snap::-webkit-scrollbar {
+                display: none;
+                }
+                .slide {
+                flex: 0 0 100%;           /* largeur = 100 % du conteneur */
+                scroll-snap-align: start; /* calage automatique */
+                padding: 2rem;
+                background: #f0f0f0;
+                text-align: center;
+                }
+                </code></pre>
+                
+                <p>
+                    Ce mode de slider ne nécessite aucun JavaScript : l’utilisateur peut défiler au toucher, à la molette ou à la barre de défilement, et chaque diapositive se “colle” en place grâce à scroll-snap.
+                </p>
+                
+                <p>Exemple code complet :</p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+                &lt;html lang="fr"&gt;
+                &lt;head&gt;
+                &lt;meta charset="UTF-8"&gt;
+                &lt;title&gt;Slider Vanilla&lt;/title&gt;
+                &lt;style&gt;
+                    .slider {
+                    position: relative;
+                    overflow: hidden;
+                    max-width: 600px;
+                    margin: 2rem auto;
+                    outline: none;
+                    }
+
+                .slider__viewport { overflow: hidden; }
+                    .slider__track {
+                    display: flex;
+                    transition: transform .4s ease;
+                    list-style: none;
+                    margin: 0; padding: 0;
+                    }
+                    .slide {
+                    flex: 0 0 100%;
+                    padding: 2rem;
+                    background: #f0f0f0;
+                    text-align: center;
+                    font-size: 1.2rem;
+                    }
+                    .slider__btn {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(0,0,0,.5);
+                    color: #fff;
+                    border: none;
+                    padding: .5rem;
+                    cursor: pointer;
+                    font-size: 1.2rem;
+                    }
+
+                .prev { left: .5rem; }
+                    .next { right: .5rem; }
+                    .slider__btn:disabled {
+                    opacity: .3;
+                    cursor: not-allowed;
+                    }
+                &lt;/style&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+
+                &lt;div class="slider" aria-label="Carrousel d’images" tabindex="0"&gt;
+                    &lt;button class="slider__btn prev" aria-label="Précédent"&gt;&larr;&lt;/button&gt;
+                    &lt;div class="slider__viewport"&gt;
+                    &lt;ul class="slider__track"&gt;
+                        &lt;li class="slide"&gt;Slide 1&lt;/li&gt;
+                        &lt;li class="slide"&gt;Slide 2&lt;/li&gt;
+                        &lt;li class="slide"&gt;Slide 3&lt;/li&gt;
+                        &lt;li class="slide"&gt;Slide 4&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;button class="slider__btn next" aria-label="Suivant"&gt;&rarr;&lt;/button&gt;
+                &lt;/div&gt;
+
+                &lt;script&gt;
+                    const track   = document.querySelector('.slider__track');
+                    const slides  = Array.from(track.children);
+                    const prevBtn = document.querySelector('.slider__btn.prev');
+                    const nextBtn = document.querySelector('.slider__btn.next');
+                    const slider  = document.querySelector('.slider');
+                    let index = 0;
+
+                    function updateSlider() {
+                    track.style.transform = translateX(-${index * 100}%);
+                    prevBtn.disabled = index === 0;
+                    nextBtn.disabled = index === slides.length - 1;
+                    }
+
+                    prevBtn.addEventListener('click', () => {
+                    if (index > 0) index--;
+                    updateSlider();
+                    });
+                    nextBtn.addEventListener('click', () => {
+                    if (index < slides.length - 1) index++;
+                    updateSlider();
+                    });
+
+                    slider.addEventListener('keydown', e => {
+                    if (e.key === 'ArrowLeft' && index > 0) {
+                        index--; updateSlider();
+                    }
+                    if (e.key === 'ArrowRight' && index < slides.length - 1) {
+                        index++; updateSlider();
+                    }
+                    });
+
+                    // Initialisation
+                    updateSlider();
+                &lt;/script&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+                </code></pre>
+            </section>
+
+            <!-- 2. Modales -->
+            <section class="sous-chapitre" aria-labelledby="modales">
+                <h2 id="modales">Modales &amp; boîtes de dialogue</h2>
+
+                <p>Une modale est une fenêtre superposée qui interrompt le flux de la page pour afficher un contenu centré (formulaire, message, confirmation…). Deux approches principales :</p>
+                <ul>
+                    <li>Utiliser l’élément natif &lt;dialog&gt;</li>
+                    <li>Créer une boîte personnalisée et la montrer/cacher via <code>classList.toggle()</code></li>
+                </ul>
+
+                <p><strong>Structure HTML</strong></p>
+                <p>Créer un conteneur <code>.modal</code> comprenant deux zones :</p>
+                <ul>
+                    <li>un voile <code>.overlay</code></li>
+                    <li>un contenu <code>.modal__content</code></li>
+                </ul>
+                <p>Ajouter un bouton pour ouvrir la modale, et un bouton pour fermer à l’intérieur de la modale :</p>
+
+                <pre><code>&lt;button id="openModal"&gt;Afficher la modale&lt;/button&gt;
+
+                &lt;div class="modal" aria-hidden="true"&gt;
+                &lt;div class="overlay"&gt;&lt;/div&gt;
+                &lt;div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modalTitle"&gt;
+                    &lt;h2 id="modalTitle"&gt;Titre de la modale&lt;/h2&gt;
+                    &lt;p&gt;Contenu interactif ou informatif.&lt;/p&gt;
+                    &lt;button id="closeModal"&gt;Fermer&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;/div&gt;
+                </code></pre>
+
+                <p><strong>Mise en forme CSS</strong></p>
+                <p>Positionner <code>.modal</code> en fixed pour couvrir tout l’écran, masquer par défaut, définir <code>.overlay</code> semi-transparent, centrer <code>.modal__content</code>, et prévoir une transition :</p>
+                
+                <pre><code>.modal {
+                position: fixed;
+                inset: 0;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                }
+                .modal.is-open {
+                display: flex;
+                }
+                .overlay {
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.5);
+                }
+                .modal__content {
+                position: relative;
+                background: #fff;
+                padding: 1.5rem;
+                border-radius: 6px;
+                max-width: 90%;
+                max-height: 90%;
+                overflow-y: auto;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+                }
+                </code></pre>
+
+                <p><strong>Comportement JavaScript</strong></p>
+                <p>Sélectionner les éléments, basculer la classe <code>.is-open</code>, gérer l’attribut <code>aria-hidden</code>, empêcher la fermeture au clic sur le contenu, et fermer avec la touche ESC :</p>
+
+                <pre><code>const modal      = document.querySelector('.modal');
+                const openBtn    = document.getElementById('openModal');
+                const closeBtn   = document.getElementById('closeModal');
+                const overlay    = modal.querySelector('.overlay');
+
+                function toggleModal() {
+                modal.classList.toggle('is-open');
+                modal.setAttribute('aria-hidden', modal.classList.contains('is-open') ? 'false' : 'true');
+                if (modal.classList.contains('is-open')) trapFocus(modal);
+                }
+
+                openBtn.addEventListener('click', toggleModal);
+                closeBtn.addEventListener('click', toggleModal);
+                overlay.addEventListener('click', toggleModal);
+
+                document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                    toggleModal();
+                }
+                });
+
+                // focus trap simplifié
+                function trapFocus(container) {
+                const focusables = Array.from(
+                    container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+                );
+                const first = focusables[0];
+                const last  = focusables[focusables.length - 1];
+                first.focus();
+                container.addEventListener('keydown', e => {
+                    if (e.key === 'Tab') {
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                    }
+                });
+                }
+                </code></pre>
+
+                <p><strong>Accessibilité</strong></p>
+                <ul>
+                    <li>Ajouter <code>aria-hidden="true"</code> par défaut sur <code>.modal</code></li>
+                    <li>Définir <code>role="dialog"</code> et <code>aria-modal="true"</code> sur la boîte de contenu</li>
+                    <li>Ajouter <code>aria-labelledby</code> pointant sur l’identifiant du titre</li>
+                    <li>Verrouiller le focus (focus trap) pour boucler la navigation au sein de la modale</li>
+                    <li>Désactiver la mise au point (via <code>inert</code> ou <code>aria-hidden</code>) sur le reste de la page si nécessaire</li>
+                </ul>
+
+                <p><strong>Exemple complet :</strong></p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+                &lt;html lang="fr"&gt;
+                &lt;head&gt;
+                &lt;meta charset="UTF-8"&gt;
+                &lt;title&gt;Modale personnalisée&lt;/title&gt;
+                &lt;style&gt;
+                    .modal {
+                    position: fixed; inset: 0;
+                    display: none;
+                    align-items: center; justify-content: center;
+                    }
+                    .modal.is-open {
+                    display: flex;
+                    }
+                    .overlay {
+                    position: absolute; inset: 0;
+                    background: rgba(0, 0, 0, 0.5);
+                    }
+                    .modal__content {
+                    position: relative;
+                    background: #fff;
+                    padding: 1.5rem;
+                    border-radius: 6px;
+                    max-width: 500px;
+                    max-height: 80vh;
+                    overflow-y: auto;
+                    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+                    }
+                    button {
+                    cursor: pointer;
+                    padding: 0.5rem 1rem;
+                    border: none;
+                    background: #007bff;
+                    color: #fff;
+                    border-radius: 4px;
+                    font-size: 1rem;
+                    }
+                    #closeModal {
+                    background: #dc3545;
+                    margin-top: 1rem;
+                    }
+                &lt;/style&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+
+                &lt;button id="openModal"&gt;Afficher la modale&lt;/button&gt;
+
+                &lt;div class="modal" aria-hidden="true"&gt;
+                    &lt;div class="overlay"&gt;&lt;/div&gt;
+                    &lt;div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modalTitle"&gt;
+                    &lt;h2 id="modalTitle"&gt;Titre de la modale&lt;/h2&gt;
+                    &lt;p&gt;Texte explicatif de la modale.&lt;/p&gt;
+                    &lt;button id="closeModal"&gt;Fermer&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;script&gt;
+                    const modal    = document.querySelector('.modal');
+                    const openBtn  = document.getElementById('openModal');
+                    const closeBtn = document.getElementById('closeModal');
+                    const overlay  = modal.querySelector('.overlay');
+
+                    function toggleModal() {
+                    modal.classList.toggle('is-open');
+                    const hidden = modal.classList.contains('is-open') ? 'false' : 'true';
+                    modal.setAttribute('aria-hidden', hidden);
+                    if (hidden === 'false') trapFocus(modal);
+                    }
+
+                    openBtn.addEventListener('click', toggleModal);
+                    closeBtn.addEventListener('click', toggleModal);
+                    overlay.addEventListener('click', toggleModal);
+
+                    document.addEventListener('keydown', e => {
+                    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                        toggleModal();
+                    }
+                    });
+
+                    // focus trap simplifié
+                    function trapFocus(container) {
+                    const focusables = Array.from(
+                        container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+                    );
+                    const first = focusables[0];
+                    const last  = focusables[focusables.length - 1];
+                    first.focus();
+                    container.addEventListener('keydown', e => {
+                        if (e.key === 'Tab') {
+                        if (e.shiftKey && document.activeElement === first) {
+                            e.preventDefault();
+                            last.focus();
+                        } else if (!e.shiftKey && document.activeElement === last) {
+                            e.preventDefault();
+                            first.focus();
+                        }
+                        }
+                    });
+                    }
+                &lt;/script&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+                </code></pre>
+            </section>
+
+            <!-- 3. Accordéons -->
+            <section class="sous-chapitre" aria-labelledby="accordeons">
+                <h2 id="accordeons">Accordéons</h2>
+
+                <p>Permettre de masquer ou afficher un bloc de contenu comme une FAQ, pour alléger l’interface et organiser l’information. Utiliser l’élément natif &lt;details&gt; pour bénéficier du comportement toggle et du support clavier/ARIA sans script.</p>
+
+                <p><strong>Structure HTML :</strong></p>
+                <pre><code>&lt;details class="accordion"&gt;
+                &lt;summary&gt;Intitulé de la question ou du titre&lt;/summary&gt;
+                &lt;div class="accordion__content"&gt;
+                    &lt;p&gt;Réponse, explication ou contenu détaillé.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;/details&gt;
+
+                &lt;details class="accordion"&gt;
+                &lt;summary&gt;Autre question ou section&lt;/summary&gt;
+                &lt;div class="accordion__content"&gt;
+                    &lt;p&gt;Autre contenu à révéler.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;/details&gt;
+                </code></pre>
+
+                <p><strong>Mise en forme CSS :</strong></p>
+                <pre><code>.accordion {
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-bottom: 1rem;
+                overflow: hidden;
+                }
+                /* Styliser le résumé cliquable */
+                .accordion summary {
+                cursor: pointer;
+                padding: 1rem;
+                background: #f7f7f7;
+                list-style: none;          /* masquer le marqueur par défaut */
+                position: relative;
+                }
+                /* Ajouter un indicateur [+] ou [–] */
+                .accordion summary::after {
+                content: '+';
+                position: absolute;
+                right: 1rem;
+                font-size: 1.2rem;
+                transition: transform .3s;
+                }
+                /* Remplacer le plus par un moins quand details est ouvert */
+                .accordion[open] summary::after {
+                content: '–';
+                }
+                /* Conserver le contenu masqué avec padding */
+                .accordion__content {
+                padding: 0 1rem 1rem;
+                background: white;
+                }
+                </code></pre>
+
+                <p><strong>Accessibilité :</strong></p>
+                <ul>
+                    <li>&lt;details&gt; et &lt;summary&gt; gèrent nativement le rôle « disclosure » et le support clavier (Entrée/Espace).</li>
+                    <li>L’attribut <code>open</code> indique l’état étendu, lisible par les technologies d’assistance.</li>
+                    <li>Ne pas ajouter de <code>tabindex</code> sur &lt;summary&gt;, il est déjà focusable.</li>
+                    <li>Respecter l’ordre sémantique (titre ou question dans &lt;summary&gt;, contenu dans un bloc séparé).</li>
+                </ul>
+
+                <p><strong>Exemple complet :</strong></p>
+                <pre><code>&lt;!DOCTYPE html&gt;
+                &lt;html lang="fr"&gt;
+                &lt;head&gt;
+                &lt;meta charset="UTF-8"&gt;
+                &lt;title&gt;Accordéon CSS natif&lt;/title&gt;
+                &lt;style&gt;
+                    .accordion {
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                    overflow: hidden;
+                    }
+                    .accordion summary {
+                    cursor: pointer;
+                    padding: 1rem;
+                    background: #f7f7f7;
+                    list-style: none;
+                    position: relative;
+                    }
+                    .accordion summary::after {
+                    content: '+';
+                    position: absolute;
+                    right: 1rem;
+                    font-size: 1.2rem;
+                    transition: transform .3s;
+                    }
+                    .accordion[open] summary::after {
+                    content: '–';
+                    }
+                    .accordion__content {
+                    padding: 0 1rem 1rem;
+                    background: white;
+                    }
+                &lt;/style&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+
+                &lt;details class="accordion"&gt;
+                    &lt;summary&gt;Qu’est-ce qu’un accordéon ?&lt;/summary&gt;
+                    &lt;div class="accordion__content"&gt;
+                    &lt;p&gt;Accordéon est un composant qui permet de masquer ou afficher du contenu sous un titre.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/details&gt;
+
+                &lt;details class="accordion"&gt;
+                    &lt;summary&gt;Pourquoi utiliser &amp;lt;details&amp;gt; ?&lt;/summary&gt;
+                    &lt;div class="accordion__content"&gt;
+                    &lt;p&gt;La balise &amp;lt;details&amp;gt; gère nativement le toggle et l’accessibilité sans JavaScript.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/details&gt;
+
+                &lt;/body&gt;
+                &lt;/html&gt;
+                </code></pre>
+            </section>
+
+            <!-- 4. Cartes, badges, tags, alertes -->
+            <section class="sous-chapitre" aria-labelledby="cartes-badges">
+                <h2 id="cartes-badges">Cartes, badges, tags, alertes</h2>
+
+                <p>Permettre de structurer et d’annoter le contenu par différents types de composants visuels.</p>
+
+                <p><strong>Concepts clés :</strong></p>
+                <ul>
+                    <li><strong>Carte</strong> : bloc présentant un contenu, cliquable ou non, avec retour visuel au survol et au focus.</li>
+                    <li><strong>Badge / tag</strong> : étiquette courte inline pour notifier un statut ou catégoriser.</li>
+                    <li><strong>Alerte</strong> : message important (succès, information, avertissement, erreur) lu immédiatement par les aides techniques.</li>
+                </ul>
+
+                <p><strong>Structure HTML :</strong></p>
+
+                <p><em>Carte interactive</em></p>
+                <pre><code>&lt;div class="card" tabindex="0" role="button" aria-pressed="false"&gt;
+                &lt;h3 class="card__title"&gt;Titre de la carte&lt;/h3&gt;
+                &lt;p class="card__text"&gt;Description concise du contenu.&lt;/p&gt;
+                &lt;/div&gt;
+                </code></pre>
+
+                <p><em>Badges et tags</em></p>
+                <pre><code>&lt;span class="badge"&gt;NOUVEAU&lt;/span&gt;
+                &lt;span class="tag"&gt;#CSS&lt;/span&gt;
+                </code></pre>
+
+                <p><em>Alertes</em></p>
+                <pre><code>&lt;div class="alert alert--success" role="alert"&gt;
+                ✔️ Succès : opération réussie.
+                &lt;/div&gt;
+                &lt;div class="alert alert--danger" role="alert"&gt;
+                ❌ Erreur : action impossible.
+                &lt;/div&gt;
+                </code></pre>
+
+                <p><strong>Mise en forme CSS :</strong></p>
+                <pre><code>/* Carte */
+                .card {
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                padding: 1rem;
+                background: #fff;
+                cursor: pointer;
+                transition: box-shadow .3s, transform .3s;
+                }
+                .card:hover,
+                .card:focus {
+                box-shadow: 0 4px 12px rgba(0,0,0,.1);
+                transform: translateY(-4px);
+                outline: none;
+                }
+                /* Badge & tag */
+                .badge,
+                .tag {
+                display: inline-block;
+                padding: .2em .6em;
+                font-size: .75rem;
+                border-radius: 4px;
+                margin-right: .4rem;
+                }
+                .badge {
+                background: #007bff;
+                color: #fff;
+                }
+                .tag {
+                background: #f0f0f0;
+                color: #333;
+                }
+                /* Alerte */
+                .alert {
+                padding: .8rem 1rem;
+                border-radius: 4px;
+                margin-bottom: 1rem;
+                font-weight: 500;
+                }
+                .alert--success {
+                background: #d4edda;
+                color: #155724;
+                }
+                .alert--danger {
+                background: #f8d7da;
+                color: #721c24;
+                }
+                </code></pre>
+
+                <p><strong>Accessibilité :</strong></p>
+                <ul>
+                    <li>Ajouter <code>tabindex="0"</code> et <code>role="button"</code> sur la carte pour la rendre focusable et identifiable comme bouton.</li>
+                    <li>Gérer <code>aria-pressed</code> pour informer de l’état actif.</li>
+                    <li>Utiliser <code>role="alert"</code> sur les alertes pour déclencher la lecture immédiate par les lecteurs d’écran.</li>
+                    <li>Ne pas appliquer de <code>tabindex</code> sur badges/tags/alertes, ils sont informatifs.</li>
+                </ul>
+
+                <p><strong>Exemple complet :</strong></p>
+                <pre><code>&lt;!-- Carte interactive --&gt;
+                &lt;div class="card" tabindex="0" role="button" aria-pressed="false"&gt;
+                &lt;h3 class="card__title"&gt;Titre de la carte&lt;/h3&gt;
+                &lt;p class="card__text"&gt;Description concise du contenu.&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Badges et tags --&gt;
+                &lt;p&gt;
+                &lt;span class="badge"&gt;NOUVEAU&lt;/span&gt;
+                &lt;span class="tag"&gt;#CSS&lt;/span&gt;
+                &lt;span class="tag"&gt;#HTML&lt;/span&gt;
+                &lt;/p&gt;
+
+                &lt;!-- Alertes --&gt;
+                &lt;div class="alert alert--success" role="alert"&gt;
+                ✔️ Succès : opération réussie.
+                &lt;/div&gt;
+                &lt;div class="alert alert--danger" role="alert"&gt;
+                ❌ Erreur : action impossible.
+                &lt;/div&gt;
+                </code></pre>
+
+                <p><strong>JavaScript :</strong></p>
+                <pre><code>// Gestion de l’état actif de la carte
+                const card = document.querySelector('.card');
+                function basculerEtat() {
+                const etat = card.getAttribute('aria-pressed') === 'true';
+                card.setAttribute('aria-pressed', String(!etat));
+                }
+                card.addEventListener('click', basculerEtat);
+                card.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    basculerEtat();
+                }
+                });
+                </code></pre>
+
+            </section>
+
+            <!-- 5. Interaction au clavier & état actif -->
+            <section class="sous-chapitre" aria-labelledby="interaction">
+                <h2 id="interaction">Interaction au clavier &amp; état actif</h2>
+
+                <p><strong>Explication :</strong></p>
+                <ul>
+                    <li><code>tabindex="0"</code> : rendre l’élément focusable dans l’ordre naturel du document</li>
+                    <li><code>role="button"</code> : indiquer aux technologies d’assistance qu’un élément non-bouton agit comme un bouton</li>
+                    <li><code>aria-pressed="true | false"</code> : signaler l’état « enfoncé » d’un bouton toggle</li>
+                    <li><code>:focus</code> : style appliqué à un élément lorsqu’il reçoit le focus (tabulation ou clic)</li>
+                    <li><code>:focus-visible</code> : style appliqué quand le focus est dû à la navigation clavier (affichage sélectif pour éviter les outlines au clic)</li>
+                    <li><code>:active</code> : style appliqué au moment où l’utilisateur appuie (mousedown/tap) sur un élément interactif</li>
+                    <li>key "Enter" ou "Space" : déclencher l’action associée (équivalent au clic sur un bouton)</li>
+                    <li><code>e.preventDefault()</code> : empêcher le comportement par défaut (ex. éviter le scroll de la page quand on appuie sur Espace)</li>
+                </ul>
+
+                <p><strong>Structure HTML :</strong></p>
+                <pre><code>&lt;div class="toggle" role="button" tabindex="0" aria-pressed="false"&gt;
+                &lt;span class="toggle__label"&gt;Mode sombre&lt;/span&gt;
+                &lt;/div&gt;
+                </code></pre>
+
+                <p><strong>Mise en forme CSS :</strong></p>
+                <pre><code>.toggle {
+                display: inline-flex;
+                align-items: center;
+                gap: .5rem;
+                padding: .6rem 1rem;
+                border: 2px solid #666;
+                border-radius: 4px;
+                background: #fff;
+                cursor: pointer;
+                user-select: none;
+                transition: background .2s, transform .1s;
+                }
+                .toggle:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(10,130,200,.4);
+                }
+                .toggle:active {
+                transform: scale(.96);
+                }
+                .toggle[aria-pressed="true"] {
+                background: #333;
+                color: #fff;
+                border-color: #333;
+                }
+                </code></pre>
+
+                <p><strong>Comportement JavaScript :</strong></p>
+                <pre><code>const toggle = document.querySelector('.toggle');
+
+                function basculerEtat() {
+                const etat = toggle.getAttribute('aria-pressed') === 'true';
+                toggle.setAttribute('aria-pressed', String(!etat));
+                }
+
+                toggle.addEventListener('click', basculerEtat);
+
+                toggle.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();  // éviter le scroll si Espace
+                    basculerEtat();
+                }
+                });
+                </code></pre>
+            </section>
+
+            <!-- Boutons et listes -->
+            <section class="sous-chapitre" aria-labelledby="boutons-listes">
+                <h2 id="boutons-listes">Boutons et listes</h2>
+                <p>Les boutons doivent être clairs et visibles, avec des états au survol et au focus. Les listes bien espacées améliorent la lisibilité.</p>
+            </section>
+
+            <!-- Tableau et formulaires -->
+            <section class="sous-chapitre" aria-labelledby="tableaux">
+                <h2 id="tableaux">Tableaux et formulaires</h2>
+                <p>Les tableaux doivent être lisibles et responsives. Le style des formulaires doit être cohérent avec le reste du site pour une expérience utilisateur optimale.</p>
+            </section>
+
+            <!-- Conseils de style -->
+            <section class="sous-chapitre" aria-labelledby="conseils-style">
+                <h2 id="conseils-style">Conseils de style</h2>
+                <ul>
+                <li>Utiliser des variables CSS pour la cohérence des couleurs</li>
+                <li>Eviter les styles trop lourds qui ralentissent le chargement</li>
+                <li>Tester la compatibilité sur différents navigateurs</li>
+                </ul>
+            </section>
+
+            <p class="date-publication">Publié le 1er avril 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+        <li><a href="/sommaireCours/2.css/CssChapitre18.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+        <li><a href="/sommaireCours/2.css/CssChapitre20.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+    </nav>
+</main>
+
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+  </footer>
+
+  <!-- SCRIPTS JS SPÉCIFIQUES -->
+  <script>
+    // Slider JS
+    const track = document.querySelector('.slider__track');
+    const slides = Array.from(track.children);
+    const prevBtn = document.querySelector('.slider__btn.prev');
+    const nextBtn = document.querySelector('.slider__btn.next');
+    const slider = document.querySelector('.slider');
+    let index = 0;
+
+    function updateSlider() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === slides.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (index > 0) index--;
+      updateSlider();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (index < slides.length - 1) index++;
+      updateSlider();
+    });
+
+    slider.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft' && index > 0) {
+        index--; updateSlider();
+      }
+      if (e.key === 'ArrowRight' && index < slides.length - 1) {
+        index++; updateSlider();
+      }
+    });
+
+    updateSlider();
+
+    // Modale JS
+    const modal = document.querySelector('.modal');
+    const openBtn = document.getElementById('openModal');
+    const closeBtn = document.getElementById('closeModal');
+    const overlay = modal.querySelector('.overlay');
+
+    function toggleModal() {
+      modal.classList.toggle('is-open');
+      modal.setAttribute('aria-hidden', modal.classList.contains('is-open') ? 'false' : 'true');
+      if (modal.classList.contains('is-open')) trapFocus(modal);
+    }
+
+    openBtn.addEventListener('click', toggleModal);
+    closeBtn.addEventListener('click', toggleModal);
+    overlay.addEventListener('click', toggleModal);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        toggleModal();
+      }
+    });
+
+    function trapFocus(container) {
+      const focusables = Array.from(container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      first.focus();
+      container.addEventListener('keydown', e => {
+        if (e.key === 'Tab') {
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

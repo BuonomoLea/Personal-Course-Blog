@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 24 CSS : Structure des fichiers pour composants</title>
+  <meta name="description" content="Découvrez comment organiser la structure des fichiers CSS pour une gestion efficace des composants dans vos projets web." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre24">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 24 : Structure des fichiers pour composants</h1>
+
+                <!-- Section Organisation des fichiers CSS -->
+                <section class="sous-chapitre" aria-labelledby="organisation-fichiers">
+                    <h2 id="organisation-fichiers">Ordre des fichiers</h2>
+                    <p>variables.css → reset.css → base.css → layout.css → components/*.css → utilities.css</p>
+
+                    <h2>Code fichiers</h2>
+
+                    <h3>1. variables.css :</h3>
+                    <pre><code>/* variables.css */
+                    :root {
+                    /* couleurs */
+                    --color-primary:   #007bff;
+                    --color-secondary: #6c757d;
+                    --color-success:   #28a745;
+                    --color-danger:    #dc3545;
+                    --color-warning:   #ffc107;
+                    --color-info:      #17a2b8;
+                    --color-light:     #f8f9fa;
+                    --color-dark:      #343a40;
+
+                    /* typographie */
+                    --font-family-sans:   'Helvetica Neue', Arial, sans-serif;
+                    --font-size-base:     1rem;
+                    --line-height-base:   1.5;
+
+                    /* espacements */
+                    --spacer: 1rem;
+                    --spacer-sm: .5rem;
+                    --spacer-lg: 2rem;
+
+                    /* rayons de bordure */
+                    --radius: .25rem;
+                    --radius-lg: .5rem;
+                    }
+                    </code></pre>
+
+                    <h3>2. reset.css :</h3>
+                    <pre><code>/* reset.css */
+                    *,
+                    *::before,
+                    *::after {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    }
+                    html {
+                    font-family: var(--font-family-sans);
+                    font-size: var(--font-size-base);
+                    line-height: var(--line-height-base);
+                    scroll-behavior: smooth;
+                    }
+                    body {
+                    background: var(--color-light);
+                    color: var(--color-dark);
+                    }
+                    img,
+                    picture,
+                    video,
+                    canvas,
+                    svg {
+                    display: block;
+                    max-width: 100%;
+                    height: auto;
+                    }
+                    a {
+                    color: var(--color-primary);
+                    text-decoration: none;
+                    }
+                    button {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font: inherit;
+                    }
+                    ul,
+                    ol {
+                    list-style: none;
+                    }
+                    </code></pre>
+
+                    <h3>Base.css :</h3>
+                    <pre><code>/* base.css */
+                    /* typographie globale */
+                    body {
+                    font-family: var(--font-family-sans);
+                    font-size: var(--font-size-base);
+                    line-height: var(--line-height-base);
+                    color: var(--color-dark);
+                    background: var(--color-light);
+                    }
+
+                    /* titres */
+                    h1, h2, h3, h4, h5, h6 {
+                    margin-top: var(--spacer-lg);
+                    margin-bottom: var(--spacer-sm);
+                    font-weight: 600;
+                    }
+
+                    /* paragraphes */
+                    p {
+                    margin-bottom: var(--spacer);
+                    }
+
+                    /* liens */
+                    a {
+                    color: var(--color-primary);
+                    text-decoration: underline;
+                    }
+                    a:hover,
+                    a:focus {
+                    text-decoration: none;
+                    opacity: .8;
+                    }
+
+                    /* formulaires */
+                    input,
+                    button,
+                    select,
+                    textarea {
+                    font: inherit;
+                    }
+
+                    /* listes */
+                    ul,
+                    ol {
+                    margin-bottom: var(--spacer);
+                    padding-left: var(--spacer-lg);
+                    }
+
+                    /* images */
+                    img {
+                    display: block;
+                    max-width: 100%;
+                    height: auto;
+                    }
+                    </code></pre>
+
+                    <h3>Layout.css :</h3>
+                    <pre><code>/* layout.css */
+
+                    /* wrapper général */
+                    .wrapper {
+                    display: grid;
+                    grid-template-rows: auto 1fr auto;
+                    min-height: 100vh;
+                    }
+
+                    /* header & footer */
+                    .header,
+                    .footer {
+                    background: var(--color-dark);
+                    color: #fff;
+                    padding: var(--spacer);
+                    }
+
+                    /* zone principale avec sidebar */
+                    .grid {
+                    display: grid;
+                    grid-template-columns: 250px 1fr;
+                    gap: var(--spacer);
+                    }
+
+                    /* sections */
+                    .section {
+                    padding: var(--spacer-lg) var(--spacer);
+                    }
+
+                    /* modules flex */
+                    .flex {
+                    display: flex;
+                    gap: var(--spacer);
+                    }
+                    .flex-center {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    }
+                    </code></pre>
+
+                    <h3>Components/buttons.css :</h3>
+                    <pre><code>/* boutons génériques (.btn) */
+                    .btn {
+                    display: inline-block;
+                    padding: var(--spacer-sm) var(--spacer);
+                    font-size: var(--font-size-base);
+                    line-height: var(--line-height-base);
+                    border-radius: var(--radius);
+                    background: var(--color-primary);
+                    color: #fff;
+                    text-align: center;
+                    text-decoration: none;
+                    transition: background .2s, opacity .2s;
+                    }
+                    .btn:hover,
+                    .btn:focus {
+                    background: var(--color-primary);
+                    opacity: .9;
+                    }
+                    .btn:active {
+                    transform: scale(.98);
+                    }
+                    </code></pre>
+
+                    <h3>Components/cards.css :</h3>
+                    <pre><code>/* carte (.card) */
+                    .card {
+                    border: 1px solid #ddd;
+                    border-radius: var(--radius);
+                    padding: var(--spacer);
+                    background: #fff;
+                    transition: box-shadow .3s, transform .3s;
+                    cursor: pointer;
+                    }
+                    .card:hover,
+                    .card:focus {
+                    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+                    transform: translateY(-4px);
+                    outline: none;
+                    }
+
+                    /* badge (.badge) et tag (.tag) */
+                    .badge,
+                    .tag {
+                    display: inline-block;
+                    padding: .2em .6em;
+                    font-size: .75rem;
+                    border-radius: var(--radius);
+                    margin-right: .4rem;
+                    }
+                    .badge {
+                    background: var(--color-secondary);
+                    color: #fff;
+                    }
+                    .tag {
+                    background: var(--color-light);
+                    color: var(--color-dark);
+                    }
+
+                    /* alerte (.alert) */
+                    .alert {
+                    padding: .8rem 1rem;
+                    border-radius: var(--radius);
+                    margin-bottom: var(--spacer);
+                    font-weight: 500;
+                    }
+                    .alert--success {
+                    background: var(--color-success);
+                    color: #fff;
+                    }
+                    .alert--danger {
+                    background: var(--color-danger);
+                    color: #fff;
+                    }
+                    .alert--warning {
+                    background: var(--color-warning);
+                    color: #212529;
+                    }
+                    .alert--info {
+                    background: var(--color-info);
+                    color: #fff;
+                    }
+                    </code></pre>
+
+                    <h3>Components/modals.css :</h3>
+                    <pre><code>/* conteneur modale (.modal) */
+                    .modal {
+                    position: fixed;
+                    inset: 0;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
+                    }
+                    .modal.is-open {
+                    display: flex;
+                    }
+
+                    /* voile sombre (.overlay) */
+                    .modal .overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: rgba(0,0,0,.5);
+                    }
+
+                    /* contenu de la modale */
+                    .modal__content {
+                    position: relative;
+                    background: #fff;
+                    padding: var(--spacer-lg);
+                    border-radius: var(--radius-lg);
+                    max-width: 90%;
+                    max-height: 90vh;
+                    overflow-y: auto;
+                    box-shadow: 0 4px 16px rgba(0,0,0,.2);
+                    }
+
+                    /* bouton de fermeture */
+                    .modal__content button {
+                    margin-top: var(--spacer);
+                    }
+                    </code></pre>
+
+                    <h3>Components/accordions.css :</h3>
+                    <pre><code>/* accordéon (<details>) */
+                    .accordion {
+                    border: 1px solid #ccc;
+                    border-radius: var(--radius);
+                    margin-bottom: var(--spacer);
+                    overflow: hidden;
+                    }
+                    .accordion summary {
+                    cursor: pointer;
+                    padding: var(--spacer);
+                    background: var(--color-light);
+                    list-style: none;
+                    position: relative;
+                    }
+                    .accordion summary::after {
+                    content: '+';
+                    position: absolute;
+                    right: var(--spacer);
+                    transition: transform .3s;
+                    }
+                    .accordion[open] summary::after {
+                    content: '–';
+                    }
+                    .accordion__content {
+                    padding: 0 var(--spacer) var(--spacer);
+                    background: #fff;
+                    }
+                    </code></pre>
+
+                    <h3>Components/sliders.css :</h3>
+                    <pre><code>/* conteneur slider */
+                    .slider {
+                    position: relative;
+                    overflow: hidden;
+                    max-width: 100%;
+                    }
+                    .slider__viewport {
+                    overflow: hidden;
+                    }
+                    .slider__track {
+                    display: flex;
+                    transition: transform .4s ease;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    }
+                    .slide {
+                    flex: 0 0 100%;
+                    padding: var(--spacer-lg);
+                    background: var(--color-light);
+                    text-align: center;
+                    }
+                    .slider__btn {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(0,0,0,.5);
+                    color: #fff;
+                    border: none;
+                    padding: .5rem;
+                    cursor: pointer;
+                    }
+                    .slider__btn.prev { left: .5rem; }
+                    .slider__btn.next { right: .5rem; }
+                    .slider__btn:disabled {
+                    opacity: .3;
+                    cursor: not-allowed;
+                    }
+                    </code></pre>
+
+                    <h3>Components/tooltips.css :</h3>
+                    <pre><code>/* tooltip CSS-only */
+                    .tooltip {
+                    position: relative;
+                    background: none;
+                    border: none;
+                    cursor: help;
+                    }
+                    .tooltip::after,
+                    .tooltip::before {
+                    position: absolute;
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity .2s;
+                    }
+                    .tooltip::after {
+                    content: attr(data-tooltip);
+                    bottom: 125%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: var(--color-dark);
+                    color: #fff;
+                    padding: .4em .6em;
+                    border-radius: var(--radius);
+                    white-space: nowrap;
+                    z-index: 10;
+                    }
+                    .tooltip::before {
+                    content: '';
+                    bottom: 115%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border: 5px solid transparent;
+                    border-top-color: var(--color-dark);
+                    z-index: 11;
+                    }
+                    .tooltip:hover::after,
+                    .tooltip:focus::after,
+                    .tooltip:hover::before,
+                    .tooltip:focus::before {
+                    opacity: 1;
+                    }
+                    </code></pre>
+
+                    <h3>Components/dropdown.css :</h3>
+                    <pre><code>/* menu déroulant CSS-only */
+                    .dropdown {
+                    position: relative;
+                    display: inline-block;
+                    }
+                    .dropdown__toggle {
+                    cursor: pointer;
+                    padding: var(--spacer-sm) var(--spacer);
+                    background: var(--color-primary);
+                    color: #fff;
+                    border-radius: var(--radius);
+                    }
+                    .dropdown__menu {
+                    position: absolute;
+                    top: 100%; left: 0;
+                    background: #fff;
+                    border: 1px solid #ccc;
+                    border-radius: var(--radius);
+                    padding: .5rem 0;
+                    margin-top: .25rem;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(10px);
+                    transition: opacity .2s, transform .2s, visibility .2s;
+                    z-index: 100;
+                    }
+                    .dropdown:hover .dropdown__menu,
+                    .dropdown:focus-within .dropdown__menu {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                    }
+                    .dropdown__menu a {
+                    display: block;
+                    padding: .5rem 1rem;
+                    color: var(--color-dark);
+                    text-decoration: none;
+                    }
+                    .dropdown__menu a:hover,
+                    .dropdown__menu a:focus {
+                    background: var(--color-light);
+                    }
+                    </code></pre>
+
+                    <h3>Utilities.css :</h3>
+                    <pre><code>/* utilities.css */
+                    .u-margin-top {
+                    margin-top: var(--spacer);
+                    }
+                    .u-margin-bottom {
+                    margin-bottom: var(--spacer);
+                    }
+                    .u-text-center {
+                    text-align: center;
+                    }
+                    .u-text-uppercase {
+                    text-transform: uppercase;
+                    }
+                    .u-hidden {
+                    display: none !important;
+                    }
+                    .u-flex {
+                    display: flex !important;
+                    }
+                    .u-flex-center {
+                    justify-content: center !important;
+                    align-items: center !important;
+                    }
+                    </code></pre>
+                </section>
+
+                <!-- Section Exemple d’HTML complet -->
+                <section class="sous-chapitre" aria-labelledby="exemple-html-titre">
+                <h2 id="exemple-html-titre">Exemple d’HTML complet</h2>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+
+                    &lt;html lang="fr"&gt;
+
+                    &lt;head&gt;
+
+                    &lt;meta charset="UTF-8"&gt;
+
+                    &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+
+                    &lt;title&gt;Exemple de site modulaire&lt;/title&gt;
+
+                    &lt;link rel="stylesheet" href="style.css"&gt;
+
+                    &lt;/head&gt;
+
+                    &lt;body&gt;
+
+                    &lt;!-- header avec ouverture de modale --&gt;
+
+                    &lt;header class="header"&gt;
+
+                        &lt;div class="container"&gt;
+
+                        &lt;h1&gt;Mon site modulaire&lt;/h1&gt;
+
+                        &lt;nav&gt;
+
+                            &lt;ul&gt;
+
+                            &lt;li&gt;&lt;a href="#slider"&gt;Slider&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#accordion"&gt;Accordéon&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#cards"&gt;Cartes&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#tooltips"&gt;Tooltips&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#notifications"&gt;Notifications&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#progress"&gt;Progress&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#wizard"&gt;Wizard&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#loader"&gt;Loader&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;/ul&gt;
+
+                        &lt;/nav&gt;
+
+                        &lt;button id="openModal" class="btn"&gt;Afficher modale&lt;/button&gt;
+
+                        &lt;/div&gt;
+
+                    &lt;/header&gt;
+
+                    &lt;div class="grid"&gt;
+
+                        &lt;!-- sidebar collapsible --&gt;
+
+                        &lt;aside class="sidebar"&gt;
+
+                        &lt;ul&gt;
+
+                            &lt;li&gt;&lt;a href="#slider"&gt;Slider&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#accordion"&gt;Accordéon&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#cards"&gt;Cartes&lt;/a&gt;&lt;/li&gt;
+
+                            &lt;li&gt;&lt;a href="#tooltips"&gt;Tooltips&lt;/a&gt;&lt;/li&gt;
+
+                        &lt;/ul&gt;
+
+                        &lt;/aside&gt;
+
+                    &lt;!-- contenu principal --&gt;
+                    &lt;main class="main container"&gt;
+
+                        &lt;!-- Slider --&gt;
+                        &lt;section id="slider" class="section"&gt;
+                        &lt;h2&gt;Slider / Carrousel&lt;/h2&gt;
+                        &lt;div class="slider" aria-label="Carrousel" tabindex="0"&gt;
+                            &lt;button class="slider__btn prev" aria-label="Précédent"&gt;&larr;&lt;/button&gt;
+                            &lt;div class="slider__viewport"&gt;
+                            &lt;ul class="slider__track"&gt;
+                                &lt;li class="slide"&gt;Slide 1&lt;/li&gt;
+                                &lt;li class="slide"&gt;Slide 2&lt;/li&gt;
+                                &lt;li class="slide"&gt;Slide 3&lt;/li&gt;
+                                &lt;li class="slide"&gt;Slide 4&lt;/li&gt;
+                            &lt;/ul&gt;
+                            &lt;/div&gt;
+                            &lt;button class="slider__btn next" aria-label="Suivant"&gt;&rarr;&lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;/section&gt;
+
+                        &lt;!-- Accordéon --&gt;
+                        &lt;section id="accordion" class="section"&gt;
+                        &lt;h2&gt;Accordéon&lt;/h2&gt;
+                        &lt;details class="accordion"&gt;
+                            &lt;summary&gt;Qu’est-ce qu’un accordéon ?&lt;/summary&gt;
+                            &lt;div class="accordion__content"&gt;
+                            &lt;p&gt;Composant natif pour masquer/afficher du contenu.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;details class="accordion"&gt;
+                            &lt;summary&gt;Pourquoi &amp;lt;details&amp;gt; ?&lt;/summary&gt;
+                            &lt;div class="accordion__content"&gt;
+                            &lt;p&gt;Gestion native du toggle et de l’accessibilité.&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/details&gt;
+                        &lt;/section&gt;
+
+                        &lt;!-- Cartes, badges, tags, alertes --&gt;
+                        &lt;section id="cards" class="section"&gt;
+                        &lt;h2&gt;Cartes, badges &amp; alertes&lt;/h2&gt;
+                        &lt;div class="card" tabindex="0" role="button" aria-pressed="false"&gt;
+                            &lt;h3&gt;Carte interactive&lt;/h3&gt;
+                            &lt;p&gt;Toggler l’état au clic ou Enter/Espace.&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;p&gt;
+                            &lt;span class="badge"&gt;NOUVEAU&lt;/span&gt;
+                            &lt;span class="tag"&gt;#CSS&lt;/span&gt;
+                        &lt;/p&gt;
+                        &lt;div class="alert alert--success" role="alert"&gt;
+                            ✔️ Succès : page chargée.
+                        &lt;/div&gt;
+                        &lt;div class="alert alert--danger" role="alert"&gt;
+                            ❌ Erreur rencontrée.
+                        &lt;/div&gt;
+                        &lt;/section&gt;
+
+                        &lt;!-- Tooltips --&gt;
+                        &lt;section id="tooltips" class="section"&gt;
+                        &lt;h2&gt;Tooltips CSS-only&lt;/h2&gt;
+                        &lt;p&gt;
+                            Survoler ou focuser sur le
+                            &lt;button class="tooltip" data-tooltip="Aide contextuelle"&gt;❔&lt;/button&gt;
+                        &lt;/p&gt;
+                        &lt;/section&gt;
+
+                        &lt;!-- Notifications / Toasts --&gt;
+                        &lt;section id="notifications" class="section"&gt;
+                        &lt;h2&gt;Toasts &amp; notifications&lt;/h2&gt;
+                        &lt;button id="notify" class="btn"&gt;Afficher notification&lt;/button&gt;
+                        &lt;div class="toast-container" aria-live="polite" aria-atomic="true"&gt;&lt;/div&gt;
+                        &lt;/section&gt;
+
+                        &lt;!-- Progress Bar --&gt;
+                        &lt;section id="progress" class="section"&gt;
+                        &lt;h2&gt;Progress bar animée&lt;/h2&gt;
+                        &lt;button id="startProgress" class="btn"&gt;Lancer progression&lt;/button&gt;
+                        &lt;div class="progress-bar"&gt;
+                            &lt;div class="progress-bar__fill"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;/section&gt;
+
+                        &lt;!-- Wizard --&gt;
+                        &lt;section id="wizard" class="section"&gt;
+                        &lt;h2&gt;Formulaire en étapes (Wizard)&lt;/h2&gt;
+                        &lt;div class="wizard"&gt;
+                            &lt;div class="wizard__progress"&gt;&lt;/div&gt;
+                            &lt;div class="step step--active"&gt;Étape 1 : infos perso&lt;/div&gt;
+                            &lt;div class="step"&gt;Étape 2 : adresse&lt;/div&gt;
+                            &lt;div class="step"&gt;Étape 3 : confirmation&lt;/div&gt;
+                            &lt;button id="prev" class="btn"&gt;Précédent&lt;/button&gt;
+                            &lt;button id="next" class="btn"&gt;Suivant&lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;/section&gt;
+
+                        &lt;!-- Loader & Skeleton --&gt;
+                        &lt;section id="loader" class="section"&gt;
+                        &lt;h2&gt;Loader &amp; Skeleton&lt;/h2&gt;
+                        &lt;div class="loader"&gt;&lt;/div&gt;
+                        &lt;div class="card-skeleton"&gt;
+                            &lt;div class="avatar-skel"&gt;&lt;/div&gt;
+                            &lt;div class="text-skel title"&gt;&lt;/div&gt;
+                            &lt;div class="text-skel line"&gt;&lt;/div&gt;
+                            &lt;div class="text-skel line short"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;/section&gt;
+
+                    &lt;/main&gt;
+                    </code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="script-composants-titre">
+                    <h2 id="script-composants-titre">Script pour les composants</h2>
+                    <pre><code>// script.js
+
+                    document.addEventListener('DOMContentLoaded', () =&gt; {
+
+                    // 1. Slider / Carrousel
+
+                    const track = document.querySelector('.slider__track');
+
+                    if (track) {
+
+                        const slides = Array.from(track.children);
+
+                        const prevBtn = document.querySelector('.slider__btn.prev');
+
+                        const nextBtn = document.querySelector('.slider__btn.next');
+
+                        const slider = document.querySelector('.slider');
+
+                        let index = 0;
+
+                        function updateSlider() {
+                        track.style.transform = `translateX(-${index * 100}%)`;
+                        prevBtn.disabled = index === 0;
+                        nextBtn.disabled = index === slides.length - 1;
+                        }
+
+                        prevBtn.addEventListener('click', () => {
+                        if (index &gt; 0) index--;
+                        updateSlider();
+                        });
+
+                        nextBtn.addEventListener('click', () => {
+                        if (index &lt; slides.length - 1) index++;
+                        updateSlider();
+                        });
+
+                        slider.addEventListener('keydown', e =&gt; {
+                        if (e.key === 'ArrowLeft' &amp;&amp; index &gt; 0) { index--; updateSlider(); }
+                        if (e.key === 'ArrowRight' &amp;&amp; index &lt; slides.length - 1) { index++; updateSlider(); }
+                        });
+
+                        updateSlider();
+                    }
+
+                    // 2. Carte toggle (état actif)
+
+                    const card = document.querySelector('.card[role="button"]');
+
+                    if (card) {
+
+                        function toggleCard() {
+
+                        const pressed = card.getAttribute('aria-pressed') === 'true';
+
+                        card.setAttribute('aria-pressed', String(!pressed));
+
+                        }
+
+                        card.addEventListener('click', toggleCard);
+
+                        card.addEventListener('keydown', e =&gt; {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleCard();
+                        }
+                        });
+
+                    }
+
+                    // 3. Modale personnalisée
+
+                    const modal = document.querySelector('.modal');
+
+                    const openBtn = document.getElementById('openModal');
+
+                    const closeBtn = document.getElementById('closeModal');
+
+                    const overlay = modal?.querySelector('.overlay');
+
+                    function toggleModal() {
+
+                        modal.classList.toggle('is-open');
+
+                        const hidden = modal.classList.contains('is-open') ? 'false' : 'true';
+                        modal.setAttribute('aria-hidden', hidden);
+
+                        if (hidden === 'false') trapFocus(modal);
+                    }
+
+                    if (openBtn &amp;&amp; closeBtn &amp;&amp; overlay &amp;&amp; modal) {
+
+                        openBtn.addEventListener('click', toggleModal);
+
+                        closeBtn.addEventListener('click', toggleModal);
+
+                        overlay.addEventListener('click', toggleModal);
+
+                        document.addEventListener('keydown', e =&gt; {
+                        if (e.key === 'Escape' &amp;&amp; modal.classList.contains('is-open')) {
+                            toggleModal();
+                        }
+                        });
+
+                    }
+
+                    function trapFocus(container) {
+
+                        const focusables = container.querySelectorAll(
+                        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+                        );
+
+                        if (!focusables.length) return;
+
+                        const first = focusables[0];
+
+                        const last = focusables[focusables.length - 1];
+
+                        first.focus();
+
+                        container.addEventListener('keydown', e =&gt; {
+                        if (e.key === 'Tab') {
+                            if (e.shiftKey &amp;&amp; document.activeElement === first) {
+                            e.preventDefault();
+                            last.focus();
+                            } else if (!e.shiftKey &amp;&amp; document.activeElement === last) {
+                            e.preventDefault();
+                            first.focus();
+                            }
+                        }
+                        });
+
+                    }
+
+                    // 4. Toggle sidebar
+
+                    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+
+                    if (toggleSidebarBtn) {
+
+                        toggleSidebarBtn.addEventListener('click', () =&gt; {
+                        document.body.classList.toggle('collapsed');
+                        });
+
+                    }
+
+                    // 5. Toast / Notification
+
+                    const toastContainer = document.querySelector('.toast-container');
+
+                    const notifyBtn = document.getElementById('notify');
+
+                    if (toastContainer &amp;&amp; notifyBtn) {
+                        notifyBtn.addEventListener('click', () =&gt; {
+                        const toast = document.createElement('div');
+
+                        toast.className = 'toast';
+
+                        toast.textContent = 'Opération réussie !';
+
+                        toastContainer.appendChild(toast);
+
+                        toast.addEventListener('animationend', e =&gt; {
+                            if (e.animationName === 'fade-out') toast.remove();
+                        });
+
+                        });
+                    }
+
+                    // 6. Progress bar
+
+                    const progressFill = document.querySelector('.progress-bar__fill');
+
+                    const startProgressBtn = document.getElementById('startProgress');
+
+                    if (progressFill &amp;&amp; startProgressBtn) {
+
+                        startProgressBtn.addEventListener('click', () =&gt; {
+
+                        progressFill.style.width = '100%';
+
+                        });
+
+                    }
+
+                    // 7. Wizard / Formulaire en étapes
+
+                    const steps = Array.from(document.querySelectorAll('.step'));
+
+                    const wizardProgress = document.querySelector('.wizard__progress');
+
+                    const prevWizardBtn = document.getElementById('prev');
+
+                    const nextWizardBtn = document.getElementById('next');
+
+                    let currentStep = 0;
+
+                    if (steps.length &amp;&amp; wizardProgress &amp;&amp; prevWizardBtn &amp;&amp; nextWizardBtn) {
+
+                        function updateWizard() {
+
+                        steps.forEach((step, i) =&gt; step.classList.toggle('step--active', i === currentStep));
+
+                        const pct = (currentStep) / (steps.length - 1) * 100;
+
+                        wizardProgress.style.width = pct + '%';
+
+                        prevWizardBtn.disabled = currentStep === 0;
+
+                        nextWizardBtn.disabled = currentStep === steps.length - 1;
+                        }
+
+                        prevWizardBtn.addEventListener('click', () =&gt; {
+                        if (currentStep &gt; 0) currentStep--, updateWizard();
+                        });
+
+                        nextWizardBtn.addEventListener('click', () =&gt; {
+                        if (currentStep &lt; steps.length - 1) currentStep++, updateWizard();
+                        });
+
+                        updateWizard();
+
+                    }
+
+                    });
+                    </code></pre>
+                </section>
+
+
+                <!-- Section Nomenclature -->
+                <section class="sous-chapitre" aria-labelledby="nomenclature">
+                <h2 id="nomenclature">Nomenclature des composants</h2>
+                <p>Utilisez des conventions de nommage cohérentes comme BEM (Block Element Modifier) pour vos classes CSS.</p>
+                </section>
+
+                <!-- Section Modularité -->
+                <section class="sous-chapitre" aria-labelledby="modularite">
+                <h2 id="modularite">Modularité et réutilisabilité</h2>
+                <p>Segmenter les styles par composants pour limiter les effets de bord et simplifier les mises à jour.</p>
+                </section>
+
+                <p class="date-publication">Publié le 28 juin 2025 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/BlogPage/css/CssChapitre23.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Sommaire cours →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapitre 4 CSS : Couleurs et arrière-plans</title>
+    <meta name="description" content="Apprenez à utiliser les couleurs et les arrière-plans en CSS : valeurs hexadécimales, RGB, HSL, transparence, dégradés, images de fond, etc." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="article-page" id="css-chapitre4">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 4 : Couleurs et arrière-plans</h1>
+
+                <section class="sous-chapitre" aria-labelledby="types-couleurs">
+                    <h2 id="types-couleurs">Types de couleurs en CSS</h2>
+                    <p>Différents formats existent pour définir une couleur :</p>
+                    <table>
+                        <caption>Formats de couleur CSS</caption>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>Exemple</th>
+                                <th>Détails</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Hexadécimal</td><td><code>#ff6600</code></td><td>Très utilisé (valeur RRGGBB)</td></tr>
+                            <tr><td>RGB</td><td><code>rgb(255, 100, 50)</code></td><td>Valeurs de 0 à 255</td></tr>
+                            <tr><td>RGBA</td><td><code>rgba(255, 100, 50, 0.5)</code></td><td>Avec transparence (0 à 1)</td></tr>
+                            <tr><td>HSL</td><td><code>hsl(30, 100%, 50%)</code></td><td>Teinte, saturation, luminosité</td></tr>
+                            <tr><td>HSLA</td><td><code>hsla(30, 100%, 50%, 0.3)</code></td><td>Ajoute l’opacité</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="proprietes-couleurs">
+                    <h2 id="proprietes-couleurs">Propriétés liées aux couleurs</h2>
+                    <ul>
+                        <li><code>color</code> : couleur du texte</li>
+                        <li><code>background-color</code> : couleur de fond</li>
+                        <li><code>border-color</code> : couleur de la bordure</li>
+                    </ul>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="images-fond">
+                    <h2 id="images-fond">Images de fond</h2>
+                    <p>Exemple d’utilisation d’une image en fond avec les propriétés associées :</p>
+                    <pre><code>body {
+    background-image: url('/assets/img/fond.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}</code></pre>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="degrades">
+                    <h2 id="degrades">Dégradés</h2>
+                    <p>On peut créer des dégradés linéaires ou radiaux :</p>
+                    <pre><code>div {
+    background: linear-gradient(to right, #ff6600, #ffcc00);
+}</code></pre>
+                    <p>Les directions possibles sont <code>to right</code>, <code>to bottom</code>, etc., et plusieurs couleurs ou transparences peuvent être utilisées.</p>
+                </section>
+
+                <p class="date-publication">Publié le 18 janvier 2025 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+                <li><a href="/sommaireCours/2.css/CssChapitre3.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+                <li><a href="/sommaireCours/2.css/CssChapitre5.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

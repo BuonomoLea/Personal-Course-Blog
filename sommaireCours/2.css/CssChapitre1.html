@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapitre 1 CSS : Inline, interne et externe</title>
+    <meta name="description" content="Découvrez les différentes façons d'inclure du CSS : styles inline, styles internes et fichiers CSS externes." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- CSS : Style inline, interne et externe -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+                <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+                <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+                <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+                <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre1">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 1 : Inline, interne et externe</h1>
+
+                <section class="sous-chapitre" aria-labelledby="intro-css">
+                    <h2 id="intro-css">Introduction aux différentes façons d’inclure du CSS</h2>
+                    <p>Le CSS peut être ajouté à une page web de trois manières principales :</p>
+                    <ul>
+                        <li>Inline : directement dans la balise HTML via l’attribut <code>style</code>.</li>
+                        <li>Interne : dans une balise <code>&lt;style&gt;</code> au sein du fichier HTML.</li>
+                        <li>Externe : via un fichier CSS séparé référencé avec <code>&lt;link&gt;</code>.</li>
+                    </ul>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="css-inline">
+                    <h2 id="css-inline">Styles inline</h2>
+                    <p>Les styles inline s’appliquent directement à un élément HTML :</p>
+                    <pre><code>&lt;h2 style="color: blue; font-size: 20px;"&gt;Titre bleu&lt;/h2&gt;</code></pre>
+                    <p>Avantages : rapide à utiliser, pratique pour un style ponctuel.<br>Inconvénients : difficile à maintenir, ne sépare pas la structure du style.</p>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="css-interne">
+                    <h2 id="css-interne">Styles internes</h2>
+                    <p>Les styles internes sont définis dans une balise <code>&lt;style&gt;</code> dans le <code>&lt;head&gt;</code> du document :</p>
+                    <pre><code>&lt;style&gt;
+    h2 {
+        color: green;
+        font-size: 24px;
+    }
+    &lt;/style&gt;</code></pre>
+                    <p>Avantages : utile pour des styles propres à une seule page.<br>Inconvénients : styles mélangés avec le HTML, pas réutilisables sur plusieurs pages.</p>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="css-externe">
+                    <h2 id="css-externe">Styles externes</h2>
+                    <p>Les styles externes sont placés dans un fichier CSS séparé, puis reliés avec :</p>
+                    <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+                    <p>Avantages : styles centralisés, maintenance simplifiée, partage facile entre plusieurs pages.<br>Inconvénients : nécessite une requête supplémentaire, mais largement compensé par la mise en cache.</p>
+                </section>
+
+                <p class="date-publication">Publié le 10 janvier 2025 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+                <li><a href="/sommaireCours.html" class="lien-chapitre precedent" aria-label="Retour au blog">← Retour au sommaire</a></li>
+                <li><a href="/sommaireCours/2.css/CssChapitre2.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

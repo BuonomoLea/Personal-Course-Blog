@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>Mémento Terminal - Manipulation des fichiers</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Terminal :</h1>
+
+        <!-- Manipulation des fichiers -->
+        <section class="sous-chapitre">
+        <h2>Manipulation des fichiers</h2>
+        <p>Ces commandes vous permettent de copier, déplacer, ou afficher vos fichiers.</p>
+
+        <p><strong>touch NomDuFichier</strong> : Crée un fichier vide nommé <code>NomDuFichier</code>.</p>
+        <p><em>Exemple</em> : <code>touch fichier_nouveau.txt</code>.</p>
+        <p><strong>Utilité</strong> : Préparer un fichier pour y travailler.</p>
+
+        <p><strong>cp Source Destination</strong> : Copie un fichier ou un dossier vers une autre destination.</p>
+        <p><em>Exemple</em> : <code>cp document.txt copie_document.txt</code> ou <code>cp -r DossierSource/ DossierDestination/</code>.</p>
+        <p><strong>Utilité</strong> : Dupliquer des fichiers ou dossiers.</p>
+
+        <p><strong>mv Source Destination</strong> : Déplace ou renomme un fichier.</p>
+        <p><em>Exemple</em> : <code>mv fichier1.txt dossier1/</code> (déplace le fichier dans un dossier) ou <code>mv ancien_nom.txt nouveau_nom.txt</code> (renomme le fichier).</p>
+
+        <p><strong>cat NomDuFichier</strong> : Affiche le contenu d’un fichier texte dans le terminal.</p>
+        <p><em>Exemple</em> : <code>cat notes.txt</code>.</p>
+        <p><strong>Utilité</strong> : Lire rapidement un fichier sans l’ouvrir dans un éditeur.</p>
+        </section>
+
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/MementoPage/Terminal/NavSystemFiles.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/MementoPag" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

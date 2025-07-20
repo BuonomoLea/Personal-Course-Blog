@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 15 CSS : Styles par défaut et personnalisation</title>
+  <meta name="description" content="Apprenez à gérer les styles par défaut des navigateurs et à personnaliser l'apparence de vos pages CSS efficacement." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- CSS : Styles par défaut et personnalisation -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre15">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 15 : Styles par défaut et personnalisation</h1>
+
+            <section class="sous-chapitre" aria-labelledby="styles-defaut">
+            <h2 id="styles-defaut">Comprendre les styles par défaut</h2>
+            <p>Les navigateurs appliquent des styles par défaut aux éléments HTML, ce qui peut entraîner des différences d'affichage entre navigateurs.</p>
+            <ul>
+                <li>Les styles par défaut varient selon les navigateurs et versions.</li>
+                <li>Ils affectent notamment les marges, paddings, polices, et tailles des éléments.</li>
+                <li>Il est conseillé d'utiliser des "reset CSS" ou "normalize.css" pour uniformiser les styles de base.</li>
+            </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="personnalisation-styles">
+            <h2 id="personnalisation-styles">Personnaliser vos styles</h2>
+            <ul>
+                <li>Définissez vos propres règles CSS pour contrôler précisément l'apparence.</li>
+                <li>Utilisez des variables CSS pour gérer facilement les couleurs et tailles.</li>
+                <li>Testez vos styles sur plusieurs navigateurs et appareils.</li>
+                <li>Gardez une cohérence visuelle en adoptant une charte graphique claire.</li>
+            </ul>
+            </section>
+
+            <!-- Nouvelle section ajoutée -->
+            <section class="sous-chapitre" aria-labelledby="exemples-styles">
+              <h2 id="exemples-styles">Exemples de styles par défaut et personnalisations ciblées</h2>
+
+              <h3>Boutons</h3>
+              <pre><code>button {
+  all: unset; /* supprime tous les styles natifs */
+  cursor: pointer;
+  padding: 0.8em 1.2em;
+  background-color: var(--primary-color);
+  border-radius: 6px;
+  color: white;
+  transition: background 0.3s;
+}
+button:hover {
+  background-color: var(--primary-hover);
+}</code></pre>
+
+              <h3>Champs (input, textarea)</h3>
+              <pre><code>input, textarea {
+  border: 1px solid #ccc;
+  padding: 0.6em;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus, textarea:focus {
+  border-color: var(--primary-color);
+  background-color: #f9f9ff;
+}</code></pre>
+
+              <h3>Liens</h3>
+              <pre><code>a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}</code></pre>
+
+              <h3>Neutralisation des styles natifs (reset CSS de base)</h3>
+              <pre><code>*, 
+*::before, 
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  line-height: 1.5;
+  font-family: system-ui, sans-serif;
+}</code></pre>
+            </section>
+
+            <p class="date-publication">Publié le 22 mars 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre14.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre16.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

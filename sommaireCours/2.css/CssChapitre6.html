@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 6 CSS : Box Model</title>
+  <meta name="description" content="Comprenez le modèle de boîte CSS (Box Model) : contenu, padding, bordure et marge. Fondamental pour maîtriser la disposition des éléments en CSS." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <main class="article-page" id="css-chapitre6">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 6 : Box Model</h1>
+
+            <section class="sous-chapitre" aria-labelledby="definition-boxmodel">
+            <h2 id="definition-boxmodel">Qu’est-ce que le Box Model ?</h2>
+            <p>Le modèle de boîte décrit la manière dont chaque élément HTML est modélisé dans le navigateur :</p>
+            <ul>
+                <li><strong>Content</strong> – Le contenu réel (texte, image, etc.)</li>
+                <li><strong>Padding</strong> – L’espace entre le contenu et la bordure</li>
+                <li><strong>Border</strong> – La bordure entourant l’élément</li>
+                <li><strong>Margin</strong> – L’espace entre l’élément et les autres éléments</li>
+            </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="illustration">
+            <h2 id="illustration">Illustration du modèle</h2>
+            <pre><code>+---------------------------+
+    |        margin            |
+    |  +--------------------+  |
+    |  |     border         |  |
+    |  |  +-------------+   |  |
+    |  |  |  padding    |   |  |
+    |  |  | +--------+  |   |  |
+    |  |  | | content|  |   |  |
+    |  |  | +--------+  |   |  |
+    |  |  +-------------+   |  |
+    |  +--------------------+  |
+    +---------------------------+</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="exemple-css">
+            <h2 id="exemple-css">Exemple CSS</h2>
+            <pre><code>.box {
+    padding: 20px;
+    border: 2px solid black;
+    margin: 30px;
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="box-sizing">
+            <h2 id="box-sizing">Propriété <code>box-sizing</code></h2>
+            <p>Par défaut, la taille d’un élément ne comprend que le contenu. En utilisant :</p>
+            <pre><code>* {
+    box-sizing: border-box;
+    }</code></pre>
+            <p>Le padding et la bordure sont inclus dans la largeur/hauteur définie.</p>
+            </section>
+
+            <p class="date-publication">Publié le 21 janvier 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre5.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre7.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

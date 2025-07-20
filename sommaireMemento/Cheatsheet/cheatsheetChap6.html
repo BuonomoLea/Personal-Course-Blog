@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>CheatSheet - CSS  Flexbox & CSS Grid</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="css-selecteurs">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Flexbox & CSS Grid</h1>
+
+        <!-- Flexbox -->
+        <section class="sous-chapitre">
+          <h2>Flexbox</h2>
+
+          <h3>Liste codes</h3>
+          <p>Principales propriétés du modèle Flexbox :</p>
+          <pre><code>
+        display: flex 
+
+        flex-direction : row | row-reverse | column | column-reverse 
+
+        flex-wrap : nowrap | wrap | wrap-reverse 
+
+        justify-content : flex-start | center | flex-end | space-between | space-around | space-evenly 
+
+        align-items : stretch | flex-start | center | flex-end | baseline 
+
+        align-content : stretch | flex-start | center | flex-end | space-between | space-around 
+
+        gap : &lt;longueur&gt; (espacement entre les items)
+          </code></pre>
+
+          <h3>Propriétés des items</h3>
+          <p>Utilisées pour contrôler le comportement individuel des éléments enfants dans le flex container :</p>
+          <pre><code>
+        order : &lt;entier&gt; (ordre de placement)
+
+        flex-grow : &lt;nombre&gt; (facteur d’expansion)
+
+        flex-shrink : &lt;nombre&gt; (facteur de rétrécissement)
+
+        flex-basis : &lt;longueur&gt; (taille initiale)
+
+        flex (shorthand) : &lt;flex-grow&gt; &lt;flex-shrink&gt;? &lt;flex-basis&gt;?
+
+        align-self : auto | flex-start | center | flex-end | baseline | stretch
+          </code></pre>
+
+          <h3>Exemple – centrer un contenu</h3>
+          <p>Utilisation classique de Flexbox pour centrer un élément horizontalement et verticalement :</p>
+          <pre><code>
+        .container { 
+          display: flex; 
+          justify-content: center; 
+          align-items: center; 
+        }
+          </code></pre>
+        </section>
+
+        <!-- CSS Grid -->
+        <section class="sous-chapitre">
+          <h2>CSS Grid</h2>
+
+          <h3>Liste codes</h3>
+          <p>Principales propriétés du modèle Grid pour définir lignes, colonnes et zones :</p>
+          <pre><code>
+        display : grid | inline-grid
+
+        grid-template-columns : &lt;track-list&gt; (ex : repeat(3, 1fr) ou 200px 1fr 100px)
+
+        grid-template-rows : &lt;track-list&gt;
+
+        grid-template-areas : "header header" "sidebar main" "footer footer"
+
+        gap : &lt;longueur&gt; (espace entre lignes et colonnes)
+
+        justify-items : start | end | center | stretch
+
+        align-items : start | end | center | stretch
+
+        justify-content : start | end | center | space-between | space-around | stretch
+
+        align-content : start | end | center | space-between | space-around | stretch
+
+        grid-auto-flow : row | column | dense | row dense | column dense
+          </code></pre>
+
+          <h3>Placement des items</h3>
+          <p>Définir la position des éléments enfants dans la grille :</p>
+          <pre><code>
+        grid-column : &lt;début&gt; / &lt;fin&gt;
+
+        grid-row : &lt;début&gt; / &lt;fin&gt;
+
+        grid-area : &lt;nom-zone&gt; | &lt;row-start&gt; / &lt;col-start&gt; / &lt;row-end&gt; / &lt;col-end&gt;
+          </code></pre>
+
+          <h3>Exemple – grille fluide auto-ajustable</h3>
+          <p>Exemple d’une grille responsive avec colonnes flexibles :</p>
+          <pre><code>
+        .container { 
+          display: grid; 
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+          gap: 1rem; 
+        }
+          </code></pre>
+        </section>
+
+
+        <p class="date-publication">Publié le 1 juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/sommaireMemento/Cheatsheet/cheatsheetChap5.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédente</a></li>
+        <li><a href="/sommaireMemento/Cheatsheet/cheatsheetChap7.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivante →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapitre 9 : Navigation entre les pages</title>
+    <meta name="description" content="Comprendre et maîtriser la navigation entre pages web grâce aux liens, menus et bonnes pratiques UX." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- HTML : Navigation entre les pages -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+                <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+                <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+                <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+                <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- MAIN -->
+    <main class="article-page" id="html-chapitre9">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+            <h1 id="titre-chapitre">Chapitre 9 : Navigation entre les pages</h1>
+
+            <section class="sous-chapitre" aria-labelledby="navigation-liens">
+                <h2 id="navigation-liens">1. Navigation entre les pages avec &lt;a href=""&gt;</h2>
+                <h3>Liens relatifs :</h3>
+                <pre><code>
+        &lt;a href="page2.html"&gt;Aller à la page 2&lt;/a&gt;
+        &lt;a href="dossier/contact.html"&gt;Contact&lt;/a&gt;
+        &lt;a href="../index.html"&gt;Retour à l’accueil&lt;/a&gt;
+                </code></pre>
+                <h3>Liens absolus :</h3>
+                <pre><code>
+        &lt;a href="https://exemple.com"&gt;Site externe&lt;/a&gt;
+                </code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="navigation-sur-meme-page">
+                <h2 id="navigation-sur-meme-page">2. Navigation sur une même page</h2>
+                <h3>a. Créer un point d’ancrage :</h3>
+                <pre><code>
+        &lt;h2 id="services"&gt;Nos services&lt;/h2&gt;
+                </code></pre>
+                <h3>b. Faire un lien vers cette ancre :</h3>
+                <pre><code>
+        &lt;a href="#services"&gt;Voir les services&lt;/a&gt;
+                </code></pre>
+                <p>Pour qu’au clic le scroll automatique vers l’élément ayant cet ID soit plus agréable, on applique du CSS :</p>
+                <pre><code>
+        * {
+        scroll-behavior: smooth;
+        }
+                </code></pre>
+                <h3>c. Cibler un élément d’une autre page :</h3>
+                <pre><code>
+        &lt;a href="page2.html#formulaire"&gt;Aller directement au formulaire sur la page 2&lt;/a&gt;
+                </code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="arborescence-projet">
+                <h2 id="arborescence-projet">3. Arborescence d’un projet web classique</h2>
+                <pre><code>
+        /mon-site/
+        ├── index.html
+        ├── /page/
+        │   ├── contact.html
+        │   ├── services.html
+        │   └── mentions-legales.html
+        ├── /css/
+        │   └── style.css
+        ├── /js/
+        │   └── script.js
+        └── /assets/
+            └── logo.png
+                </code></pre>
+                <h3>Conseils :</h3>
+                <ul>
+                <li>Noms de fichiers et dossiers sans espaces ni majuscules</li>
+                <li>Organiser le contenu dans des sous-dossiers</li>
+                <li>Toujours mettre index.html à la racine</li>
+                </ul>
+            </section>
+
+            <p class="date-publication">Publié le 6 décembre 2024 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+            <li><a href="/sommaireCours/1.html/HtmlChapitre8.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href=/sommaireCours/1.html/HtmlChapitre10.html class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

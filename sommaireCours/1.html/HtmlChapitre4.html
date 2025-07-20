@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 4 : Logique hiérarchique et imbriquée</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- HTML : Logique hiérarchique et imbriquée en HTML -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+              <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+              <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+              <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+              <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="html-chapitre4">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 4 : Logique hiérarchique et imbriquée en HTML</h1>
+
+                <section class="sous-chapitre" aria-labelledby="importance-hierarchie">
+                    <h2 id="importance-hierarchie">Pourquoi la hiérarchie est-elle importante ?</h2>
+                    <p>HTML repose sur une structure hiérarchique logique. Cela permet aux navigateurs et aux technologies d’assistance de comprendre quelles parties du contenu sont les plus importantes ou à quoi elles servent.</p>
+                    <ul>
+                        <li>Les titres vont de <code>&lt;h1&gt;</code> (le plus important) à <code>&lt;h6&gt;</code>.</li>
+                        <li>Les balises sont imbriquées selon leur relation logique : un <code>&lt;section&gt;</code> peut contenir un <code>&lt;article&gt;</code>, et ainsi de suite.</li>
+                        <li>Une bonne hiérarchie améliore le référencement (SEO) et l’accessibilité.</li>
+                    </ul>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="structure-imbriquee">
+                    <h2 id="structure-imbriquee">Exemple de structure imbriquée</h2>
+                    <p>Voici un exemple simple d’organisation logique :</p>
+                    <pre><code>
+&lt;body&gt;
+
+  &lt;header&gt;
+
+    &lt;h1&gt;Titre principal unique de la page&lt;/h1&gt;
+
+    &lt;nav&gt;
+
+      &lt;ul&gt; (liste de liens de navigation)
+
+        &lt;li&gt;&lt;a&gt; : Liens de menu
+
+      &lt;/ul&gt;
+
+    &lt;/nav&gt;
+
+  &lt;/header&gt;
+
+  &lt;main&gt;
+
+    &lt;section&gt; (bloc thématique principal)
+
+      &lt;h2&gt;Titre de section&lt;/h2&gt;
+
+      &lt;p&gt;Paragraphe&lt;/p&gt;
+
+      &lt;span&gt;Élément de style inline dans du texte&lt;/span&gt;
+
+      &lt;a&gt;Lien hypertexte&lt;/a&gt;
+
+      &lt;strong&gt; / &lt;em&gt; : Mise en valeur
+
+      &lt;img&gt; : Image illustrative
+
+    &lt;/section&gt;
+
+    &lt;section&gt; (autre bloc)
+
+      &lt;h2&gt;Nouveau sujet&lt;/h2&gt;
+
+      &lt;article&gt; (contenu autonome, ex. un post ou une actu)
+
+        &lt;h3&gt;Titre de l’article&lt;/h3&gt;
+
+        &lt;p&gt;Contenu&lt;/p&gt;
+
+        &lt;img&gt; : Illustration de l’article
+
+      &lt;/article&gt;
+
+      &lt;article&gt; (autre élément autonome)&lt;/article&gt;
+
+      &lt;aside&gt; (contenu complémentaire)
+
+        &lt;h2&gt;Titre de l'encart&lt;/h2&gt;
+
+        &lt;ul&gt; ou &lt;ol&gt; : Liste d'infos secondaires
+
+          &lt;li&gt;Élément de liste&lt;/li&gt;
+
+        &lt;/ul&gt;
+
+      &lt;/aside&gt;
+
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+
+    &lt;p&gt;Mentions ou copyright&lt;/p&gt;
+
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+                    </code></pre>
+                    <p>Chaque élément est placé dans un conteneur qui reflète son rôle sémantique dans la page.</p>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="bonnes-pratiques-hierarchie">
+                    <h2 id="bonnes-pratiques-hierarchie">Bonnes pratiques</h2>
+                    <ul>
+                        <li>Un seul <code>&lt;h1&gt;</code> par page, généralement pour le titre principal.</li>
+                        <li>Respecter l’ordre hiérarchique (pas de <code>&lt;h3&gt;</code> avant un <code>&lt;h2&gt;</code>).</li>
+                        <li>Ne pas imbriquer des balises sans logique : par exemple, éviter de mettre un <code>&lt;footer&gt;</code> dans un <code>&lt;nav&gt;</code>.</li>
+                    </ul>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="impact-accessibilite">
+                    <h2 id="impact-accessibilite">Impact sur l'accessibilité</h2>
+                    <p>Une structure claire permet aux lecteurs d’écran de naviguer efficacement. Par exemple, un utilisateur malvoyant pourra sauter directement de section en section grâce à la hiérarchie bien définie des titres.</p>
+                </section>
+
+                <p class="date-publication">Publié le 12 novembre 2024 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre3.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre5.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

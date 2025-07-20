@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 11 CSS : Transitions et animations</title>
+  <meta name="description" content="Apprenez à utiliser les transitions CSS et animations keyframes pour dynamiser vos interfaces web." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre11">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 11 : Transitions et animations</h1>
+
+            <section class="sous-chapitre" aria-labelledby="transitions-css">
+            <h2 id="transitions-css">Les transitions CSS</h2>
+            <p>Les transitions permettent d’ajouter des effets de changement progressif entre deux états CSS (par exemple, au survol d’un bouton).</p>
+            <pre><code>button {
+    background-color: blue;
+    transition: background-color 0.3s ease;
+    }
+    button:hover {
+    background-color: green;
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="animations-css">
+            <h2 id="animations-css">Les animations CSS (keyframes)</h2>
+            <p>Les animations créent des effets complexes en plusieurs étapes définies par des <code>@keyframes</code>.</p>
+            <pre><code>@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+    }
+
+    .element {
+    animation: slideIn 1s ease-in-out;
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="bonnes-pratiques-animations">
+            <h2 id="bonnes-pratiques-animations">Bonnes pratiques</h2>
+            <ul>
+                <li>Ne pas surcharger une page avec trop d’animations</li>
+                <li>Respecter l’accessibilité (éviter les mouvements excessifs)</li>
+                <li>Utiliser <code>prefers-reduced-motion</code> si nécessaire</li>
+            </ul>
+            <pre><code>@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+    }</code></pre>
+            </section>
+
+            <p class="date-publication">Publié le 10 mars 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre10.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre12.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

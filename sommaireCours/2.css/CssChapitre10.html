@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 10 CSS : Responsive design</title>
+  <meta name="description" content="Comprenez les bases du responsive design avec CSS : media queries, flexibilité des mises en page, et unités relatives." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre10">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 10 : Responsive design</h1>
+
+            <section class="sous-chapitre" aria-labelledby="definition-responsive">
+            <h2 id="definition-responsive">Qu’est-ce que le responsive design&nbsp;?</h2>
+            <p>Le responsive design consiste à adapter une page web à toutes les tailles d’écran&nbsp;: ordinateurs, tablettes, smartphones, etc.</p>
+            <p>Objectif&nbsp;: offrir une expérience utilisateur optimale, quelle que soit la résolution.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="media-queries">
+            <h2 id="media-queries">Utiliser les media queries</h2>
+            <p>Les <code>@media</code> queries permettent d’appliquer des styles en fonction des caractéristiques du périphérique.</p>
+            <pre><code>@media screen and (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+    }
+    }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="unites-relatives">
+            <h2 id="unites-relatives">Unités relatives et flexibilité</h2>
+            <ul>
+                <li><code>%</code> : basé sur l’élément parent</li>
+                <li><code>em</code>, <code>rem</code> : basé sur la taille de police</li>
+                <li><code>vw</code>, <code>vh</code> : basé sur la taille de la fenêtre</li>
+            </ul>
+            <p>L’utilisation de ces unités permet une mise en page plus fluide.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="bonnes-pratiques">
+            <h2 id="bonnes-pratiques">Bonnes pratiques</h2>
+            <ul>
+                <li>Utiliser une grille flexible (Flexbox ou Grid)</li>
+                <li>Prévoir une navigation mobile claire</li>
+                <li>Éviter les largeurs fixes</li>
+                <li>Tester sur plusieurs tailles d’écrans</li>
+            </ul>
+            </section>
+
+            <p class="date-publication">Publié le 7 mars 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre9.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre11.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

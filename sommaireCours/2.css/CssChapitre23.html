@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 23 CSS : Mini design system & utilitaires</title>
+  <meta name="description" content="Apprenez à créer un mini design system CSS avec des utilitaires réutilisables pour un développement plus efficace et cohérent." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre23">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 23 : Mini design system & utilitaires</h1>
+
+            <section class="sous-chapitre" aria-labelledby="definition-design-system">
+            <h2 id="definition-design-system">Qu’est-ce qu’un mini design system ?</h2>
+            <p>Un mini design system regroupe des composants CSS réutilisables, facilitant la cohérence et la maintenance du style sur un projet.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="utilitaires-css">
+            <h2 id="utilitaires-css">Utilitaires CSS courants</h2>
+            <p>Les classes utilitaires permettent d’appliquer rapidement des styles simples comme les marges, paddings, alignements ou couleurs.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="avantages">
+            <h2 id="avantages">Avantages d’un design system</h2>
+            <ul>
+                <li>Gain de temps en développement</li>
+                <li>Uniformité visuelle</li>
+                <li>Facilité de maintenance</li>
+            </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="variables-css">
+            <h2 id="variables-css">1. Fichier <code>variables.css</code></h2>
+            <p>Définir toutes les couleurs, tailles, espacements et polices sous forme de variables CSS permet de centraliser le thème et de faciliter la maintenance.</p>
+            <pre><code>:root {
+            /* couleurs */
+            --color-primary:   #007bff;
+            --color-secondary: #6c757d;
+            --color-success:   #28a745;
+            --color-danger:    #dc3545;
+            --color-warning:   #ffc107;
+            --color-info:      #17a2b8;
+            --color-light:     #f8f9fa;
+            --color-dark:      #343a40;
+
+            /* typographie */
+            --font-family-sans:   'Helvetica Neue', Arial, sans-serif;
+            --font-size-base:     1rem;
+            --line-height-base:   1.5;
+
+            /* espacements */
+            --spacer: 1rem;
+            --spacer-sm: .5rem;
+            --spacer-lg: 2rem;
+
+            /* rayons de bordure */
+            --radius: .25rem;
+            --radius-lg: .5rem;
+            }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="reset-css">
+            <h2 id="reset-css">2. Reset CSS</h2>
+            <p>Réinitialiser les marges, paddings et styles natifs des navigateurs pour partir sur une base uniforme et cohérente.</p>
+            <pre><code>*, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            }
+            html {
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            scroll-behavior: smooth;
+            }
+            body {
+            background: var(--color-light);
+            color: var(--color-dark);
+            }
+            /* Médias */
+            img, picture, video, canvas, svg {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            }
+            /* Liens et boutons */
+            a {
+            text-decoration: none;
+            color: inherit;
+            }
+            button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font: inherit;
+            }
+            ul {
+            list-style: none;
+            }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="utilitaires-reutilisables">
+            <h2 id="utilitaires-reutilisables">3. Utilitaires CSS réutilisables</h2>
+            <p>Ces classes permettent de gérer rapidement la visibilité, les espacements ou la présentation de base de certains éléments.</p>
+            <pre><code>/* cacher visuellement mais accessible */
+            .visually-hidden, .sr-only {
+            position: absolute !important;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+            }
+
+            /* bouton standard */
+            .btn {
+            display: inline-block;
+            padding: var(--spacer-sm) var(--spacer);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            border-radius: var(--radius);
+            background: var(--color-primary);
+            color: #fff;
+            text-align: center;
+            transition: background .2s;
+            }
+            .btn:hover, .btn:focus {
+            opacity: .9;
+            }
+
+            /* conteneur centré */
+            .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacer);
+            padding-right: var(--spacer);
+            }
+            @media (min-width: 576px) { .container { max-width: 540px; } }
+            @media (min-width: 768px) { .container { max-width: 720px; } }
+            @media (min-width: 992px) { .container { max-width: 960px; } }
+            @media (min-width: 1200px){ .container { max-width: 1140px; } }</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="architecture-css">
+            <h2 id="architecture-css">4. Architecture CSS par composants</h2>
+            <p>Organiser les feuilles de style CSS en modules spécialisés simplifie la gestion du code à mesure que le projet grandit.</p>
+            <ul>
+                <li><code>variables.css</code></li>
+                <li><code>reset.css</code></li>
+                <li><code>base.css</code> (typographie, formulaires, etc.)</li>
+                <li><code>layout.css</code> (grilles, conteneurs, header/footer)</li>
+                <li><code>components/</code> :
+                <ul>
+                    <li>_buttons.css</li>
+                    <li>_cards.css</li>
+                    <li>_modals.css</li>
+                    <li>_accordions.css</li>
+                    <li>_tooltips.css</li>
+                </ul>
+                </li>
+                <li><code>utilities.css</code></li>
+            </ul>
+            <p>Exemple de fichier principal <code>main.css</code> :</p>
+            <pre><code>@import 'variables.css';
+            @import 'reset.css';
+            @import 'base.css';
+            @import 'layout.css';
+            @import 'components/buttons.css';
+            @import 'components/cards.css';
+            @import 'components/modals.css';
+            @import 'components/accordions.css';
+            @import 'components/tooltips.css';
+            @import 'utilities.css';</code></pre>
+            </section>
+
+
+            <p class="date-publication">Publié le 28 juin 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre22.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre24.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

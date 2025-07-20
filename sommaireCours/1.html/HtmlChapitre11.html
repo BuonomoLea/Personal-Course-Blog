@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapitre 11 : Caractères typographiques et autres</title>
+    <meta name="description" content="Explorez les caractères spéciaux, entités HTML et les bonnes pratiques typographiques pour le web." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+<!-- HTML : Caractères typographiques et autres -->
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="ul-nav">
+                <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+                <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+                <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+                <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="html-chapitre11">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+            <article>
+                <h1 id="titre-chapitre">Chapitre 11 : Caractères typographiques et autres</h1>
+
+                <section class="sous-chapitre" aria-labelledby="entites-html">
+                    <h2 id="entites-html">Entités HTML</h2>
+                    <p>Pour afficher certains caractères spéciaux, il faut utiliser des entités HTML comme :</p>
+                    <table>
+                        <caption>Caractères typographiques courants</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Symbole</th>
+                                <th scope="col">Code HTML</th>
+                                <th scope="col">Signification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><code>&amp;nbsp;</code></td>
+                                <td>Espace insécable</td>
+                            </tr>
+                            <tr>
+                                <td>&lt;</td>
+                                <td><code>&amp;lt;</code></td>
+                                <td>Signe inférieur (balise ouvrante)</td>
+                            </tr>
+                            <tr>
+                                <td>&gt;</td>
+                                <td><code>&amp;gt;</code></td>
+                                <td>Signe supérieur (balise fermante)</td>
+                            </tr>
+                            <tr>
+                                <td>&amp;</td>
+                                <td><code>&amp;amp;</code></td>
+                                <td>Esperluette</td>
+                            </tr>
+                            <tr>
+                                <td>"</td>
+                                <td><code>&amp;quot;</code></td>
+                                <td>Guillemet double</td>
+                            </tr>
+                            <tr>
+                                <td>'</td>
+                                <td><code>&amp;apos;</code></td>
+                                <td>Apostrophe (moins courant)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="symboles-legaux">
+                    <h2 id="symboles-legaux">Symboles légaux et commerciaux</h2>
+                    <table>
+                        <caption>Symboles légaux et commerciaux</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Symbole</th>
+                                <th scope="col">Code HTML</th>
+                                <th scope="col">Signification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>©</td>
+                                <td><code>&amp;copy;</code></td>
+                                <td>Copyright</td>
+                            </tr>
+                            <tr>
+                                <td>®</td>
+                                <td><code>&amp;reg;</code></td>
+                                <td>Marque déposée</td>
+                            </tr>
+                            <tr>
+                                <td>™</td>
+                                <td><code>&amp;trade;</code></td>
+                                <td>Marque commerciale</td>
+                            </tr>
+                            <tr>
+                                <td>€</td>
+                                <td><code>&amp;euro;</code></td>
+                                <td>Euro</td>
+                            </tr>
+                            <tr>
+                                <td>£</td>
+                                <td><code>&amp;pound;</code></td>
+                                <td>Livre sterling</td>
+                            </tr>
+                            <tr>
+                                <td>$</td>
+                                <td><code>$</code></td>
+                                <td>Dollar</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="maths-symboles">
+                    <h2 id="maths-symboles">Maths et symboles divers</h2>
+                    <table>
+                        <caption>Symboles mathématiques et divers</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Symbole</th>
+                                <th scope="col">Code HTML</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>÷</td>
+                                <td><code>&amp;divide;</code></td>
+                                <td>Division</td>
+                            </tr>
+                            <tr>
+                                <td>×</td>
+                                <td><code>&amp;times;</code></td>
+                                <td>Multiplication</td>
+                            </tr>
+                            <tr>
+                                <td>¼</td>
+                                <td><code>&amp;frac14;</code></td>
+                                <td>Un quart</td>
+                            </tr>
+                            <tr>
+                                <td>½</td>
+                                <td><code>&amp;frac12;</code></td>
+                                <td>Un demi</td>
+                            </tr>
+                            <tr>
+                                <td>°</td>
+                                <td><code>&amp;deg;</code></td>
+                                <td>Degré</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="sous-chapitre" aria-labelledby="bonnes-pratiques">
+                    <h2 id="bonnes-pratiques">Bonnes pratiques typographiques</h2>
+                    <p>Quelques recommandations pour une typographie web lisible et accessible :</p>
+                    <ul>
+                        <li>Utilisez des guillemets français : <code>&amp;laquo;</code> et <code>&amp;raquo;</code>.</li>
+                        <li>Ajoutez une espace insécable avant les deux-points, points d'interrogation et d'exclamation.</li>
+                        <li>Utilisez les balises <code>&lt;q&gt;</code> pour les citations courtes, et <code>&lt;blockquote&gt;</code> pour les longues citations.</li>
+                    </ul>
+                </section>
+
+                <p class="date-publication">Publié le 20 décembre 2024 par <span class="auteur">Lyc</span></p>
+            </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+            <ul>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre10.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+                <li><a href="/sommaireCours/1.html/HtmlChapitre12.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

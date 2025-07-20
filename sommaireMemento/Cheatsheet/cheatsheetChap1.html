@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog sur les technologies web modernes" />
+  <title>CheatSheet - HTML : Balises sémantiques</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <script type="module" src="/js/script.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <site-header role="banner"></site-header>
+
+  <!-- MAIN -->
+  <main class="article-page" id="memento-chapitre1">
+    <section class="chapitre" aria-labelledby="titre-chapitre">
+      <article>
+        <h1 id="titre-chapitre">Les balises sémantiques</h1>
+
+        <section class="sous-chapitre">
+          <h2>Structure principale</h2>
+          <ul>
+            <li><code>&lt;html&gt;</code> : racine du document</li>
+            <li><code>&lt;head&gt;</code> : métadonnées, imports, titre</li>
+            <li><code>&lt;body&gt;</code> : contenu visible</li>
+          </ul>
+        </section>
+
+        <section class="sous-chapitre">
+          <h2>Sectioning content</h2>
+          <ul>
+            <li><code>&lt;header&gt;</code> : en-tête de page/section</li>
+            <li><code>&lt;nav&gt;</code> : menu de navigation</li>
+            <li><code>&lt;main&gt;</code> : contenu principal unique</li>
+            <li><code>&lt;section&gt;</code> : bloc thématique avec titre</li>
+            <li><code>&lt;article&gt;</code> : contenu autonome (post, actu)</li>
+            <li><code>&lt;aside&gt;</code> : contenu périphérique (sidebar, widget)</li>
+            <li><code>&lt;footer&gt;</code> : pied de page/section</li>
+          </ul>
+        </section>
+
+        <section class="sous-chapitre">
+          <h2>Grouping content</h2>
+          <ul>
+            <li><code>&lt;figure&gt;</code> : image ou média autonome</li>
+            <li><code>&lt;figcaption&gt;</code> : légende de la figure</li>
+            <li><code>&lt;details&gt;</code> : bloc repliable (accordéon)</li>
+            <li><code>&lt;summary&gt;</code> : résumé cliquable de <code>&lt;details&gt;</code></li>
+            <li><code>&lt;dialog&gt;</code> : boîte de dialogue native</li>
+          </ul>
+        </section>
+
+        <section class="sous-chapitre">
+          <h2>Text content</h2>
+          <ul>
+            <li><code>&lt;h1&gt;</code> – <code>&lt;h6&gt;</code> : titres hiérarchiques</li>
+            <li><code>&lt;p&gt;</code> : paragraphe</li>
+            <li><code>&lt;address&gt;</code> : coordonnées de contact</li>
+            <li><code>&lt;blockquote&gt;</code> : citation longue</li>
+            <li><code>&lt;q&gt;</code> : citation courte</li>
+            <li><code>&lt;pre&gt;</code> : texte préformaté</li>
+            <li><code>&lt;hr&gt;</code> : séparation thématique</li>
+          </ul>
+        </section>
+
+        <section class="sous-chapitre">
+          <h2>Text-level semantics</h2>
+          <ul>
+            <li><code>&lt;a&gt;</code> : lien hypertexte</li>
+            <li><code>&lt;strong&gt;</code> / <code>&lt;b&gt;</code> : importance / gras</li>
+            <li><code>&lt;em&gt;</code> / <code>&lt;i&gt;</code> : emphase / italique</li>
+            <li><code>&lt;mark&gt;</code> : surlignage</li>
+            <li><code>&lt;small&gt;</code> : note ou fine imprimé</li>
+            <li><code>&lt;abbr&gt;</code> : abréviation</li>
+            <li><code>&lt;cite&gt;</code> : titre d’œuvre</li>
+            <li><code>&lt;dfn&gt;</code> : définition</li>
+            <li><code>&lt;time&gt;</code> : date/heure (attribut <code>datetime</code>)</li>
+            <li><code>&lt;del&gt;</code> / <code>&lt;ins&gt;</code> : suppression / insertion</li>
+            <li><code>&lt;sub&gt;</code> / <code>&lt;sup&gt;</code> : indice / exposant</li>
+            <li><code>&lt;bdi&gt;</code> : isolation directionnelle</li>
+            <li><code>&lt;bdo&gt;</code> : override directionnel</li>
+          </ul>
+        </section>
+
+        <section class="sous-chapitre">
+          <h2>Embedded content</h2>
+          <ul>
+            <li><code>&lt;img&gt;</code> : image</li>
+            <li><code>&lt;picture&gt;</code> + <code>&lt;source&gt;</code> : images responsive</li>
+            <li><code>&lt;audio&gt;</code> / <code>&lt;video&gt;</code> + <code>&lt;source&gt;</code> + <code>&lt;track&gt;</code></li>
+            <li><code>&lt;embed&gt;</code> / <code>&lt;object&gt;</code> : contenu tiers</li>
+            <li><code>&lt;canvas&gt;</code> : dessin dynamique</li>
+            <li><code>&lt;svg&gt;</code> : vecteurs</li>
+          </ul>
+        </section>
+
+        <section class="sous-chapitre">
+          <h2>Tabular data</h2>
+          <ul>
+            <li><code>&lt;table&gt;</code> : tableau</li>
+            <li><code>&lt;caption&gt;</code> : titre de tableau</li>
+            <li><code>&lt;thead&gt;</code> / <code>&lt;tbody&gt;</code> / <code>&lt;tfoot&gt;</code></li>
+            <li><code>&lt;tr&gt;</code> / <code>&lt;th&gt;</code> / <code>&lt;td&gt;</code></li>
+            <li><code>&lt;colgroup&gt;</code> / <code>&lt;col&gt;</code></li>
+          </ul>
+        </section>
+
+        <section class="sous-chapitre">
+          <h2>Forms & inputs</h2>
+          <ul>
+            <li><code>&lt;form&gt;</code> : conteneur de champs</li>
+            <li><code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code></li>
+            <li><code>&lt;label&gt;</code> : étiquette associée</li>
+            <li><code>&lt;input&gt;</code> (types : text, email, checkbox…)</li>
+            <li><code>&lt;textarea&gt;</code> / <code>&lt;button&gt;</code> / <code>&lt;select&gt;</code></li>
+            <li><code>&lt;optgroup&gt;</code> / <code>&lt;option&gt;</code></li>
+            <li><code>&lt;datalist&gt;</code> / <code>&lt;output&gt;</code></li>
+            <li><code>&lt;progress&gt;</code> / <code>&lt;meter&gt;</code></li>
+          </ul>
+        </section>
+
+        <section class="sous-chapitre">
+          <h2>Interactive elements</h2>
+          <ul>
+            <li><code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code> (déjà listé)</li>
+            <li><code>&lt;dialog&gt;</code> (déjà listé)</li>
+            <li><code>&lt;menu&gt;</code> / <code>&lt;menuitem&gt;</code> (menus contextuels)</li>
+            <li><code>&lt;slot&gt;</code> (Web Components)</li>
+          </ul>
+        </section>
+
+        <section class="sous-chapitre">
+          <h2>Balises non-sémantiques</h2>
+          <ul>
+            <li><code>&lt;div&gt;</code> : conteneur bloc générique</li>
+            <li>Alternatives sémantiques : <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code></li>
+            <li><code>&lt;span&gt;</code> : conteneur inline générique</li>
+            <li>Alternatives sémantiques : <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;mark&gt;</code>, <code>&lt;code&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;abbr&gt;</code></li>
+          </ul>
+        </section>
+
+        <p class="date-publication">Publié le 1er juillet 2025 par <span class="auteur">Lyc</span></p>
+      </article>
+    </section>
+
+    <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+      <ul>
+        <li><a href="/sommaireMemento.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Sommaire memento</a></li>
+        <li><a href="/sommaireMemento/Cheatsheet/cheatsheetChap2.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- FOOTER -->
+  <site-footer></site-footer>
+</body>
+</html>

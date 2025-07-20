@@ -1,0 +1,44 @@
+html, body { 
+    overflow-x: hidden;
+} 
+body { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    scroll-behavior: smooth; 
+    font-family: var(--font-one); 
+    background-color: var(--color-one);
+    position: relative; 
+    overflow: hidden; 
+    width: 100%;
+    color: var(--color-four);
+} 
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-snap-align: y mandatory;
+}
+
+/* - reset - */
+li, a {
+    list-style: none;
+    color: inherit;
+    text-decoration: none;
+}
+svg {
+    width: 40px;
+    height: 40px;
+    fill: #333;
+}
+img {
+    max-width: 40vw;
+    max-height: 40vw;
+}
+pre {
+    margin: 3rem 0;
+}
+strong {
+    line-height: 2;
+}

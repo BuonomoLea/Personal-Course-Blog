@@ -1,0 +1,43 @@
+.pointer {
+    cursor: pointer;
+}
+.title {
+    width: 100%;
+    font-size: var(--title-size);
+    color: var(--color-four);
+}
+.sub-title {
+    font-size: var(--subtitle-size-s);
+}
+.paraph {
+    font-size: clamp(.6rem, 2vw, 1.1rem);
+}
+.subtitle {
+    margin: 2rem;
+}
+.h2 {
+    margin: 2rem 0;
+}
+button, .button {
+    background-color: transparent;
+    border: 2px solid #333;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    font-weight: 600;
+    font-family: "DM Sans", sans-serif; 
+}
+.h100 {
+    scroll-margin-top: 100px;
+    scroll-snap-align: start;
+}
+
+
+/* =========== MEDIA QUERIES =========== */
+/* - mobile - */
+@media (max-width: 768.9px) {
+    
+}
+/* - desktop - */
+@media (min-width: 769px) {
+
+}

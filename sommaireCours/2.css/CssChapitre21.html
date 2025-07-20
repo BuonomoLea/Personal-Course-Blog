@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 21 CSS : Stylisation d'autre éléments</title>
+  <meta name="description" content="Apprenez à styliser divers éléments HTML avec CSS, incluant listes, tableaux, médias et plus pour enrichir vos pages web." />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header aria-label="En-tête principal">
+        <nav class="nav" aria-label="Navigation principale">
+        <ul class="ul-nav">
+          <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+          <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+          <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+          <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="article-page" id="css-chapitre21">
+        <section class="chapitre" aria-labelledby="titre-chapitre">
+        <article>
+            <h1 id="titre-chapitre">Chapitre 21 : Stylisation d'autre éléments</h1>
+
+            <section class="sous-chapitre" aria-labelledby="toasts-notifications">
+  <h2 id="toasts-notifications">Toasts / notifications</h2>
+  <p>Les toasts sont des messages temporaires qui apparaissent à l'écran pour informer l'utilisateur d'un événement.</p>
+
+  <ul>
+    <li>Positionnés en <code>fixed</code> (haut ou bas).</li>
+    <li>Invisible par défaut (<code>opacity: 0</code>), animé avec <code>@keyframes</code>.</li>
+    <li>Disparaissent automatiquement après un délai.</li>
+    <li>Utilisent <code>aria-live</code> pour l’accessibilité.</li>
+  </ul>
+
+  <h3>Structure HTML</h3>
+  <pre><code>&lt;div class="toast-container" aria-live="polite" aria-atomic="true"&gt;&lt;/div&gt;
+&lt;button id="notify"&gt;Afficher notification&lt;/button&gt;</code></pre>
+
+  <h3>CSS</h3>
+  <pre><code>.toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  z-index: 1000;
+}
+.toast {
+  min-width: 200px;
+  padding: .8rem 1rem;
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+  opacity: 0;
+  animation: fade-in 0.3s ease-out forwards, fade-out 0.3s ease-in forwards;
+  animation-delay: 0s, 3s;
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}</code></pre>
+
+  <h3>JavaScript</h3>
+  <pre><code>const container = document.querySelector('.toast-container');
+document.getElementById('notify').onclick = () => {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = 'Opération réussie !';
+  container.append(toast);
+  toast.addEventListener('animationend', e => {
+    if (e.animationName === 'fade-out') toast.remove();
+  });
+};</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="progress-timeline">
+            <h2 id="progress-timeline">Barres de progression & timelines</h2>
+
+            <h3>Barre de progression</h3>
+            <p>Permet de représenter l’avancement d’une tâche :</p>
+
+            <pre><code>&lt;div class="progress-bar"&gt;
+            &lt;div class="progress-bar__fill"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;button id="start"&gt;Débuter&lt;/button&gt;</code></pre>
+
+            <pre><code>.progress-bar {
+            width: 100%;
+            height: 1rem;
+            background: #eee;
+            border-radius: .5rem;
+            overflow: hidden;
+            }
+            .progress-bar__fill {
+            width: 0;
+            height: 100%;
+            background: #28a745;
+            transition: width 2s ease;
+            }</code></pre>
+
+            <pre><code>document.getElementById('start').onclick = () => {
+            document.querySelector('.progress-bar__fill').style.width = '100%';
+            };</code></pre>
+
+            <h3>Timeline animée</h3>
+            <pre><code>&lt;ul class="timeline"&gt;
+            &lt;li class="timeline__item"&gt;Étape 1&lt;/li&gt;
+            &lt;li class="timeline__item"&gt;Étape 2&lt;/li&gt;
+            &lt;li class="timeline__item"&gt;Étape 3&lt;/li&gt;
+            &lt;/ul&gt;</code></pre>
+
+            <pre><code>.timeline {
+            position: relative;
+            padding-left: 2rem;
+            list-style: none;
+            }
+            .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 1rem;
+            width: 2px; height: 100%;
+            background: #ccc;
+            }
+            .timeline__item {
+            position: relative;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity .6s, transform .6s;
+            }
+            .timeline__item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -1.1rem;
+            width: .6rem; height: .6rem;
+            background: #fff; border: 2px solid #28a745;
+            border-radius: 50%;
+            }
+            .timeline__item.in-view {
+            opacity: 1;
+            transform: translateX(0);
+            }</code></pre>
+
+            <pre><code>const items = document.querySelectorAll('.timeline__item');
+            const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('in-view');
+            });
+            }, { threshold: 0.2 });
+            items.forEach(item => obs.observe(item));</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="wizard-formulaire">
+            <h2 id="wizard-formulaire">Étapes de formulaire (wizard)</h2>
+            <p>Permet de guider l’utilisateur étape par étape à travers un formulaire.</p>
+
+            <pre><code>&lt;div class="wizard"&gt;
+            &lt;div class="wizard__progress"&gt;&lt;/div&gt;
+            &lt;div class="step step--active"&gt;Étape 1&lt;/div&gt;
+            &lt;div class="step"&gt;Étape 2&lt;/div&gt;
+            &lt;div class="step"&gt;Étape 3&lt;/div&gt;
+            &lt;button id="prev"&gt;Précédent&lt;/button&gt;
+            &lt;button id="next"&gt;Suivant&lt;/button&gt;
+            &lt;/div&gt;</code></pre>
+
+            <pre><code>.wizard {
+            max-width: 400px;
+            margin: auto;
+            }
+            .wizard__progress {
+            width: 0;
+            height: .5rem;
+            background: #007bff;
+            transition: width .3s;
+            border-radius: .25rem;
+            margin-bottom: 1rem;
+            }
+            .step {
+            display: none;
+            }
+            .step--active {
+            display: block;
+            }
+            button {
+            margin: .5rem .25rem;
+            }</code></pre>
+
+            <pre><code>const steps = Array.from(document.querySelectorAll('.step'));
+            const progress = document.querySelector('.wizard__progress');
+            const prev = document.getElementById('prev');
+            const next = document.getElementById('next');
+            let current = 0;
+
+            function updateWizard() {
+            steps.forEach((s, i) => s.classList.toggle('step--active', i === current));
+            const pct = (current) / (steps.length - 1) * 100;
+            progress.style.width = pct + '%';
+            prev.disabled = current === 0;
+            next.disabled = current === steps.length - 1;
+            }
+            prev.onclick = () => { current--; updateWizard(); };
+            next.onclick = () => { current++; updateWizard(); };
+            updateWizard();</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="accessibilite-composants">
+            <h2 id="accessibilite-composants">Accessibilité des composants</h2>
+            <ul>
+                <li><code>:focus-visible</code> : stylise uniquement le focus au clavier.</li>
+                <li><code>aria-live="polite"</code> : annonce après la tâche en cours.</li>
+                <li><code>aria-live="assertive"</code> : annonce immédiate (urgent).</li>
+                <li><code>aria-atomic="true"</code> : lit tout le contenu modifié.</li>
+                <li><code>role="status"</code> : zone d’info non critique.</li>
+                <li><code>role="alertdialog"</code> : dialogue critique, focus obligatoire.</li>
+                <li><code>inert</code> : rend une section inaccessible au clavier / lecteur d’écran.</li>
+            </ul>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="layout-dashboard">
+            <h2 id="layout-dashboard">Layout type dashboard / admin</h2>
+            <p>Idéal pour les interfaces complexes avec menu latéral, topbar et contenu dynamique.</p>
+
+            <pre><code>&lt;div class="dashboard"&gt;
+            &lt;aside class="sidebar"&gt;Menu&lt;br&gt;…&lt;/aside&gt;
+            &lt;main class="main"&gt;
+                &lt;header class="topbar"&gt;Tableau de bord&lt;/header&gt;
+                &lt;section class="content"&gt;Contenu dynamique…&lt;/section&gt;
+            &lt;/main&gt;
+            &lt;/div&gt;
+            &lt;button id="toggleSidebar"&gt;Toggle sidebar&lt;/button&gt;</code></pre>
+
+            <pre><code>.dashboard {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            height: 100vh;
+            }
+            .sidebar {
+            background: #343a40;
+            color: #fff;
+            padding: 1rem;
+            }
+            .main {
+            display: flex;
+            flex-direction: column;
+            }
+            .topbar {
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            }
+            .content {
+            padding: 1rem;
+            overflow-y: auto;
+            }
+            .collapsed .sidebar {
+            width: 60px;
+            }
+            .collapsed .dashboard {
+            grid-template-columns: 60px 1fr;
+            }</code></pre>
+
+            <pre><code>const btn = document.getElementById('toggleSidebar');
+            btn.onclick = () => document.body.classList.toggle('collapsed');</code></pre>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="styling-listes">
+            <h2 id="styling-listes">Styliser les listes</h2>
+            <p>Les listes peuvent être personnalisées avec les propriétés CSS <code>list-style-type</code>, <code>padding</code>, <code>margin</code>, et bien d’autres.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="styling-tableaux">
+            <h2 id="styling-tableaux">Styliser les tableaux</h2>
+            <p>Utilisez des bordures, espacements et couleurs pour rendre vos tableaux plus lisibles et agréables.</p>
+            </section>
+
+            <section class="sous-chapitre" aria-labelledby="styling-medias">
+            <h2 id="styling-medias">Styliser les médias</h2>
+            <p>Images, vidéos et autres médias peuvent être redimensionnés, bordés ou ombrés avec CSS.</p>
+            </section>
+
+            <p class="date-publication">Publié le 28 juin 2025 par <span class="auteur">Lyc</span></p>
+        </article>
+        </section>
+
+        <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+        <ul>
+            <li><a href="/sommaireCours/2.css/CssChapitre20.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+            <li><a href="/sommaireCours/2.css/CssChapitre22.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p class="copyright">&copy; 2025 Blog technologies web. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

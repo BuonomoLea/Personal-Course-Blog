@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML — Balises inline et block</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <!-- HTML : Inline vs Block -->
+    <div class="section article-page" id="blog">
+        <!-- HEADER -->
+        <header>
+            <nav class="nav">
+                <ul class="ul-nav">
+                    <li class="li-nav"><a href="/index.html" class="a-nav">Accueil</a></li>
+                    <li class="li-nav"><a href="/sommaireCours.html" class="a-nav">Sommaire cours</a></li>
+                    <li class="li-nav"><a href="/sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
+                    <li class="li-nav"><a href="/sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- MAIN -->
+        <main>
+            <section class="main-section">
+                <article class="chapitre">
+                    <h1 id="titre-chapitre">Chapitre 3 : HTML — Balises inline et block</h1>
+
+                    <div class="sous-chapitre">
+                        <h2>Balises inline : éléments en ligne</h2>
+                        <p>Les balises <strong>inline</strong> ne provoquent pas de retour à la ligne. Elles s’intègrent dans le flux du texte.</p>
+                        <ul>
+                            <li><code>&lt;span&gt;</code> : Conteneur de texte en ligne.</li>
+                            <li><code>&lt;a&gt;</code> : Lien hypertexte.</li>
+                            <li><code>&lt;strong&gt;</code> : Texte à forte importance (souvent en gras).</li>
+                            <li><code>&lt;img&gt;</code> : Image insérée dans le texte.</li>
+                        </ul>
+                    </div>
+
+                    <div class="sous-chapitre">
+                        <h2>Balises block : éléments de bloc</h2>
+                        <p>Les balises <strong>block</strong> s’affichent sur une nouvelle ligne et prennent toute la largeur disponible.</p>
+                        <ul>
+                            <li><code>&lt;div&gt;</code> : Conteneur générique.</li>
+                            <li><code>&lt;p&gt;</code> : Paragraphe de texte.</li>
+                            <li><code>&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, etc.</code> : Titres hiérarchiques.</li>
+                            <li><code>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code> : Listes (non numérotées, numérotées et leurs éléments).</li>
+                        </ul>
+                    </div>
+
+                    <div class="sous-chapitre">
+                        <h2>Comparaison visuelle</h2>
+                        <p>Voici un exemple de balise <strong>block</strong> :</p>
+                        <pre><code>&lt;p&gt;Ceci est un paragraphe (block).&lt;/p&gt;</code></pre>
+
+                        <p>Et un exemple de balise <strong>inline</strong> :</p>
+                        <pre><code>&lt;span&gt;Ceci est un span (inline).&lt;/span&gt;</code></pre>
+                    </div>
+
+                    <div class="sous-chapitre">
+                        <h2>Erreurs courantes à éviter</h2>
+                        <ul>
+                            <li>Placer une balise block à l’intérieur d’une balise inline (non valide).</li>
+                            <li>Forcer inutilement un comportement (ex. : inline en block ou inversement via CSS).</li>
+                            <li>Ignorer leur influence sur la structure et l’accessibilité.</li>
+                        </ul>
+                    </div>
+
+                    <p class="date-publication">Publié le 3 novembre 2024 par <span class="auteur">Lyc</span></p>
+                </article>
+            </section>
+
+            <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
+                <ul>
+                    <li><a href="/sommaireCours/1.html/HtmlChapitre2.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+                    <li><a href="/sommaireCours/1.html/HtmlChapitre4.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+                </ul>
+            </nav>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
+        </footer>
+    </div>
+</body>
+</html>

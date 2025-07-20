@@ -13,11 +13,11 @@ Un blog personnel conçu pour regrouper mes notes et ressources autour des cours
 
 ---
 
-## Description
+### Description
 
 Ce blog est une plateforme statique qui regroupe mes articles de cours, tutoriels, et autres contenus pédagogiques. L’objectif est de faciliter l’accès à mes notes pour réviser o gagner du temps sur mes projets à l'aide de la partie memento.
 
-## Technologies
+### Technologies
 
 - HTML5 & CSS3  
 - JavaScript (ES6+)  

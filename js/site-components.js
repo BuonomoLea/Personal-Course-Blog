@@ -3,11 +3,13 @@
 function getGlobalPath(file) {
   // Calcule la profondeur du fichier courant
   const path = window.location.pathname;
-  const segments = path.split('/');
+  const segments = path.split('/').filter(Boolean);
+  // Ignore le nom du repo (premier segment)
+  const repoOffset = 1;
   // Si le dernier segment contient un point, c'est un fichier
   const isFile = segments[segments.length - 1].includes('.');
-  // On retire le nom du fichier si présent
-  const depth = isFile ? segments.length - 2 : segments.length - 1;
+  // Calcule la profondeur réelle à partir du dossier racine du repo
+  const depth = isFile ? segments.length - 1 - repoOffset : segments.length - repoOffset;
   return `${'../'.repeat(depth)}global/${file}`;
 }
 

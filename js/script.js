@@ -1,5 +1,5 @@
 // charger site-components.js
-import '../../js/site-components.js';
+// import '../../js/site-components.js';
 
 import './site-components.js';
 

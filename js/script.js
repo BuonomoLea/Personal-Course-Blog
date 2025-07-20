@@ -1,7 +1,7 @@
-// charge site-components.js
+// charger site-components.js
 import '../../js/site-components.js';
 
-import 'site-components.js';
+import './site-components.js';
 
 console.log('script.js chargé et Web Components initialisés');
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // Ouvrir la première section au chargement
-        // if (sections[0] === section) section.classList.add("active");
+        if (sections[0] === section) section.classList.add("active");
     });
 });
 

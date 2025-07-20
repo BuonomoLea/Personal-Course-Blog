@@ -1,6 +1,8 @@
 // charge site-components.js
 import '../../js/site-components.js';
 
+import 'js/site-components.js';
+
 console.log('script.js chargé et Web Components initialisés');
 
 

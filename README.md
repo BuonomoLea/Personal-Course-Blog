@@ -1,5 +1,7 @@
 # Personal Course Blog
 
+#### (Site en maintenance)
+
 Un blog personnel conçu pour regrouper mes notes et ressources autour des cours et apprentissages en développement web et technologies associées. Ce projet vise à fournir un espace simple, lisible et évolutif pour centraliser une partie de mes connaissances.
 
 ---

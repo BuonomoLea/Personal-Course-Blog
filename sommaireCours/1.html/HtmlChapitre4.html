@@ -5,21 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapitre 4 : Logique hiérarchique et imbriquée</title>
     <link rel="stylesheet" href="../../css/style.css" />
-    <script src="../../js/script.js" defer></script>
+    <script type="module" src="../../js/script.js" defer></script>
 </head>
 <body>
 <!-- HTML : Logique hiérarchique et imbriquée en HTML -->
     <!-- HEADER -->
-    <header aria-label="En-tête principal">
-        <nav class="nav" aria-label="Navigation principale">
-            <ul class="ul-nav">
-              <li class="li-nav"><a href="index.html" class="a-nav">Accueil</a></li>
-              <li class="li-nav"><a href="sommaireCours.html" class="a-nav">Sommaire cours</a></li>
-              <li class="li-nav"><a href="sommaireMemento.html" class="a-nav">Sommaire memento</a></li>
-              <li class="li-nav"><a href="sommaireInfos.html" class="a-nav">Sommaire infos</a></li>
-            </ul>
-        </nav>
-    </header>
+  <site-header role="banner"></site-header>
 
     <!-- MAIN -->
     <main class="article-page" id="html-chapitre4">
@@ -140,15 +131,13 @@
 
         <nav class="navigation-chapitres" aria-label="Navigation entre chapitres">
             <ul>
-                <li><a href="sommaireCours/1.html/HtmlChapitre3.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
-                <li><a href="sommaireCours/1.html/HtmlChapitre5.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
+                <li><a href="../../sommaireCours/1.html/HtmlChapitre3.html" class="lien-chapitre precedent" aria-label="Chapitre précédent">← Chapitre précédent</a></li>
+                <li><a href="../../sommaireCours/1.html/HtmlChapitre5.html" class="lien-chapitre suivant" aria-label="Chapitre suivant">Chapitre suivant →</a></li>
             </ul>
         </nav>
     </main>
 
     <!-- FOOTER -->
-    <footer role="contentinfo">
-        <p class="copyright">&copy; 2024 Blog technologies web. Tous droits réservés.</p>
-    </footer>
+    <site-footer></site-footer>
 </body>
 </html>

@@ -5,7 +5,7 @@ class SiteHeader extends HTMLElement {
     // On tente de récupérer le fichier header.html
     try {
       // fetch avec cache désactivé pour voir tout de suite les modifs en dev
-      const res  = await fetch('global/header.html', { cache: 'no-cache' });
+      const res  = await fetch('../../global/header.html', { cache: 'no-cache' });
       
       // Convertit la réponse en texte brut (chaîne HTML)
       const text = await res.text();
@@ -35,7 +35,7 @@ class SiteFooter extends HTMLElement {
   async connectedCallback() {
     try {
       // On récupère le fichier footer.html
-      const res  = await fetch('global/footer.html', { cache: 'no-cache' });
+      const res  = await fetch('../../global/footer.html', { cache: 'no-cache' });
       const text = await res.text();
 
       // Parsing du HTML et récupération du <footer>
